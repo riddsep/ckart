@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import SocialMedia from "./SocialMedia";
+import Navbar from "./Navbar";
+import { MaxWidthWrapper } from "./MaxWidthWrapper";
 
 const socialMediaData = [
   { name: "facebook", href: "#", src: "icons/facebook.svg" },
@@ -11,27 +13,29 @@ const socialMediaData = [
 function Header() {
   return (
     <Wrapper>
-      <ContentWrapper>
+      <TopBar>
         <Contact>
           <ContactLink href="tel:+919574468870">+91 95744 68870</ContactLink>
           <ContactLink href="mailto:uiuxocean@gmail.com">
             uiuxocean@gmail.com
           </ContactLink>
         </Contact>
-        <SocialMediaWrapper>
+        <RightSection>
           <LangnCurrency>
             <Lang>
               <span>Eng</span>
-              <img src="icons/arrow-down.svg" alt="" />
+              <img src="icons/arrow-down.svg" alt="Language selector" />
             </Lang>
             <Curr>
               <span>USD</span>
-              <img src="icons/arrow-down.svg" alt="" />
+              <img src="icons/arrow-down.svg" alt="Currency selector" />
             </Curr>
           </LangnCurrency>
           <SocialMedia socialMediaData={socialMediaData} />
-        </SocialMediaWrapper>
-      </ContentWrapper>
+        </RightSection>
+      </TopBar>
+
+      <Navbar />
     </Wrapper>
   );
 }
@@ -39,21 +43,21 @@ function Header() {
 const Wrapper = styled.header`
   color: var(--clr-white-100);
   background-color: var(--clr-primary-100);
-  padding-block: 15px;
 `;
-const ContentWrapper = styled.div`
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
+
+const TopBar = styled(MaxWidthWrapper)`
+  padding-block: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
+
 const Contact = styled.address`
   display: flex;
   gap: 30px;
   font-style: normal;
 `;
+
 const ContactLink = styled.a`
   color: var(--clr-white-100);
   text-decoration: none;
@@ -67,19 +71,24 @@ const ContactLink = styled.a`
     content: url("icons/sms.svg");
   }
 `;
-const SocialMediaWrapper = styled.div`
+
+const RightSection = styled.div`
   display: flex;
   gap: 60px;
+  align-items: center;
 `;
+
 const LangnCurrency = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
 `;
+
 const Lang = styled.div`
   display: flex;
   gap: 10px;
 `;
+
 const Curr = styled.div`
   display: flex;
   gap: 10px;
