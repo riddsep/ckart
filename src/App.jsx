@@ -1,11 +1,11 @@
-import Category from "./components/Category";
+import Blog from "./components/Blog";
 import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <Category />
+      <Blog />
     </>
   );
 }

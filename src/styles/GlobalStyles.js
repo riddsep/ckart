@@ -115,10 +115,10 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  white-space: pretty;
+  text-wrap: pretty;
 }
 h1, h2, h3, h4, h5, h6 {
-  white-space: balance;
+  text-wrap: balance;
 }
 
 #root, #__next {

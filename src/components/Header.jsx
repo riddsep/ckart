@@ -24,11 +24,11 @@ function Header() {
           <LangnCurrency>
             <Lang>
               <span>Eng</span>
-              <img src="icons/arrow-down.svg" alt="Language selector" />
+              <img src="icons/chevron-down.svg" alt="Language selector" />
             </Lang>
             <Curr>
               <span>USD</span>
-              <img src="icons/arrow-down.svg" alt="Currency selector" />
+              <img src="icons/chevron-down.svg" alt="Currency selector" />
             </Curr>
           </LangnCurrency>
           <SocialMedia socialMediaData={socialMediaData} />
