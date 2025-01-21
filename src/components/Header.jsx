@@ -1,14 +1,24 @@
 import styled from "styled-components";
+import SocialMedia from "./SocialMedia";
+
+const socialMediaData = [
+  { name: "facebook", href: "#", src: "icons/facebook.svg" },
+  { name: "pinterest", href: "#", src: "icons/pinterest.svg" },
+  { name: "instagram", href: "#", src: "icons/instagram.svg" },
+  { name: "twitter", href: "#", src: "icons/twitter.svg" },
+];
 
 function Header() {
   return (
     <Wrapper>
       <ContentWrapper>
         <Contact>
-          <a href="tel:+919574468870">+91 95744 68870</a>
-          <a href="mailto:uiuxocean@gmail.com">uiuxocean@gmail.com</a>
+          <ContactLink href="tel:+919574468870">+91 95744 68870</ContactLink>
+          <ContactLink href="mailto:uiuxocean@gmail.com">
+            uiuxocean@gmail.com
+          </ContactLink>
         </Contact>
-        <SocialMedia>
+        <SocialMediaWrapper>
           <LangnCurrency>
             <Lang>
               <span>Eng</span>
@@ -19,29 +29,8 @@ function Header() {
               <img src="icons/arrow-down.svg" alt="" />
             </Curr>
           </LangnCurrency>
-          <SocialMediaList>
-            <li>
-              <a href="">
-                <img src="icons/Facebook.svg" alt="" />
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img src="icons/Pinterest.svg" alt="" />
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img src="icons/Instagram.svg" alt="" />
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img src="icons/Twitter.svg" alt="" />
-              </a>
-            </li>
-          </SocialMediaList>
-        </SocialMedia>
+          <SocialMedia socialMediaData={socialMediaData} />
+        </SocialMediaWrapper>
       </ContentWrapper>
     </Wrapper>
   );
@@ -57,13 +46,28 @@ const ContentWrapper = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 const Contact = styled.address`
   display: flex;
-  gap: 16px;
+  gap: 30px;
+  font-style: normal;
 `;
-const SocialMedia = styled.div`
+const ContactLink = styled.a`
+  color: var(--clr-white-100);
+  text-decoration: none;
+  display: flex;
+  gap: 10px;
+
+  &:first-child::before {
+    content: url("icons/call-calling.svg");
+  }
+  &:last-child::before {
+    content: url("icons/sms.svg");
+  }
+`;
+const SocialMediaWrapper = styled.div`
   display: flex;
   gap: 60px;
 `;
@@ -74,16 +78,11 @@ const LangnCurrency = styled.div`
 `;
 const Lang = styled.div`
   display: flex;
-  gap: 12px;
+  gap: 10px;
 `;
 const Curr = styled.div`
   display: flex;
-  gap: 12px;
-`;
-const SocialMediaList = styled.ul`
-  display: flex;
-  gap: 20px;
-  list-style-type: none;
+  gap: 10px;
 `;
 
 export default Header;
