@@ -1,11 +1,13 @@
-import Blog from "./components/Blog";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <Blog />
+      <Header />
+      <Footer />
     </>
   );
 }
