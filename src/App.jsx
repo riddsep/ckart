@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Product from "./components/Product";
 import Tab from "./components/Tab";
 import Team from "./components/Team";
+import Order from "./features/Order/Order";
 import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Team />
       <Product />
       <Tab />
+      <Order />
     </>
   );
 }
