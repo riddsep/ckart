@@ -10,7 +10,7 @@ function OrderProduct() {
           <Quantity>Qty : 2</Quantity>
         </Description>
       </Content>
-      <p>$ 254.50</p>
+      <p>$ 274.50</p>
     </Wrapper>
   );
 }
