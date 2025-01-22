@@ -7,7 +7,7 @@ function OrderProduct() {
         <Thumbnail src="images/image-2.jpg" alt="" />
         <Description>
           <Title>Pilke Wooden Storage</Title>
-          <p>Qty : 2</p>
+          <Quantity>Qty : 2</Quantity>
         </Description>
       </Content>
       <p>$ 254.50</p>
@@ -37,6 +37,9 @@ const Description = styled.div`
 
 const Title = styled.h1`
   font-size: 16px;
+`;
+const Quantity = styled.p`
+  color: var(--clr-primary-100);
 `;
 
 export default OrderProduct;
