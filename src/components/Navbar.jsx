@@ -1,60 +1,59 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
 
-function Navbar() {
+function Navbar({ theme }) {
   return (
-    <Background>
-      <Wrapper>
-        <Logo src="icons/logo-white.png" alt="Logo" className="" />
-        <NavbarList>
-          <li>
-            <Link href="#">Home</Link>
-          </li>
-          <li>
-            <Link href="#">Shop</Link>
-          </li>
-          <li>
-            <Link href="#">About Us</Link>
-          </li>
-          <li>
-            <Link href="#">Contact Us</Link>
-          </li>
-          <li>
-            <Link href="#">Blog</Link>
-          </li>
+    <Wrapper $theme={theme}>
+      <Logo src={`icons/logo-${theme ? "dark" : "light"}.png`} alt="Logo" />
+      <NavbarList $theme={theme}>
+        <li>
+          <Link href="#">Home</Link>
+        </li>
+        <li>
+          <Link href="#">Shop</Link>
+        </li>
+        <li>
+          <Link href="#">About Us</Link>
+        </li>
+        <li>
+          <Link href="#">Contact Us</Link>
+        </li>
+        <li>
+          <Link href="#">Blog</Link>
+        </li>
 
-          <li>
-            <Link href="#">
-              <img src="icons/search-normal.svg" alt="Search" />
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <img src="icons/shopping-cart.svg" alt="Shopping Cart" />
-              <CountItem>5</CountItem>
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <img src="icons/heart.svg" alt="Favorite" />
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <img src="icons/user.svg" alt="User" />
-            </Link>
-          </li>
-        </NavbarList>
-      </Wrapper>
-    </Background>
+        {!theme && (
+          <>
+            <li>
+              <Link href="#">
+                <img src="icons/search-normal.svg" alt="Search" />
+              </Link>
+            </li>
+            <li>
+              <Link href="#">
+                <img src="icons/shopping-cart.svg" alt="Shopping Cart" />
+                <CountItem>5</CountItem>
+              </Link>
+            </li>
+            <li>
+              <Link href="#">
+                <img src="icons/heart.svg" alt="Favorite" />
+              </Link>
+            </li>
+            <li>
+              <Link href="#">
+                <img src="icons/user.svg" alt="User" />
+              </Link>
+            </li>
+          </>
+        )}
+      </NavbarList>
+    </Wrapper>
   );
 }
-const Background = styled.div`
-  background-color: var(--clr-white-100);
-`;
 
 const Wrapper = styled(MaxWidthWrapper)`
-  padding-block: 20px;
+  padding-block: ${(props) => (!props.$theme ? "20px" : "")};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,14 +67,18 @@ const NavbarList = styled.ul`
   gap: 30px;
   list-style-type: none;
 
-  li:nth-child(5) {
-    border-right: 2px solid var(--clr-primary-100);
-    padding-right: 28px;
-  }
+  ${(props) =>
+    !props.$theme &&
+    css`
+      li:nth-child(5) {
+        border-right: 2px solid var(--clr-primary-100);
+        padding-right: 28px;
+      }
+    `}
 `;
 const Link = styled.a`
   text-decoration: none;
-  color: var(--clr-dark-100);
+  color: inherit;
   position: relative;
 `;
 
