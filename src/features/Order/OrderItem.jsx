@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MaxWidthWrapper } from "../../components/MaxWidthWrapper";
 import Chip from "../../components/Chip";
+import OrderProduct from "./OrderProduct";
 
 function OrderItem() {
   return (
@@ -10,8 +11,9 @@ function OrderItem() {
           <Chip>Order : #125424</Chip>
           <p>15 Jun, 2022</p>
         </Queu>
-        <Chip>Completed</Chip>
+        <Chip state={"completed"}>Completed</Chip>
       </Head>
+      <OrderProduct />
     </Wrapper>
   );
 }
