@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { socialMediaData } from "../constant/constant";
 
-function SocialMedia({ socialMediaData }) {
+function SocialMedia() {
   return (
     <SocialMediaList>
       {socialMediaData.map((data) => (

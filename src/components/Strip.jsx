@@ -2,13 +2,6 @@ import styled from "styled-components";
 import SocialMedia from "./SocialMedia";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
 
-const socialMediaData = [
-  { name: "facebook", href: "#", src: "icons/facebook.svg" },
-  { name: "pinterest", href: "#", src: "icons/pinterest.svg" },
-  { name: "instagram", href: "#", src: "icons/instagram.svg" },
-  { name: "twitter", href: "#", src: "icons/twitter.svg" },
-];
-
 function Strip() {
   return (
     <Wrapper>
@@ -29,7 +22,7 @@ function Strip() {
             <img src="icons/chevron-down.svg" alt="Currency selector" />
           </Curr>
         </LangnCurrency>
-        <SocialMedia socialMediaData={socialMediaData} />
+        <SocialMedia />
       </RightSection>
     </Wrapper>
   );
