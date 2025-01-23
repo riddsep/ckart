@@ -16,26 +16,26 @@ function AboutUs() {
         <img src="images/about-2.png" alt="" />
       </LeftContent>
       <RightContent>
-        <p>About Us</p>
-        <h1>Safe, Reliable & Empress Moving Solutions!</h1>
-        <p>
+        <Header>&mdash; About Us</Header>
+        <Title>Safe, Reliable & Empress Moving Solutions!</Title>
+        <Description>
           Explore our vast selection at ‘The Creative Store’- your one-stop
           destination for all construction and building needs. From the
           foundational bricks to the final touches of lighting, discover quality
           and variety like never before.
-        </p>
-        <ul>
+        </Description>
+        <List>
           <li>Creative Work Insight</li>
           <li>Always Work With Energetic Team</li>
           <li>We are Award Winning Company</li>
-        </ul>
-        <div>
-          <img src="avatar-1.png" alt="" />
+        </List>
+        <Avatar>
+          <img src="images/avatar-1.png" alt="" />
           <div>
             <h1>Kaitlyn Grieve</h1>
             <p>Co-Founder</p>
           </div>
-        </div>
+        </Avatar>
       </RightContent>
     </Wrapper>
   );
@@ -51,11 +51,11 @@ const LeftContent = styled.div`
 `;
 const RightContent = styled.div`
   flex: 1;
+  color: var(--clr-dark-100);
 `;
 
 const Left = styled.div`
   display: flex;
-
   gap: 50px;
   margin-block-end: 40px;
 `;
@@ -78,6 +78,42 @@ const Em = styled.em`
   font-weight: bold;
   font-style: normal;
   display: block;
+`;
+const Header = styled.p`
+  font-weight: 600;
+  margin-block-end: 15px;
+  color: var(--clr-primary-100);
+`;
+const Title = styled.h1`
+  font-size: 48px;
+  line-height: 1.25;
+`;
+const Description = styled.p`
+  margin-block: 30px;
+`;
+const List = styled.ul`
+  list-style-type: none;
+  margin-block-end: 30px;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: top;
+    gap: 10px;
+  }
+  li::before {
+    content: url("icons/verify.svg");
+  }
+`;
+
+const Avatar = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  div h1 {
+    font-size: 20px;
+  }
 `;
 
 export default AboutUs;

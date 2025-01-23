@@ -44,7 +44,6 @@ const Title = styled.h1`
   font-size: 45px;
   font-family: "Playwrite IN", serif;
   font-weight: 400;
-  font-style: italic;
 `;
 const Tagline = styled.h1`
   font-size: 62px;
