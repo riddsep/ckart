@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
 function Chip({ children, state }) {
-  return <Wrapper state={state}>{children}</Wrapper>;
+  return <Wrapper $state={state}>{children}</Wrapper>;
 }
 
 const Wrapper = styled.p`
   padding: 8px 14px;
   ${(props) => {
-    switch (props.state) {
+    switch (props.$state) {
       case "completed":
         return css`
           background-color: var(--clr-success-15);

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Chip from "../../components/Chip";
+import Chip from "../../ui/Chip";
 
 function OrderStatus() {
   return (

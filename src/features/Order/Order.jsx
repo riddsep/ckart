@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import OrderItem from "./OrderItem";
-import { MaxWidthWrapper } from "../../components/MaxWidthWrapper";
+import { MaxWidthWrapper } from "../../ui/MaxWidthWrapper";
 
 function Order() {
   return (
