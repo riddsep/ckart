@@ -1,48 +1,61 @@
 import styled from "styled-components";
+import { MaxWidthWrapper } from "./MaxWidthWrapper";
+import CategoryItem from "./CategoryItem";
+import Button from "./Button";
+import { categoryData } from "../constant/constant";
 
 function Category() {
   return (
     <Wrapper>
-      <Img src="images/image-12.png" alt="" />
-      <Description>
-        <Title>Bathroom</Title>
-        <Details>
-          <span>View Details</span>
-          <img src="icons/chevron-right.svg" alt="" />
-        </Details>
-      </Description>
+      <MaxWidthWrapper>
+        <Heading>
+          <p>&mdash; Our Categories &mdash;</p>
+          <h1>Our Products Collection</h1>
+        </Heading>
+        <CategoryList>
+          {categoryData.map((category) => (
+            <CategoryItem key={category.title} category={category} />
+          ))}
+        </CategoryList>
+        <div>
+          <Button $variant="primary" $size="lg">
+            Explore Now
+            <img src="icons/arrow-right.svg" alt="" />
+          </Button>
+        </div>
+      </MaxWidthWrapper>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  width: 100%;
-  max-width: 407px;
-  border: 2px solid var(--clr-dark-15);
-`;
-const Img = styled.img`
-  object-fit: cover;
+  background-color: var(--clr-primary-5);
+  padding-block: 100px;
 `;
 
-const Description = styled.div`
-  padding: 0 30px 30px 30px;
-  margin-top: -20px;
-  position: relative;
+const Heading = styled.div`
+  margin-block-end: 50px;
+  text-align: center;
+
+  p {
+    color: var(--clr-primary-100);
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 48px;
+  }
 `;
 
-const Title = styled.h1`
-  font-size: 20px;
-  color: var(--clr-white-100);
-  background-color: var(--clr-primary-100);
-  padding: 15px 20px;
-  margin-bottom: 20px;
+const CategoryList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-block-end: 30px;
+
+  & + div {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
-const Details = styled.div`
-  display: flex;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--clr-primary-100);
-`;
 export default Category;

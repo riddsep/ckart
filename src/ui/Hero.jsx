@@ -5,7 +5,7 @@ import { MaxWidthWrapper } from "./MaxWidthWrapper";
 function Hero() {
   return (
     <Wrapper>
-      <MaxWidthWrapper>
+      <ContentWrapper>
         <HeroContent>
           <Title>Love Your Space</Title>
           <Tagline>
@@ -22,13 +22,13 @@ function Hero() {
             <img src="icons/arrow-right.svg" alt="" />
           </Button>
         </HeroContent>
-      </MaxWidthWrapper>
+        <img src="images/hero.jpg" alt="" />
+      </ContentWrapper>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  background-image: url("images/hero.png");
   min-height: calc(100% - 152.4px);
   color: var(--clr-white-100);
   background-position: center;
@@ -36,9 +36,20 @@ const Wrapper = styled.section`
   display: flex;
   align-items: center;
 `;
+
+const ContentWrapper = styled(MaxWidthWrapper)`
+  display: flex;
+  gap: 40px;
+
+  & > img {
+    width: 100%;
+    max-width: 600px;
+  }
+`;
 const HeroContent = styled.div`
   width: 100%;
   max-width: 734px;
+  color: var(--clr-dark-100);
 `;
 const Title = styled.h1`
   font-size: 45px;
@@ -52,7 +63,7 @@ const Tagline = styled.h1`
 
 const Description = styled.p`
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   margin-block: 30px;
 `;
 const Highlight = styled.em`
