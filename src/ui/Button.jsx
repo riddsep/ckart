@@ -5,6 +5,11 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--clr-primary-75);
+  }
 
   ${(props) => {
     switch (props.$size) {
