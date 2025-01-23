@@ -2,22 +2,24 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
   ${(props) => {
     switch (props.$size) {
       case "small":
         return css`
           padding: 8px 14px;
-          font-size: 18px;
+          font-size: 16px;
         `;
       case "large":
         return css`
-          padding: 16px 28px;
+          padding: 8px 24px;
           font-size: 18px;
         `;
     }
   }}
-
   ${(props) => {
     switch (props.$varint) {
       case "primary":
@@ -33,6 +35,6 @@ const Button = styled.button`
           border: 1px solid var(--clr-dark-100);
         `;
     }
-  }}
+  }};
 `;
 export default Button;
