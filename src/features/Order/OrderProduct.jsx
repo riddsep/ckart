@@ -10,7 +10,7 @@ function OrderProduct() {
           <Quantity>Qty : 2</Quantity>
         </Description>
       </Content>
-      <p>$ 274.50</p>
+      <Price>$ 274.50</Price>
     </Wrapper>
   );
 }
@@ -19,9 +19,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-block: 20px;
+  margin-inline: 20px;
+  border-bottom: 1px solid var(--clr-dark-15);
 `;
 const Content = styled(Wrapper)`
   gap: 20px;
+  padding-block: 0;
+  border: 0;
 `;
 
 const Thumbnail = styled.img`
@@ -33,6 +38,7 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-weight: bold;
 `;
 
 const Title = styled.h1`
@@ -40,6 +46,9 @@ const Title = styled.h1`
 `;
 const Quantity = styled.p`
   color: var(--clr-primary-100);
+`;
+const Price = styled.p`
+  font-weight: bold;
 `;
 
 export default OrderProduct;
