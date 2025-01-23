@@ -2,24 +2,45 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--clr-primary-75);
+  }
 
   ${(props) => {
     switch (props.$size) {
-      case "small":
+      case "sm":
         return css`
-          padding: 8px 14px;
-          font-size: 18px;
+          padding: 6px 12px;
+          font-size: 14px;
+          font-weight: bold;
         `;
-      case "large":
+      case "lg":
         return css`
-          padding: 16px 28px;
-          font-size: 18px;
+          padding: 10px 18px;
+          font-size: 16px;
+          font-weight: bold;
+        `;
+      case "xl":
+        return css`
+          padding: 12px 20px;
+          font-size: 16px;
+          font-weight: bold;
+        `;
+      default:
+        return css`
+          padding: 10px 16px;
+          font-size: 14px;
+          font-weight: bold;
         `;
     }
   }}
-
   ${(props) => {
-    switch (props.$varint) {
+    switch (props.$variant) {
       case "primary":
         return css`
           background-color: var(--clr-primary-100);
@@ -32,7 +53,15 @@ const Button = styled.button`
           color: var(--clr-dark-100);
           border: 1px solid var(--clr-dark-100);
         `;
+      default:
+        return css``;
     }
-  }}
+  }};
+
+  ${(props) =>
+    props.$fullWidth &&
+    css`
+      width: 100%;
+    `}
 `;
 export default Button;

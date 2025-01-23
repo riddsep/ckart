@@ -65,6 +65,11 @@ const LangnCurrency = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
+
+  & > div:first-of-type:hover,
+  & > div:last-of-type:hover {
+    cursor: pointer;
+  }
 `;
 
 const Lang = styled.div`

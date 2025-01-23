@@ -23,3 +23,12 @@ export const socialMediaData = [
   { name: "instagram", href: "#", src: "icons/instagram.svg" },
   { name: "twitter", href: "#", src: "icons/twitter.svg" },
 ];
+
+export const categoryData = [
+  { title: "bathroom", src: "images/category-1.jpg" },
+  { title: "chair", src: "images/category-2.jpg" },
+  { title: "decor", src: "images/category-3.jpg" },
+  { title: "lamp", src: "images/category-4.jpg" },
+  { title: "table", src: "images/category-5.jpg" },
+  { title: "sofa", src: "images/category-6.jpg" },
+];
