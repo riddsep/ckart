@@ -1,11 +1,18 @@
+import styled from "styled-components";
 import OrderItem from "./OrderItem";
+import { MaxWidthWrapper } from "../../components/MaxWidthWrapper";
 
 function Order() {
   return (
-    <div>
+    <Wrapper>
       <OrderItem />
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled(MaxWidthWrapper)`
+  border: 1px solid var(--clr-dark-15);
+  margin-bottom: 20rem;
+`;
 
 export default Order;
