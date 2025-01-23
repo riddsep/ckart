@@ -17,7 +17,7 @@ function Hero() {
             our extensive selection of premium fixtures, designed to meet every
             aesthetic
           </Description>
-          <Button $size="large" $varint="primary">
+          <Button $variant="primary" $size="lg">
             Shop Now
             <img src="icons/arrow-right.svg" alt="" />
           </Button>

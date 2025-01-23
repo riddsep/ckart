@@ -8,20 +8,34 @@ const Button = styled.button`
 
   ${(props) => {
     switch (props.$size) {
-      case "small":
+      case "sm":
         return css`
-          padding: 8px 14px;
-          font-size: 16px;
+          padding: 6px 12px;
+          font-size: 14px;
+          font-weight: bold;
         `;
-      case "large":
+      case "lg":
         return css`
-          padding: 8px 24px;
-          font-size: 18px;
+          padding: 10px 18px;
+          font-size: 16px;
+          font-weight: bold;
+        `;
+      case "xl":
+        return css`
+          padding: 12px 20px;
+          font-size: 16px;
+          font-weight: bold;
+        `;
+      default:
+        return css`
+          padding: 10px 16px;
+          font-size: 14px;
+          font-weight: bold;
         `;
     }
   }}
   ${(props) => {
-    switch (props.$varint) {
+    switch (props.$variant) {
       case "primary":
         return css`
           background-color: var(--clr-primary-100);
@@ -34,7 +48,15 @@ const Button = styled.button`
           color: var(--clr-dark-100);
           border: 1px solid var(--clr-dark-100);
         `;
+      default:
+        return css``;
     }
   }};
+
+  ${(props) =>
+    props.$fullWidth &&
+    css`
+      width: 100%;
+    `}
 `;
 export default Button;
