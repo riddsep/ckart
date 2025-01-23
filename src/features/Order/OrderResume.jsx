@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import StarRating from "../../components/StarRating";
-import Button from "../../components/Button";
+import StarRating from "../../ui/StarRating";
+import Button from "../../ui/Button";
 
 function OrderResume() {
   return (
