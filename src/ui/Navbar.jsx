@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
 import { useState } from "react";
 import MegaMenu from "./MegaMenu";

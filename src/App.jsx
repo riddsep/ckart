@@ -1,11 +1,11 @@
-import HomePage from "./pages/HomePage";
 import GlobalStyles from "./styles/GlobalStyles";
+import About from "./ui/About";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <HomePage />
+      <About />
     </>
   );
 }

@@ -59,3 +59,26 @@ export const BlogData = [
       "Explore the latest trends in modern minimalist furniture that bring simplicity and elegance...",
   },
 ];
+
+export const features = [
+  {
+    title: "Free World Delivery",
+    description: "Orders over $200",
+    src: "/icons/plane.svg",
+  },
+  {
+    title: "Money-Back Guarantee",
+    description: "Within 30 days",
+    src: "/icons/money.svg",
+  },
+  {
+    title: "Online Support",
+    description: "Free support system 24/7",
+    src: "/icons/phone.svg",
+  },
+  {
+    title: "Member Gift",
+    description: "Coupon at weekend",
+    src: "/icons/gift.svg",
+  },
+];
