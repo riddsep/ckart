@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
+import Avatar from "./Avatar";
 
 function AboutUs() {
   return (
@@ -29,13 +30,7 @@ function AboutUs() {
           <li>Always Work With Energetic Team</li>
           <li>We are Award Winning Company</li>
         </List>
-        <Avatar>
-          <img src="images/avatar-1.png" alt="" />
-          <div>
-            <h1>Kaitlyn Grieve</h1>
-            <p>Co-Founder</p>
-          </div>
-        </Avatar>
+        <Avatar />
       </RightContent>
     </Wrapper>
   );
@@ -103,16 +98,6 @@ const List = styled.ul`
   }
   li::before {
     content: url("icons/verify.svg");
-  }
-`;
-
-const Avatar = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  div h1 {
-    font-size: 20px;
   }
 `;
 

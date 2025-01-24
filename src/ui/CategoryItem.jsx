@@ -3,7 +3,7 @@ import styled from "styled-components";
 function CategoryItem({ category }) {
   return (
     <Wrapper>
-      <Img src={category.src} alt={category.title} />
+      <Img src={category.src} alt={category.title} loading="lazy" />
       <Description>
         <Title>{category.title}</Title>
         <Details>

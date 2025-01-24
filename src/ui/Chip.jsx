@@ -26,6 +26,12 @@ const Wrapper = styled.p`
           color: var(--clr-error-100);
           border: 1px solid var(--clr-error-100);
         `;
+      case "filled":
+        return css`
+          background-color: var(--clr-primary-100);
+          color: var(--clr-white-100);
+          border: 1px solid var(--clr-primary-100);
+        `;
       default:
         return css`
           background-color: var(--clr-primary-15);
