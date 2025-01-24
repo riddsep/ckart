@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
+import { useState } from "react";
+import MegaMenu from "./MegaMenu";
 
 function Navbar({ theme }) {
+  const [active, setActive] = useState(false);
+
   return (
     <Wrapper $theme={theme}>
       <Logo src={`icons/logo-${theme ? "dark" : "light"}.png`} alt="Logo" />
@@ -10,7 +14,9 @@ function Navbar({ theme }) {
           <Link href="#">Home</Link>
         </li>
         <li>
-          <Link href="#">Shop</Link>
+          <Link href="#" onClick={() => setActive(!active)}>
+            Shop <img src="icons/chevron-down-dark.svg" alt="Dropdown Icon" />
+          </Link>
         </li>
         <li>
           <Link href="#">About Us</Link>
@@ -21,6 +27,8 @@ function Navbar({ theme }) {
         <li>
           <Link href="#">Blog</Link>
         </li>
+
+        {active && <MegaMenu />}
 
         {!theme && (
           <>
@@ -57,6 +65,7 @@ const Wrapper = styled(MaxWidthWrapper)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 `;
 const Logo = styled.img`
   width: 156px;
@@ -67,14 +76,10 @@ const NavbarList = styled.ul`
   gap: 30px;
   list-style-type: none;
 
-  ${(props) =>
-    !props.$theme &&
-    css`
-      li:nth-child(5) {
-        border-right: 2px solid var(--clr-primary-100);
-        padding-right: 28px;
-      }
-    `}
+  li:nth-child(2) a {
+    display: flex;
+    gap: 5px;
+  }
 `;
 const Link = styled.a`
   text-decoration: none;

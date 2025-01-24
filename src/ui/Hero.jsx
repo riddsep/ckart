@@ -48,7 +48,6 @@ const Tagline = styled.h1`
 
 const Description = styled.p`
   font-size: 18px;
-  font-weight: 600;
   margin-block: 30px;
 `;
 const Highlight = styled.em`

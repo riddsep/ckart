@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function MenuGroup({ menu }) {
+function FooterList({ menu }) {
   return (
     <Wrapper>
       <Title>{menu.title}</Title>
@@ -28,4 +28,4 @@ const Ul = styled.ul`
   gap: 20px;
 `;
 
-export default MenuGroup;
+export default FooterList;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
-import MenuGroup from "./MenuGroup";
+import FooterList from "./FooterList";
 import { menuGroups } from "../constant/constant";
 import SocialMedia from "./SocialMedia";
 
@@ -11,7 +11,7 @@ function Footer() {
       <Navbar theme={"true"} />
       <Menus>
         {menuGroups.map((menu) => (
-          <MenuGroup key={menu.title} menu={menu} />
+          <FooterList key={menu.title} menu={menu} />
         ))}
       </Menus>
       <CopyRight>
