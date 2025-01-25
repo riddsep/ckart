@@ -82,3 +82,9 @@ export const features = [
     src: "/icons/gift.svg",
   },
 ];
+
+export const teamData = [
+  { name: "Jane Cooper", role: "CEO", src: "images/team-1.jpg" },
+  { name: "Cameron Williamson", role: "Founder", src: "images/team-2.jpg" },
+  { name: "Adrina Stone", role: "Co-Founder", src: "images/team-3.jpg" },
+];

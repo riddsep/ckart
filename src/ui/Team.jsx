@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-function Team() {
+function Team({ team }) {
   return (
     <Wrapper>
-      <Img src="images/team-1.jpg" alt="" />
-      <Name>Adrina Stone</Name>
-      <Role>CEO</Role>
+      <Img src={team.src} alt="" />
+      <Name>{team.name}</Name>
+      <Role>{team.role}</Role>
     </Wrapper>
   );
 }
