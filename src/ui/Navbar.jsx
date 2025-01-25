@@ -2,54 +2,69 @@ import styled from "styled-components";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
 import { useState } from "react";
 import MegaMenu from "./MegaMenu";
+import { NavLink } from "react-router-dom";
 
-function Navbar({ theme }) {
+function Navbar({ isFooter }) {
   const [active, setActive] = useState(false);
 
   return (
-    <Wrapper $theme={theme}>
-      <Logo src={`icons/logo-${theme ? "dark" : "light"}.png`} alt="Logo" />
-      <NavbarList $theme={theme}>
+    <Wrapper $isFooter={isFooter}>
+      <Logo src={`icons/logo-${isFooter ? "dark" : "light"}.png`} alt="Logo" />
+      <NavbarList $isFooter={isFooter}>
         <li>
-          <Link href="#">Home</Link>
+          <Link to={"/"}>Home</Link>
         </li>
         <li>
-          <Link href="#" onClick={() => setActive(!active)}>
-            Shop <img src="icons/chevron-down-dark.svg" alt="Dropdown Icon" />
+          <span onClick={() => setActive(!active)}>
+            Shop{" "}
+            <Img
+              src="icons/chevron-down-dark.svg"
+              alt="Dropdown Icon"
+              $isFooter={isFooter}
+            />
+          </span>
+        </li>
+        {isFooter && (
+          <li>
+            <Link href="#" as={"a"}>
+              Products
+            </Link>
+          </li>
+        )}
+        <li>
+          <Link to="aboutus">About Us</Link>
+        </li>
+        <li>
+          <Link to="contactus">Contact Us</Link>
+        </li>
+        <li>
+          <Link href="#" as={"a"}>
+            Blog
           </Link>
-        </li>
-        <li>
-          <Link href="#">About Us</Link>
-        </li>
-        <li>
-          <Link href="#">Contact Us</Link>
-        </li>
-        <li>
-          <Link href="#">Blog</Link>
         </li>
 
         {active && <MegaMenu />}
 
-        {!theme && (
+        {!isFooter && (
           <>
             <li>
-              <Link href="#">
+              <Link href="#" as={"a"}>
                 <img src="icons/search-normal.svg" alt="Search" />
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link href="#" as={"a"}>
                 <img src="icons/shopping-cart.svg" alt="Shopping Cart" />
                 <CountItem>5</CountItem>
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link href="#" as={"a"}>
                 <img src="icons/heart.svg" alt="Favorite" />
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link href="#" as={"a"}>
                 <img src="icons/user.svg" alt="User" />
               </Link>
             </li>
@@ -61,7 +76,7 @@ function Navbar({ theme }) {
 }
 
 const Wrapper = styled(MaxWidthWrapper)`
-  padding-block: ${(props) => (!props.$theme ? "20px" : "")};
+  padding-block: ${(props) => (!props.$isFooter ? "20px" : "")};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -80,11 +95,23 @@ const NavbarList = styled.ul`
     display: flex;
     gap: 5px;
   }
+  li span {
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+  }
 `;
-const Link = styled.a`
+
+const Link = styled(NavLink)`
   text-decoration: none;
   color: inherit;
   position: relative;
+
+  &.active {
+    color: var(--clr-primary-100);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
 `;
 
 const CountItem = styled.span`
@@ -102,6 +129,10 @@ const CountItem = styled.span`
   justify-content: center;
   align-items: center;
   font-weight: 700;
+`;
+
+const Img = styled.img`
+  display: ${(props) => (props.$isFooter ? "none" : "block")};
 `;
 
 export default Navbar;

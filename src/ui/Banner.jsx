@@ -19,6 +19,7 @@ const Wrapper = styled.div``;
 
 const Header = styled.div`
   position: relative;
+  z-index: -1;
   color: var(--clr-white-100);
 
   h1:nth-child(1) {

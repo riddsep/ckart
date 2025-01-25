@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Banner from "./Banner";
-import { MaxWidthWrapper } from "./MaxWidthWrapper";
-import AboutFeatures from "./AboutFeatures";
-import Team from "./Team";
+import Banner from "../ui/Banner";
+import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
+import AboutFeatures from "../ui/AboutFeatures";
+import Team from "../ui/Team";
 import { teamData } from "../constant/constant";
 
 function About() {

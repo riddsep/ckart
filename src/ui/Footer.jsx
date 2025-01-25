@@ -8,7 +8,7 @@ import SocialMedia from "./SocialMedia";
 function Footer() {
   return (
     <Wrapper as="footer">
-      <Navbar theme={"true"} />
+      <Navbar isFooter={"true"} />
       <Menus>
         {menuGroups.map((menu) => (
           <FooterList key={menu.title} menu={menu} />
