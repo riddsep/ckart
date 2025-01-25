@@ -32,3 +32,59 @@ export const categoryData = [
   { title: "table", src: "images/category-5.jpg" },
   { title: "sofa", src: "images/category-6.jpg" },
 ];
+
+export const BlogData = [
+  {
+    title: "Top 5 Home Decor Trends for 2024",
+    src: "images/blog-1.png",
+    date: "January 20, 2025",
+    category: "Home Decor",
+    description:
+      "Explore the latest trends in home decor, from sustainable materials to bold color palettes...",
+  },
+  {
+    title: "Budget-Friendly Home Makeover",
+    src: "images/blog-2.jpg",
+    date: "January 15, 2025",
+    category: "Furniture Tips",
+    description:
+      "Learn how to choose the right furniture pieces that blend functionality and aesthetics...",
+  },
+  {
+    title: "How to Mix Textures & Patterns ",
+    src: "images/blog-3.jpg",
+    date: "January 10, 2025",
+    category: "Trends",
+    description:
+      "Explore the latest trends in modern minimalist furniture that bring simplicity and elegance...",
+  },
+];
+
+export const features = [
+  {
+    title: "Free World Delivery",
+    description: "Orders over $200",
+    src: "/icons/plane.svg",
+  },
+  {
+    title: "Money-Back Guarantee",
+    description: "Within 30 days",
+    src: "/icons/money.svg",
+  },
+  {
+    title: "Online Support",
+    description: "Free support system 24/7",
+    src: "/icons/phone.svg",
+  },
+  {
+    title: "Member Gift",
+    description: "Coupon at weekend",
+    src: "/icons/gift.svg",
+  },
+];
+
+export const teamData = [
+  { name: "Jane Cooper", role: "CEO", src: "images/team-1.jpg" },
+  { name: "Cameron Williamson", role: "Founder", src: "images/team-2.jpg" },
+  { name: "Adrina Stone", role: "Co-Founder", src: "images/team-3.jpg" },
+];
