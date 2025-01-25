@@ -1,11 +1,15 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles";
-import About from "./ui/About";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <About />
+      <BrowserRouter>
+        <Routes>
+          <Route />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
