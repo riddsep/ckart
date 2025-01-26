@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import ScrollToTop from "./hooks/useScrollToTop";
 import Contact from "./pages/Contact";
+import Blog from "./pages/Blog";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="aboutus" element={<About />} />
             <Route path="contactus" element={<Contact />} />
+            <Route path="blog" element={<Blog />} />
           </Route>
         </Routes>
       </BrowserRouter>

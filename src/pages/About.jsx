@@ -8,7 +8,7 @@ import { teamData } from "../constant/constant";
 function About() {
   return (
     <div>
-      <Banner />
+      <Banner title={"About Us"} src={"images/banner-1.png"} />
       <MaxWidthWrapper>
         <AboutUs>
           <AboutUsImg src="images/image-2.jpg" alt="" />

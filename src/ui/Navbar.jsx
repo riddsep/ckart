@@ -38,9 +38,7 @@ function Navbar({ isFooter }) {
           <Link to="contactus">Contact Us</Link>
         </li>
         <li>
-          <Link href="#" as={"a"}>
-            Blog
-          </Link>
+          <Link to="blog">Blog</Link>
         </li>
 
         {active && <MegaMenu />}
