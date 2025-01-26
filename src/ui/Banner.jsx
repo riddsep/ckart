@@ -5,7 +5,12 @@ function Banner({ src, title }) {
   return (
     <Wrapper>
       <Header>
-        <BannerImg src={src} alt={`${title} banner`} loading="lazy" />
+        <BannerImg
+          src={src}
+          alt={`${title} banner`}
+          loading="lazy"
+          height={400}
+        />
         <BannerDesc>
           <h1>Love Your Space</h1>
           <h1>{title}</h1>

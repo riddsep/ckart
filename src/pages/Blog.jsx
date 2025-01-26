@@ -1,8 +1,11 @@
+import styled from "styled-components";
+
 import Banner from "../ui/Banner";
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
 import Chip from "../ui/Chip";
 import Button from "../ui/Button";
-import styled from "styled-components";
+import BlogItem from "../ui/BlogItem";
+import { BlogData } from "../constant/constant";
 
 function Blog() {
   return (
@@ -30,6 +33,14 @@ function Blog() {
             </Button>
           </BigCaption>
         </BlogBig>
+        <BlogSmall>
+          {BlogData.map((blog) => (
+            <BlogItem key={blog.title} blog={blog} />
+          ))}
+          {BlogData.map((blog) => (
+            <BlogItem key={blog.title} blog={blog} />
+          ))}
+        </BlogSmall>
       </MaxWidthWrapper>
     </>
   );
@@ -83,5 +94,10 @@ const BigCaption = styled.div`
     border-bottom: 1px solid var(--clr-dark-15);
   }
 `;
-
+const BlogSmall = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-block-end: 120px;
+`;
 export default Blog;
