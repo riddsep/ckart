@@ -7,12 +7,19 @@ import { NavLink } from "react-router-dom";
 function Navbar({ isFooter }) {
   const [active, setActive] = useState(false);
 
+  // Fungsi untuk menangani klik pada item navigasi
+  const handleNavClick = () => {
+    if (active) setActive(false); // Tutup MegaMenu jika terbuka
+  };
+
   return (
     <Wrapper $isFooter={isFooter}>
       <Logo src={`icons/logo-${isFooter ? "dark" : "light"}.png`} alt="Logo" />
       <NavbarList $isFooter={isFooter}>
         <li>
-          <Link to={"/"}>Home</Link>
+          <Link to="/" onClick={handleNavClick}>
+            Home
+          </Link>
         </li>
         <li>
           <span onClick={() => setActive(!active)}>
@@ -26,43 +33,49 @@ function Navbar({ isFooter }) {
         </li>
         {isFooter && (
           <li>
-            <Link href="#" as={"a"}>
+            <Link href="#" as="a" onClick={handleNavClick}>
               Products
             </Link>
           </li>
         )}
         <li>
-          <Link to="aboutus">About Us</Link>
+          <Link to="aboutus" onClick={handleNavClick}>
+            About Us
+          </Link>
         </li>
         <li>
-          <Link to="contactus">Contact Us</Link>
+          <Link to="contactus" onClick={handleNavClick}>
+            Contact Us
+          </Link>
         </li>
         <li>
-          <Link to="blog">Blog</Link>
+          <Link to="blog" onClick={handleNavClick}>
+            Blog
+          </Link>
         </li>
 
-        {active && <MegaMenu />}
+        {active && <MegaMenu onClose={() => setActive(false)} />}
 
         {!isFooter && (
           <>
             <li>
-              <Link href="#" as={"a"}>
+              <Link href="#" as="a" onClick={handleNavClick}>
                 <img src="icons/search-normal.svg" alt="Search" />
               </Link>
             </li>
             <li>
-              <Link href="#" as={"a"}>
+              <Link href="#" as="a" onClick={handleNavClick}>
                 <img src="icons/shopping-cart.svg" alt="Shopping Cart" />
                 <CountItem>5</CountItem>
               </Link>
             </li>
             <li>
-              <Link href="#" as={"a"}>
+              <Link href="#" as="a" onClick={handleNavClick}>
                 <img src="icons/heart.svg" alt="Favorite" />
               </Link>
             </li>
             <li>
-              <Link href="#" as={"a"}>
+              <Link href="#" as="a" onClick={handleNavClick}>
                 <img src="icons/user.svg" alt="User" />
               </Link>
             </li>

@@ -3,6 +3,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import ScrollToTop from "./hooks/useScrollToTop";
 import { lazy, Suspense } from "react";
 import Loader from "./ui/Loader";
+import Shop from "./pages/Shop";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Home = lazy(() => import("./pages/Home"));
@@ -22,6 +23,7 @@ function App() {
             <Route path="aboutus" element={<About />} />
             <Route path="contactus" element={<Contact />} />
             <Route path="blog" element={<Blog />} />
+            <Route path="shop" element={<Shop />} />
           </Route>
         </Routes>
       </BrowserRouter>

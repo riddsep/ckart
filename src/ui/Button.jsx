@@ -5,6 +5,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
