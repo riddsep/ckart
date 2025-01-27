@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
 
-function Banner() {
+function Banner({ src, title }) {
   return (
     <Wrapper>
       <Header>
-        <BannerImg src="images/banner-1.png" alt="" />
+        <BannerImg
+          src={src}
+          alt={`${title} banner`}
+          loading="lazy"
+          height={400}
+        />
         <BannerDesc>
           <h1>Love Your Space</h1>
-          <h1>About Us</h1>
+          <h1>{title}</h1>
         </BannerDesc>
       </Header>
     </Wrapper>
@@ -37,8 +42,9 @@ const Header = styled.div`
 const BannerImg = styled.img`
   width: 100%;
   height: 100%;
-  min-height: 400px;
+  max-height: 400px;
   object-fit: cover;
+  filter: brightness(50%) contrast(100%);
 `;
 
 const BannerDesc = styled(MaxWidthWrapper)`

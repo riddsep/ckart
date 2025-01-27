@@ -15,11 +15,11 @@ function Strip() {
         <LangnCurrency>
           <Lang>
             <span>Eng</span>
-            <img src="icons/chevron-down.svg" alt="Language selector" />
+            <img src="/icons/chevron-down.svg" alt="Language selector" />
           </Lang>
           <Curr>
             <span>USD</span>
-            <img src="icons/chevron-down.svg" alt="Currency selector" />
+            <img src="/icons/chevron-down.svg" alt="Currency selector" />
           </Curr>
         </LangnCurrency>
         <SocialMedia />
@@ -48,10 +48,10 @@ const ContactLink = styled.a`
   gap: 10px;
 
   &:first-child::before {
-    content: url("icons/call-calling.svg");
+    content: url("/icons/call-calling.svg");
   }
   &:last-child::before {
-    content: url("icons/sms.svg");
+    content: url("/icons/sms.svg");
   }
 `;
 

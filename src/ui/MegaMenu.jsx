@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MenuItem from "./MenuItem";
 import Button from "./Button";
+import { NavLink } from "react-router-dom";
 
 const menuList = [
   {
@@ -32,7 +33,7 @@ const menuList = [
   },
 ];
 
-function MegaMenu() {
+function MegaMenu({ onClose }) {
   return (
     <Wrapper>
       {menuList.map((item) => (
@@ -49,7 +50,14 @@ function MegaMenu() {
           <p>
             Save Up to <Em>70%</Em>
           </p>
-          <Button $variant="primary" $size="lg">
+
+          <Button
+            $variant="primary"
+            $size="lg"
+            as={NavLink}
+            to={"shop"}
+            onClick={onClose}
+          >
             Shop Now <img src="icons/arrow-right.svg" alt="" />
           </Button>
         </Caption>

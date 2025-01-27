@@ -1,22 +1,32 @@
 import styled from "styled-components";
 import StarRating from "./StarRating";
+import Button from "./Button";
+import { NavLink } from "react-router-dom";
 
-function Product() {
+function Product({ product }) {
   return (
     <Wrapper>
-      <img src="images/image-2.jpg" alt="" />
+      <img src={product.image} alt={product.title} />
+      <div>
+        <Button $variant="primary" $size="sm" as={NavLink} to={`/shop/1`}>
+          <img src="icons/shopping-cart-light.svg" alt="" />
+        </Button>
+        <Button $variant="primary" $size="sm">
+          <img src="icons/heart-light.svg" alt="" />
+        </Button>
+      </div>
       <Description>
         <Heading>
-          <Category>furniture</Category>
-          <Title>Pilke Wooden Storage</Title>
+          <Category>{product.category}</Category>
+          <Title>{product.title}</Title>
         </Heading>
         <Reviews>
           <StarRating />
-          <span>(145 Reviews)</span>
+          <span>({product.reviews.total} Reviews)</span>
         </Reviews>
         <Price>
-          <FixPrice>$ 245.52</FixPrice>
-          <Discount>$ 22.52</Discount>
+          <FixPrice>$ {product.price.fixed}</FixPrice>
+          <Discount>$ {product.price.discount}</Discount>
         </Price>
       </Description>
     </Wrapper>
@@ -24,10 +34,29 @@ function Product() {
 }
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 298px;
   padding: 10px;
   border: 2px solid var(--clr-dark-15);
+  position: relative;
+  text-decoration: none;
+
+  img {
+    height: 100%;
+    max-height: 250px;
+
+    & + div {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      gap: 10px;
+      right: 30px;
+      top: 30px;
+    }
+  }
 `;
 const Description = styled.div`
   padding: 20px 10px;
@@ -43,11 +72,13 @@ const Category = styled.p`
 `;
 const Title = styled.p`
   font-weight: bold;
+  color: var(--clr-dark-100);
 `;
 const Reviews = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  color: var(--clr-dark-100);
 `;
 
 const Price = styled.div`

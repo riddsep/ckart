@@ -18,10 +18,10 @@ export const menuGroups = [
 ];
 
 export const socialMediaData = [
-  { name: "facebook", href: "#", src: "icons/facebook.svg" },
-  { name: "pinterest", href: "#", src: "icons/pinterest.svg" },
-  { name: "instagram", href: "#", src: "icons/instagram.svg" },
-  { name: "twitter", href: "#", src: "icons/twitter.svg" },
+  { name: "facebook", href: "#", src: "/icons/facebook.svg" },
+  { name: "pinterest", href: "#", src: "/icons/pinterest.svg" },
+  { name: "instagram", href: "#", src: "/icons/instagram.svg" },
+  { name: "twitter", href: "#", src: "/icons/twitter.svg" },
 ];
 
 export const categoryData = [
@@ -88,3 +88,134 @@ export const teamData = [
   { name: "Cameron Williamson", role: "Founder", src: "images/team-2.jpg" },
   { name: "Adrina Stone", role: "Co-Founder", src: "images/team-3.jpg" },
 ];
+
+export const products = [
+  {
+    id: 1,
+    image: "images/category-1.jpg",
+    category: "furniture",
+    title: "Pilke Wooden Storage",
+    reviews: {
+      rating: 4.5,
+      total: 145,
+    },
+    price: {
+      fixed: 245.52,
+      discount: 22.52,
+    },
+  },
+  {
+    id: 2,
+    image: "images/category-2.jpg",
+    category: "electronics",
+    title: "Smart LED TV",
+    reviews: {
+      rating: 4.8,
+      total: 200,
+    },
+    price: {
+      fixed: 599.99,
+      discount: 50.0,
+    },
+  },
+  {
+    id: 3,
+    image: "images/category-3.jpg",
+    category: "kitchen",
+    title: "Stainless Steel Mixer",
+    reviews: {
+      rating: 4.6,
+      total: 320,
+    },
+    price: {
+      fixed: 149.99,
+      discount: 10.0,
+    },
+  },
+  {
+    id: 4,
+    image: "images/category-4.jpg",
+    category: "home decor",
+    title: "Modern Wall Clock",
+    reviews: {
+      rating: 4.3,
+      total: 75,
+    },
+    price: {
+      fixed: 99.99,
+      discount: 15.0,
+    },
+  },
+  {
+    id: 5,
+    image: "images/category-5.jpg",
+    category: "lighting",
+    title: "Stylish Table Lamp",
+    reviews: {
+      rating: 4.7,
+      total: 120,
+    },
+    price: {
+      fixed: 79.99,
+      discount: 8.0,
+    },
+  },
+  {
+    id: 6,
+    image: "images/category-6.jpg",
+    category: "outdoor",
+    title: "Garden Patio Chair",
+    reviews: {
+      rating: 4.9,
+      total: 250,
+    },
+    price: {
+      fixed: 199.99,
+      discount: 25.0,
+    },
+  },
+  {
+    id: 7,
+    image: "images/category-1.jpg",
+    category: "furniture",
+    title: "Classic Wooden Dining Table",
+    reviews: {
+      rating: 4.4,
+      total: 95,
+    },
+    price: {
+      fixed: 399.99,
+      discount: 35.0,
+    },
+  },
+  {
+    id: 8,
+    image: "images/category-2.jpg",
+    category: "electronics",
+    title: "Bluetooth Headphones",
+    reviews: {
+      rating: 4.7,
+      total: 180,
+    },
+    price: {
+      fixed: 129.99,
+      discount: 20.0,
+    },
+  },
+  {
+    id: 9,
+    image: "images/category-3.jpg",
+    category: "kitchen",
+    title: "Non-Stick Cookware Set",
+    reviews: {
+      rating: 4.8,
+      total: 230,
+    },
+    price: {
+      fixed: 89.99,
+      discount: 12.0,
+    },
+  },
+];
+
+export default products;
