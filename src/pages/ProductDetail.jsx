@@ -69,6 +69,8 @@ const Wrapper = styled(MaxWidthWrapper)``;
 const DetailWrapper = styled.div`
   display: flex;
   gap: 30px;
+  margin-block-start: 50px;
+  margin-block-end: 80px;
 `;
 const DescriptionDetail = styled.div`
   flex: 1;
@@ -77,11 +79,11 @@ const DescriptionDetail = styled.div`
 const ImageWrapper = styled.div`
   flex: 1;
   display: flex;
+  max-height: 592px;
 `;
 
 const SlideImg = styled.img`
   max-width: 126px;
-  max-height: 110px;
   object-fit: cover;
 `;
 const MainImg = styled.img`
