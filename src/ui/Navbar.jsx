@@ -14,7 +14,7 @@ function Navbar({ isFooter }) {
 
   return (
     <Wrapper $isFooter={isFooter}>
-      <Logo src={`icons/logo-${isFooter ? "dark" : "light"}.png`} alt="Logo" />
+      <Logo src={`/icons/logo-${isFooter ? "dark" : "light"}.png`} alt="Logo" />
       <NavbarList $isFooter={isFooter}>
         <li>
           <Link to="/" onClick={handleNavClick}>
@@ -25,7 +25,7 @@ function Navbar({ isFooter }) {
           <span onClick={() => setActive(!active)}>
             Shop{" "}
             <Img
-              src="icons/chevron-down-dark.svg"
+              src="/icons/chevron-down-dark.svg"
               alt="Dropdown Icon"
               $isFooter={isFooter}
             />
@@ -60,23 +60,23 @@ function Navbar({ isFooter }) {
           <>
             <li>
               <Link href="#" as="a" onClick={handleNavClick}>
-                <img src="icons/search-normal.svg" alt="Search" />
+                <img src="/icons/search-normal.svg" alt="Search" />
               </Link>
             </li>
             <li>
               <Link href="#" as="a" onClick={handleNavClick}>
-                <img src="icons/shopping-cart.svg" alt="Shopping Cart" />
+                <img src="/icons/shopping-cart.svg" alt="Shopping Cart" />
                 <CountItem>5</CountItem>
               </Link>
             </li>
             <li>
               <Link href="#" as="a" onClick={handleNavClick}>
-                <img src="icons/heart.svg" alt="Favorite" />
+                <img src="/icons/heart.svg" alt="Favorite" />
               </Link>
             </li>
             <li>
               <Link href="#" as="a" onClick={handleNavClick}>
-                <img src="icons/user.svg" alt="User" />
+                <img src="/icons/user.svg" alt="User" />
               </Link>
             </li>
           </>

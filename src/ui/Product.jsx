@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import StarRating from "./StarRating";
 import Button from "./Button";
+import { NavLink } from "react-router-dom";
 
 function Product({ product }) {
   return (
     <Wrapper>
       <img src={product.image} alt={product.title} />
       <div>
-        <Button $variant="primary" $size="sm">
+        <Button $variant="primary" $size="sm" as={NavLink} to={`/shop/1`}>
           <img src="icons/shopping-cart-light.svg" alt="" />
         </Button>
         <Button $variant="primary" $size="sm">
@@ -40,6 +41,7 @@ const Wrapper = styled.div`
   padding: 10px;
   border: 2px solid var(--clr-dark-15);
   position: relative;
+  text-decoration: none;
 
   img {
     height: 100%;
@@ -70,11 +72,13 @@ const Category = styled.p`
 `;
 const Title = styled.p`
   font-weight: bold;
+  color: var(--clr-dark-100);
 `;
 const Reviews = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  color: var(--clr-dark-100);
 `;
 
 const Price = styled.div`
