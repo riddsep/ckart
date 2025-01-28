@@ -195,6 +195,26 @@ function ProductDetail() {
                   <Review key={review.id} review={review} />
                 ))}
               </ReviewList>
+              <AddReviews>
+                <h3>Add Review</h3>
+                <form>
+                  <div>
+                    <label htmlFor="name">
+                      Name
+                      <input type="text" id="name" />
+                    </label>
+                    <label htmlFor="email">
+                      Email
+                      <input type="text" id="email" />
+                    </label>
+                  </div>
+                  <StarRating />
+                  <label htmlFor="message">
+                    Message
+                    <textarea id="message" />
+                  </label>
+                </form>
+              </AddReviews>
             </Reviews>
           )}
         </TabContent>
@@ -431,6 +451,20 @@ const ReviewList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+`;
+
+const AddReviews = styled.div`
+  & form label {
+    display: flex;
+    flex-direction: column;
+  }
+  & form div:first-of-type {
+    display: flex;
+    gap: 20px;
+  }
+  & form div:last-of-type {
+    margin-block: 30px;
+  }
 `;
 
 export default ProductDetail;

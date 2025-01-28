@@ -24,12 +24,24 @@ function Review() {
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding-block-end: 20px;
+  border-bottom: 1px solid var(--clr-dark-15);
+`;
 const UserDetail = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   margin-block-end: 20px;
+
+  & img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  }
+  & h3 {
+    font-size: 16px;
+  }
 
   & > div div {
     display: flex;
