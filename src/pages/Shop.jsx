@@ -119,7 +119,6 @@ function Shop() {
 const Wrapper = styled(MaxWidthWrapper)`
   display: flex;
   padding-block: 100px;
-  cursor: pointer;
 `;
 const SideBar = styled.div`
   width: 100%;

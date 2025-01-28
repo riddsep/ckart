@@ -41,7 +41,6 @@ const Wrapper = styled.div`
   padding: 10px;
   border: 2px solid var(--clr-dark-15);
   position: relative;
-  text-decoration: none;
 
   img {
     height: 100%;
