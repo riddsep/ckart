@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import products from "../constant/constant";
+import { products } from "../constant/constant";
 import Banner from "../ui/Banner";
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
 import Product from "../ui/Product";
@@ -119,7 +119,6 @@ function Shop() {
 const Wrapper = styled(MaxWidthWrapper)`
   display: flex;
   padding-block: 100px;
-  cursor: pointer;
 `;
 const SideBar = styled.div`
   width: 100%;

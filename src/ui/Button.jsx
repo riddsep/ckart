@@ -8,10 +8,6 @@ const Button = styled.button`
   text-decoration: none;
   transition: background-color 0.3s ease-in-out;
 
-  &:hover {
-    background-color: var(--clr-primary-75);
-  }
-
   ${(props) => {
     switch (props.$size) {
       case "sm":
@@ -47,12 +43,20 @@ const Button = styled.button`
           background-color: var(--clr-primary-100);
           color: var(--clr-white-100);
           border: 1px solid var(--clr-primary-100);
+
+          &:hover {
+            background-color: var(--clr-primary-75);
+          }
         `;
       case "outline":
         return css`
           background-color: transparent;
           color: var(--clr-dark-100);
           border: 1px solid var(--clr-dark-100);
+
+          &:hover {
+            background-color: var(--clr-primary-5);
+          }
         `;
       default:
         return css``;
