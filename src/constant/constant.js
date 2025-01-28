@@ -25,12 +25,12 @@ export const socialMediaData = [
 ];
 
 export const categoryData = [
-  { title: "bathroom", src: "images/category-1.jpg" },
-  { title: "chair", src: "images/category-2.jpg" },
-  { title: "decor", src: "images/category-3.jpg" },
-  { title: "lamp", src: "images/category-4.jpg" },
-  { title: "table", src: "images/category-5.jpg" },
-  { title: "sofa", src: "images/category-6.jpg" },
+  { title: "bathroom", src: "/images/category-1.jpg" },
+  { title: "chair", src: "/images/category-2.jpg" },
+  { title: "decor", src: "/images/category-3.jpg" },
+  { title: "lamp", src: "/images/category-4.jpg" },
+  { title: "table", src: "/images/category-5.jpg" },
+  { title: "sofa", src: "/images/category-6.jpg" },
 ];
 
 export const BlogData = [
@@ -92,7 +92,7 @@ export const teamData = [
 export const products = [
   {
     id: 1,
-    image: "images/category-1.jpg",
+    image: "/images/category-1.jpg",
     category: "furniture",
     title: "Pilke Wooden Storage",
     reviews: {
@@ -106,7 +106,7 @@ export const products = [
   },
   {
     id: 2,
-    image: "images/category-2.jpg",
+    image: "/images/category-2.jpg",
     category: "electronics",
     title: "Smart LED TV",
     reviews: {
@@ -120,7 +120,7 @@ export const products = [
   },
   {
     id: 3,
-    image: "images/category-3.jpg",
+    image: "/images/category-3.jpg",
     category: "kitchen",
     title: "Stainless Steel Mixer",
     reviews: {
@@ -134,7 +134,7 @@ export const products = [
   },
   {
     id: 4,
-    image: "images/category-4.jpg",
+    image: "/images/category-4.jpg",
     category: "home decor",
     title: "Modern Wall Clock",
     reviews: {
@@ -148,7 +148,7 @@ export const products = [
   },
   {
     id: 5,
-    image: "images/category-5.jpg",
+    image: "/images/category-5.jpg",
     category: "lighting",
     title: "Stylish Table Lamp",
     reviews: {
@@ -162,7 +162,7 @@ export const products = [
   },
   {
     id: 6,
-    image: "images/category-6.jpg",
+    image: "/images/category-6.jpg",
     category: "outdoor",
     title: "Garden Patio Chair",
     reviews: {
@@ -176,7 +176,7 @@ export const products = [
   },
   {
     id: 7,
-    image: "images/category-1.jpg",
+    image: "/images/category-1.jpg",
     category: "furniture",
     title: "Classic Wooden Dining Table",
     reviews: {
@@ -190,7 +190,7 @@ export const products = [
   },
   {
     id: 8,
-    image: "images/category-2.jpg",
+    image: "/images/category-2.jpg",
     category: "electronics",
     title: "Bluetooth Headphones",
     reviews: {
@@ -204,7 +204,7 @@ export const products = [
   },
   {
     id: 9,
-    image: "images/category-3.jpg",
+    image: "/images/category-3.jpg",
     category: "kitchen",
     title: "Non-Stick Cookware Set",
     reviews: {

@@ -15,7 +15,6 @@ const Wrapper = styled(MaxWidthWrapper)`
 
   li {
     padding: 16px 28px;
-    color: var(--clr-dark-50);
     font-weight: bold;
     text-decoration: none;
   }

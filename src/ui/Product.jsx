@@ -9,10 +9,10 @@ function Product({ product }) {
       <img src={product.image} alt={product.title} />
       <div>
         <Button $variant="primary" $size="sm" as={NavLink} to={`/shop/1`}>
-          <img src="icons/shopping-cart-light.svg" alt="" />
+          <img src="/icons/shopping-cart-light.svg" alt="" />
         </Button>
         <Button $variant="primary" $size="sm">
-          <img src="icons/heart-light.svg" alt="" />
+          <img src="/icons/heart-light.svg" alt="" />
         </Button>
       </div>
       <Description>

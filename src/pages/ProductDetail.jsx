@@ -3,8 +3,9 @@ import Button from "../ui/Button";
 import StarRating from "../ui/StarRating";
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
 import Tab from "../ui/Tab";
-import { tabProductDetails } from "../constant/constant";
+import { products, tabProductDetails } from "../constant/constant";
 import { useState } from "react";
+import Product from "../ui/Product";
 
 function ProductDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -74,7 +75,7 @@ function ProductDetail() {
           </CallToAction>
         </DescriptionDetail>
       </DetailWrapper>
-      <ProductDescription>
+      <div>
         <Tab>
           {tabProductDetails.map((tab, index) => (
             <TabItem
@@ -86,9 +87,9 @@ function ProductDetail() {
             </TabItem>
           ))}
         </Tab>
-        <div>
+        <TabContent>
           {activeIndex === 0 && (
-            <>
+            <MainDescription>
               <p>
                 Home is where the heart is, and your decor should reflect your
                 personality and create a welcoming atmosphere. Whether you’re
@@ -97,11 +98,106 @@ function ProductDetail() {
                 your home. Here are some tips to elevate your decor and make
                 your home feel uniquely yours.
               </p>
-              <h3></h3>
-            </>
+              <h3>1. Choose a Color Palette</h3>
+              <p>
+                The first step in creating a cohesive look is selecting a color
+                palette. Start with a base color and then choose complementary
+                hues. Soft neutrals can create a calming environment, while bold
+                colors can add vibrancy. Consider the mood you want to create in
+                each room; for instance, soft blues and greens are perfect for
+                bedrooms, while warm reds and yellows can energize a living
+                room.
+              </p>
+              <h3>2. Mix Textures</h3>
+              <p>
+                Incorporating a variety of textures adds depth and interest to
+                your decor. Combine smooth, sleek surfaces with rougher
+                materials. Think of a plush velvet sofa paired with a rustic
+                wooden coffee table, or a soft knit throw draped over a leather
+                chair. Textures can also be introduced through decorative
+                pillows, rugs, and curtains, creating a layered look that feels
+                inviting.
+              </p>
+              <h3>3. Incorporate Personal Touches</h3>
+              <p>
+                Your home should tell your story. Incorporate personal items
+                that reflect your interests and experiences, such as framed
+                photographs, travel souvenirs, or handcrafted art pieces.
+                Displaying these items not only adds character to your space but
+                also creates conversation starters for guests.
+              </p>
+            </MainDescription>
           )}
-        </div>
-      </ProductDescription>
+          {activeIndex === 1 && (
+            <AdditionalInfo>
+              <FeatureInfo>
+                <h3>Feature</h3>
+                <div>
+                  <img src="/icons/warranty.svg" alt="" />
+                  <span>Free 1-Year Warranty</span>
+                </div>
+                <div>
+                  <img src="/icons/free-shipping.svg" alt="" />
+                  <span>Free Shipping & Fasted Delivery</span>
+                </div>
+                <div>
+                  <img src="/icons/money-back.svg" alt="" />
+                  <span>100% Money-back guarantee</span>
+                </div>
+                <div>
+                  <img src="/icons/customer-support.svg" alt="" />
+                  <span>24/7 Customer support</span>
+                </div>
+                <div>
+                  <img src="/icons/secure-payment.svg" alt="" />
+                  <span>Secure payment method</span>
+                </div>
+              </FeatureInfo>
+              <ShippingInfo>
+                <h3>Shipping Information</h3>
+                <p>
+                  Courier: <span>2 - 4 days, free shipping</span>
+                </p>
+                <p>
+                  Local Shipping: <span>up to one week, ₹19.00</span>
+                </p>
+                <p>
+                  UPS Ground Shipping: <span>4 - 6 days, ₹29.00</span>
+                </p>
+                <p>
+                  Unishop Global Export: <span> 3 - 4 days, ₹39.00</span>
+                </p>
+              </ShippingInfo>
+              <OrderInfo>
+                <h3>Other Information</h3>
+                <p>
+                  <span>
+                    For all orders exceeding a value of 100USD shipping is
+                    offered for free.
+                  </span>
+                  <span>
+                    Returns will be accepted for up to 10 days of Customer’s
+                    receipt or tracking number on unworn items.
+                  </span>
+                  <span>
+                    You, as a Customer, are obliged to inform us via email
+                    before you return the item.
+                  </span>
+                </p>
+              </OrderInfo>
+            </AdditionalInfo>
+          )}
+        </TabContent>
+        <RelatedProductList>
+          <p>&mdash; Product &mdash;</p>
+          <h1>Related Product</h1>
+          <ProductList>
+            {products.slice(0, 4).map((product) => (
+              <Product key={product.id} product={product} />
+            ))}
+          </ProductList>
+        </RelatedProductList>
+      </div>
     </Wrapper>
   );
 }
@@ -223,6 +319,7 @@ const CallToAction = styled.div`
 
 const TabItem = styled.li`
   cursor: pointer;
+  color: var(--clr-dark-50);
 
   ${(props) =>
     props.$active &&
@@ -233,6 +330,90 @@ const TabItem = styled.li`
     `}
 `;
 
-const ProductDescription = styled.div``;
+const TabContent = styled.div`
+  margin-block-start: 50px;
+  margin-block-end: 80px;
+`;
+
+const RelatedProductList = styled.div`
+  margin-block-end: 120px;
+
+  & > p {
+    color: var(--clr-primary-100);
+    font-weight: 600;
+    text-align: center;
+  }
+  & > h1 {
+    font-size: 48px;
+    text-align: center;
+    margin-block-end: 70px;
+  }
+`;
+
+const ProductList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+`;
+
+const MainDescription = styled.div`
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+`;
+
+const AdditionalInfo = styled.div`
+  display: flex;
+
+  & > div {
+    flex: 1;
+  }
+`;
+
+const FeatureInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-inline-end: 50px;
+
+  & > h3 {
+    font-size: 20px;
+  }
+
+  & > div {
+    display: flex;
+    gap: 10px;
+  }
+`;
+const ShippingInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-inline: 50px;
+  border-inline: 1px solid var(--clr-dark-15);
+
+  & > h3 {
+    font-size: 20px;
+  }
+  & > p span {
+    font-weight: bold;
+  }
+`;
+const OrderInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-inline-start: 50px;
+
+  & > h3 {
+    font-size: 20px;
+  }
+
+  & > p {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+`;
 
 export default ProductDetail;
