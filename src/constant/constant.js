@@ -218,4 +218,8 @@ export const products = [
   },
 ];
 
-export default products;
+export const tabProductDetails = [
+  "Description",
+  "Additional Information",
+  "Reviews",
+];

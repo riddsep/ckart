@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import products from "../constant/constant";
+import { products } from "../constant/constant";
 import Banner from "../ui/Banner";
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
 import Product from "../ui/Product";
