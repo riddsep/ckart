@@ -223,3 +223,30 @@ export const tabProductDetails = [
   "Additional Information",
   "Reviews",
 ];
+
+export const reviews = [
+  {
+    name: "John Doe",
+    date: "2025-01-28",
+    text: "Produk ini luar biasa! Saya sudah mencoba beberapa barang serupa sebelumnya, tapi yang satu ini benar-benar berbeda. Kualitasnya sangat tinggi, desainnya elegan, dan performanya memuaskan. Sangat direkomendasikan untuk siapa saja yang mencari barang dengan nilai terbaik.",
+    rating: 5,
+  },
+  {
+    name: "Jane Smith",
+    date: "2025-01-25",
+    text: "Kualitas produk ini cukup bagus, walaupun tidak sempurna. Bahannya terasa kokoh dan terlihat seperti barang premium, namun pengiriman memakan waktu lebih lama dari yang diharapkan. Kalau bisa memperbaiki pengiriman, pasti akan lebih memuaskan.",
+    rating: 4,
+  },
+  {
+    name: "Ahmad Hasan",
+    date: "2025-01-20",
+    text: "Secara umum, produk ini masih bisa digunakan, tetapi tidak sesuai dengan deskripsi yang dijelaskan di halaman produk. Ada beberapa kekurangan kecil yang mengurangi pengalaman saya, namun untuk harganya, ini cukup adil.",
+    rating: 3,
+  },
+  {
+    name: "Siti Aminah",
+    date: "2025-01-15",
+    text: "Sangat mengecewakan. Barang tiba dalam kondisi rusak, dan layanan pelanggan tidak memberikan solusi yang memuaskan. Saya tidak akan membeli produk dari toko ini lagi. Pengalaman ini benar-benar membuat saya kecewa.",
+    rating: 1,
+  },
+];

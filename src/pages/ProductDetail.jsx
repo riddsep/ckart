@@ -3,9 +3,10 @@ import Button from "../ui/Button";
 import StarRating from "../ui/StarRating";
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
 import Tab from "../ui/Tab";
-import { products, tabProductDetails } from "../constant/constant";
+import { products, reviews, tabProductDetails } from "../constant/constant";
 import { useState } from "react";
 import Product from "../ui/Product";
+import Review from "../ui/Review";
 
 function ProductDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -186,6 +187,15 @@ function ProductDetail() {
                 </p>
               </OrderInfo>
             </AdditionalInfo>
+          )}
+          {activeIndex === 2 && (
+            <Reviews>
+              <ReviewList>
+                {reviews.map((review) => (
+                  <Review key={review.id} review={review} />
+                ))}
+              </ReviewList>
+            </Reviews>
           )}
         </TabContent>
         <RelatedProductList>
@@ -414,6 +424,13 @@ const OrderInfo = styled.div`
     flex-direction: column;
     gap: 10px;
   }
+`;
+const Reviews = styled.div``;
+
+const ReviewList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 export default ProductDetail;
