@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import StarRating from "./StarRating";
 
-function Review() {
+function ProductDetailReview() {
   return (
     <Wrapper>
       <UserDetail>
@@ -53,4 +53,4 @@ const UserDetail = styled.div`
   }
 `;
 
-export default Review;
+export default ProductDetailReview;
