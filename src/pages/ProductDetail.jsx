@@ -1,26 +1,25 @@
 import styled from "styled-components";
-import Button from "../ui/Button";
-import StarRating from "../ui/StarRating";
+
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
-import { products, reviews } from "../constant/constant";
 import { useState } from "react";
-import Product from "../ui/Product";
 import ProductDetailImage from "../ui/ProductDetailImage";
 import ProductDetailHeader from "../ui/ProductDetailHeader";
 import ProductDetailParagraph from "../ui/ProductDetailParagraph";
 import ProductDetailCTA from "../ui/ProductDetailCTA";
-import ProductDetailReview from "../ui/ProductDetailReview";
 import ProductDetailTab from "../ui/ProductDetailTab";
 import ProductDetailMainDesc from "../ui/ProductDetailMainDesc";
 import ProductDetailFeature from "../ui/ProductDetailFeature";
 import ProductDetailShipping from "../ui/ProductDetailShipping";
 import ProductDetailInfo from "../ui/ProductDetailInfo";
+import ProductDetailReviewList from "../ui/ProductDetailReviewList";
+import ProductDetailAddReviews from "../ui/ProductDetailAddReviews";
+import RelatedProductList from "../ui/RelatedProductList";
 
 function ProductDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <Wrapper>
+    <MaxWidthWrapper>
       <DetailWrapper>
         <ProductDetailImage />
         <DescriptionDetail>
@@ -46,63 +45,21 @@ function ProductDetail() {
           )}
           {activeIndex === 2 && (
             <Reviews>
-              <ReviewList>
-                {reviews.map((review) => (
-                  <ProductDetailReview key={review.id} review={review} />
-                ))}
-              </ReviewList>
-              <AddReviews>
-                <h3>Add Review</h3>
-                <form>
-                  <div>
-                    <label htmlFor="name">
-                      Name
-                      <input
-                        type="text"
-                        id="name"
-                        placeholder="Enter Your Name"
-                      />
-                    </label>
-                    <label htmlFor="email">
-                      Email
-                      <input
-                        type="text"
-                        id="email"
-                        placeholder="Enter Your Email"
-                      />
-                    </label>
-                  </div>
-                  <StarRating />
-                  <label htmlFor="message">
-                    Message
-                    <textarea
-                      id="message"
-                      placeholder="Write Your Message Here"
-                    />
-                  </label>
-                  <Button $fullWidth $variant="primary">
-                    Submit <img src="/icons/arrow-right.svg" alt="" />
-                  </Button>
-                </form>
-              </AddReviews>
+              <ProductDetailReviewList />
+              <ProductDetailAddReviews />
             </Reviews>
           )}
         </TabContent>
-        <RelatedProductList>
+        <RelatedProduct>
           <p>&mdash; Product &mdash;</p>
           <h1>Related Product</h1>
-          <ProductList>
-            {products.slice(0, 4).map((product) => (
-              <Product key={product.id} product={product} />
-            ))}
-          </ProductList>
-        </RelatedProductList>
+          <RelatedProductList />
+        </RelatedProduct>
       </div>
-    </Wrapper>
+    </MaxWidthWrapper>
   );
 }
 
-const Wrapper = styled(MaxWidthWrapper)``;
 const DetailWrapper = styled.div`
   display: flex;
   gap: 30px;
@@ -153,7 +110,7 @@ const TabContent = styled.div`
   margin-block-end: 80px;
 `;
 
-const RelatedProductList = styled.div`
+const RelatedProduct = styled.div`
   margin-block-end: 120px;
 
   & > p {
@@ -168,12 +125,6 @@ const RelatedProductList = styled.div`
   }
 `;
 
-const ProductList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-`;
-
 const AdditionalInfo = styled.div`
   display: flex;
 
@@ -185,56 +136,6 @@ const AdditionalInfo = styled.div`
 const Reviews = styled.div`
   display: flex;
   gap: 30px;
-`;
-
-const ReviewList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const AddReviews = styled.div`
-  padding: 20px;
-
-  h3 {
-    font-size: 24px;
-    margin-block-end: 30px;
-  }
-
-  & form {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  & form label {
-    display: flex;
-    flex-direction: column;
-    font-weight: 600;
-  }
-  & form input {
-    padding: 10px 20px;
-    border: 1px solid var(--clr-dark-15);
-
-    &::placeholder {
-      font-weight: 400;
-    }
-  }
-
-  & form textarea {
-    padding: 10px 20px;
-    border: 1px solid var(--clr-dark-15);
-    resize: none;
-    height: 100px;
-
-    &::placeholder {
-      font-weight: 400;
-    }
-  }
-  & form div:first-of-type {
-    display: flex;
-    gap: 20px;
-  }
 `;
 
 export default ProductDetail;
