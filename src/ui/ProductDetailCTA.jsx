@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
 import ProductDetailCount from "./ProductDetailCount";
+import { NavLink } from "react-router-dom";
 
 function ProductDetailCTA() {
   return (
@@ -8,10 +9,10 @@ function ProductDetailCTA() {
       <div>
         <ProductDetailCount />
         <div>
-          <Button $variant="primary">
+          <Button $variant="primary" as={NavLink} to={"/cart"}>
             Add to Cart <img src="/icons/shopping-cart-light.svg" alt="" />
           </Button>
-          <Button $variant="outline">
+          <Button $variant="outline" as={NavLink} to={"/chekout"}>
             Buy Now <img src="/icons/arrow-right-dark.svg" alt="" />
           </Button>
         </div>

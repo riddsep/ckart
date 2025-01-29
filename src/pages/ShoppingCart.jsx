@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "../ui/Button";
 import ProductDetailCount from "../ui/ProductDetailCount";
+import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
 
 function ShoppingCart() {
   return (
@@ -73,7 +74,7 @@ function ShoppingCart() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(MaxWidthWrapper)`
   margin-block-end: 50px;
 
   & h1 {
