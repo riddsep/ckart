@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Button from "../ui/Button";
 import ProductDetailCount from "../ui/ProductDetailCount";
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
+import { NavLink } from "react-router-dom";
 
 function ShoppingCart() {
   return (
@@ -65,7 +66,12 @@ function ShoppingCart() {
             <span>Total</span>
             <span>$ 254.22</span>
           </Row>
-          <Button $variant="primary" $fullWidth>
+          <Button
+            $variant="primary"
+            $fullWidth
+            as={NavLink}
+            to={"/shop/checkout"}
+          >
             Proceed To Checkout <img src="/icons/arrow-right.svg" alt="" />
           </Button>
         </Summary>
