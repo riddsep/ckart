@@ -34,15 +34,6 @@ const CallToAction = styled.div`
     & > div {
       display: flex;
       align-items: center;
-
-      span:not(:first-of-type) {
-        padding: 8px 18px;
-        border: 1px solid var(--clr-dark-15);
-      }
-
-      span:first-of-type {
-        margin-right: 10px;
-      }
     }
 
     & > div:last-of-type {

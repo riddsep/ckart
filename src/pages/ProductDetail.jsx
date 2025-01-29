@@ -14,48 +14,56 @@ import ProductDetailInfo from "../ui/ProductDetailInfo";
 import ProductDetailReviewList from "../ui/ProductDetailReviewList";
 import ProductDetailAddReviews from "../ui/ProductDetailAddReviews";
 import RelatedProductList from "../ui/RelatedProductList";
+import ShoppingCart from "./ShoppingCart";
 
 function ProductDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const cart = ["Mantap"];
+
   return (
     <MaxWidthWrapper>
-      <DetailWrapper>
-        <ProductDetailImage />
-        <DescriptionDetail>
-          <ProductDetailHeader />
-          <ProductDetailParagraph />
-          <ProductDetailCTA />
-        </DescriptionDetail>
-      </DetailWrapper>
-      <div>
-        <ProductDetailTab
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
-        />
+      {cart.length > 0 && <ShoppingCart />}
+      {cart.length === 0 && (
+        <>
+          <DetailWrapper>
+            <ProductDetailImage />
+            <DescriptionDetail>
+              <ProductDetailHeader />
+              <ProductDetailParagraph />
+              <ProductDetailCTA />
+            </DescriptionDetail>
+          </DetailWrapper>
+          <div>
+            <ProductDetailTab
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
 
-        <TabContent>
-          {activeIndex === 0 && <ProductDetailMainDesc />}
-          {activeIndex === 1 && (
-            <AdditionalInfo>
-              <ProductDetailFeature />
-              <ProductDetailShipping />
-              <ProductDetailInfo />
-            </AdditionalInfo>
-          )}
-          {activeIndex === 2 && (
-            <Reviews>
-              <ProductDetailReviewList />
-              <ProductDetailAddReviews />
-            </Reviews>
-          )}
-        </TabContent>
-        <RelatedProduct>
-          <p>&mdash; Product &mdash;</p>
-          <h1>Related Product</h1>
-          <RelatedProductList />
-        </RelatedProduct>
-      </div>
+            <TabContent>
+              {activeIndex === 0 && <ProductDetailMainDesc />}
+              {activeIndex === 1 && (
+                <AdditionalInfo>
+                  <ProductDetailFeature />
+                  <ProductDetailShipping />
+                  <ProductDetailInfo />
+                </AdditionalInfo>
+              )}
+              {activeIndex === 2 && (
+                <Reviews>
+                  <ProductDetailReviewList />
+                  <ProductDetailAddReviews />
+                </Reviews>
+              )}
+            </TabContent>
+          </div>
+        </>
+      )}
+      <RelatedProduct>
+        <p>&mdash; Product &mdash;</p>
+        <h1>Related Product</h1>
+        <RelatedProductList />
+      </RelatedProduct>
     </MaxWidthWrapper>
   );
 }

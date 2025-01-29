@@ -5,6 +5,7 @@ import { lazy, Suspense } from "react";
 import Loader from "./ui/Loader";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
+import ShoppingCart from "./pages/ShoppingCart";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Home = lazy(() => import("./pages/Home"));
@@ -26,6 +27,7 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="shop" element={<Shop />} />
             <Route path="shop/1" element={<ProductDetail />} />
+            <Route path="shop/cart" element={<ShoppingCart />} />
           </Route>
         </Routes>
       </BrowserRouter>
