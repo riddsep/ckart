@@ -6,7 +6,7 @@ import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
 function Contact() {
   return (
     <>
-      <Banner title={"Contact Us"} src={"images/banner-2.jpg"} />
+      <Banner title={"Contact Us"} src={"/images/banner-2.jpg"} />
       <MaxWidthWrapper>
         <Wrapper>
           <FormWrapper>

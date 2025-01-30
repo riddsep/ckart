@@ -44,7 +44,7 @@ function MegaMenu({ onClose }) {
         />
       ))}
       <BannerWrapper>
-        <SaleBanner src="images/sale-banner.png" />
+        <SaleBanner src="/images/sale-banner.png" />
         <Caption>
           <h1>Sale</h1>
           <p>
@@ -58,7 +58,7 @@ function MegaMenu({ onClose }) {
             to={"shop"}
             onClick={onClose}
           >
-            Shop Now <img src="icons/arrow-right.svg" alt="" />
+            Shop Now <img src="/icons/arrow-right.svg" alt="" />
           </Button>
         </Caption>
       </BannerWrapper>

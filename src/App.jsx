@@ -1,10 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles";
 import ScrollToTop from "./hooks/useScrollToTop";
 import { lazy, Suspense } from "react";
 import Loader from "./ui/Loader";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
+import ShoppingCart from "./pages/ShoppingCart";
+import ShopList from "./ui/ShopList";
+import Checkout from "./pages/Checkout";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Home = lazy(() => import("./pages/Home"));
@@ -24,8 +27,16 @@ function App() {
             <Route path="aboutus" element={<About />} />
             <Route path="contactus" element={<Contact />} />
             <Route path="blog" element={<Blog />} />
-            <Route path="shop" element={<Shop />} />
-            <Route path="shop/1" element={<ProductDetail />} />
+            <Route path="shop" element={<Shop />}>
+              <Route index element={<ShopList />} />
+              <Route path="1" element={<ProductDetail />} />
+              <Route path="cart" element={<ShoppingCart />} />
+              <Route path="checkout" element={<Checkout />} />
+            </Route>
+            <Route
+              path="cart"
+              element={<Navigate to={"/shop/cart"} replace />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

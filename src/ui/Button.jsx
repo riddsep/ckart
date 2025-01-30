@@ -69,5 +69,12 @@ const Button = styled.button`
       width: 100%;
       justify-content: center;
     `}
+
+  ${(props) =>
+    props.$width &&
+    css`
+      width: ${props.$width};
+      justify-content: center;
+    `}
 `;
 export default Button;

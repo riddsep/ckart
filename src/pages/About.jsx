@@ -8,10 +8,10 @@ import { teamData } from "../constant/constant";
 function About() {
   return (
     <div>
-      <Banner title={"About Us"} src={"images/banner-1.png"} />
+      <Banner title={"About Us"} src={"/images/banner-1.png"} />
       <MaxWidthWrapper>
         <AboutUs>
-          <AboutUsImg src="images/image-2.jpg" alt="" />
+          <AboutUsImg src="/images/image-2.jpg" alt="" />
           <Right>
             <Title>&mdash; About Us</Title>
             <Header>Safe, Reliable & Empress Moving Solutions!</Header>
@@ -49,10 +49,10 @@ function About() {
               4o mini
             </p>
           </Left>
-          <img src="images/who-we-are.jpg" alt="" />
+          <img src="/images/who-we-are.jpg" alt="" />
         </WhoWeAre>
         <VideoWrapper>
-          <Video src="images/video.png" alt="" />
+          <Video src="/images/video.png" alt="" />
         </VideoWrapper>
         <Teams>
           <p>&mdash; Team &mdash;</p>

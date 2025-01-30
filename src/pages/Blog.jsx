@@ -10,7 +10,7 @@ import { BlogData } from "../constant/constant";
 function Blog() {
   return (
     <>
-      <Banner src={"images/banner-3.jpg"} title={"Latest News"} />
+      <Banner src={"/images/banner-3.jpg"} title={"Latest News"} />
       <MaxWidthWrapper>
         <BlogBig>
           <ImgBanner>

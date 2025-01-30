@@ -8,7 +8,7 @@ function Product({ product }) {
     <Wrapper>
       <img src={product.image} alt={product.title} />
       <div>
-        <Button $variant="primary" $size="sm" as={NavLink} to={`/shop/1`}>
+        <Button $variant="primary" $size="sm" as={NavLink} to={`1`}>
           <img src="/icons/shopping-cart-light.svg" alt="" />
         </Button>
         <Button $variant="primary" $size="sm">
