@@ -97,25 +97,25 @@ function Checkout() {
                 <label htmlFor="cod">
                   <img src="/icons/dollar-circle.svg" alt="" />
                   <span>Cash on Delivery</span>
-                  <input type="radio" name="cod" id="cod" />
+                  <input type="radio" name="payment" id="cod" />
                 </label>
 
                 <label htmlFor="paypal">
                   <img src="/icons/paypal.svg" alt="" />
                   <span>Paypal</span>
-                  <input type="radio" name="paypal" id="paypal" />
+                  <input type="radio" name="payment" id="paypal" />
                 </label>
 
                 <label htmlFor="btc">
                   <img src="/icons/bitcoin.svg" alt="" />
                   <span>Bitcoin</span>
-                  <input type="radio" name="btc" id="btc" />
+                  <input type="radio" name="payment" id="btc" />
                 </label>
 
                 <label htmlFor="card">
                   <img src="/icons/card-pos.svg" alt="" />
                   <span>Debid/Credit Card</span>
-                  <input type="radio" name="card" id="card" />
+                  <input type="radio" name="payment" id="card" />
                 </label>
               </RadioGroup>
               <div>
