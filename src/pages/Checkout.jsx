@@ -89,7 +89,60 @@ function Checkout() {
               </div>
             </Form>
           </BillingInformation>
-          <PaymentMethod></PaymentMethod>
+          <PaymentMethod>
+            <h3>Payment Method</h3>
+
+            <Form>
+              <RadioGroup>
+                <label htmlFor="cod">
+                  <img src="/icons/dollar-circle.svg" alt="" />
+                  <span>Cash on Delivery</span>
+                  <input type="radio" name="cod" id="cod" />
+                </label>
+
+                <label htmlFor="paypal">
+                  <img src="/icons/paypal.svg" alt="" />
+                  <span>Paypal</span>
+                  <input type="radio" name="paypal" id="paypal" />
+                </label>
+
+                <label htmlFor="btc">
+                  <img src="/icons/bitcoin.svg" alt="" />
+                  <span>Bitcoin</span>
+                  <input type="radio" name="btc" id="btc" />
+                </label>
+
+                <label htmlFor="card">
+                  <img src="/icons/card-pos.svg" alt="" />
+                  <span>Debid/Credit Card</span>
+                  <input type="radio" name="card" id="card" />
+                </label>
+              </RadioGroup>
+              <div>
+                <label htmlFor="nameOnCard">
+                  Name on Card
+                  <input type="text" placeholder="Name" id="nameOnCard" />
+                </label>
+                <label htmlFor="cardNumber">
+                  Card Number{" "}
+                  <input
+                    type="text"
+                    placeholder="Card Number"
+                    id="cardNumber"
+                  />
+                </label>
+              </div>
+              <div>
+                <label htmlFor="expire">
+                  Expire Date{" "}
+                  <input type="text" placeholder="MM/YY" id="expire" />
+                </label>
+                <label htmlFor="cvv">
+                  CVV <input type="text" placeholder="CVV" id="cvv" />
+                </label>
+              </div>
+            </Form>
+          </PaymentMethod>
         </div>
         <OrderSummary>
           <h3>Order Summary</h3>
@@ -186,7 +239,10 @@ const Form = styled.form`
   }
 `;
 
-const PaymentMethod = styled.div``;
+const PaymentMethod = styled.div`
+  border: 1px solid var(--clr-dark-15);
+  margin-block-end: 30px;
+`;
 
 const Main = styled.div`
   display: flex;
@@ -264,6 +320,23 @@ const OrderProduct = styled.div`
     & span:last-child {
       color: var(--clr-primary-100);
     }
+  }
+`;
+
+const RadioGroup = styled.div`
+  & label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 0;
+    border: 1px solid var(--clr-dark-15);
+    border-radius: 5px;
+    accent-color: var(--clr-primary-100);
+  }
+
+  & img {
+    width: 32px;
   }
 `;
 
