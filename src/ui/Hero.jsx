@@ -24,10 +24,10 @@ function Hero() {
           $width="fit-content"
         >
           Shop Now
-          <img src="icons/arrow-right.svg" alt="" />
+          <img src="icons/arrow-right.svg" alt="Shop now icon" />
         </Button>
       </HeroContent>
-      <img src="images/hero.jpg" alt="hero banner" />
+      <img src="images/hero.jpg" alt="hero banner" loading="lazy" />
     </Wrapper>
   );
 }

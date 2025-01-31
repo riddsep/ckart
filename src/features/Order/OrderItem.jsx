@@ -14,6 +14,8 @@ function OrderItem() {
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  border: 1px solid var(--clr-dark-15);
+`;
 
 export default OrderItem;

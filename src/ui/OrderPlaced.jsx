@@ -13,7 +13,9 @@ function OrderPlaced() {
         placed. Thank you for choosing us!
       </p>
       <div>
-        <Button $variant="primary">View Orders</Button>
+        <Button $variant="primary" as={NavLink} to={"/shop/orders"}>
+          View Orders
+        </Button>
         <Button $variant="outline" as={NavLink} to={"/"}>
           Back to Home
         </Button>

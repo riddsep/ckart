@@ -4,7 +4,7 @@ function OrderProduct() {
   return (
     <Wrapper>
       <Content>
-        <Thumbnail src="images/image-2.jpg" alt="" />
+        <Thumbnail src="/images/image-2.jpg" alt="" />
         <Description>
           <Title>Pilke Wooden Storage</Title>
           <Quantity>Qty : 2</Quantity>
