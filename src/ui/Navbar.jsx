@@ -64,7 +64,7 @@ function Navbar({ isFooter }) {
               </Link>
             </li>
             <li>
-              <Link to={"cart"} onClick={handleNavClick}>
+              <Link to={"/shop/cart"} onClick={handleNavClick}>
                 <img src="/icons/shopping-cart.svg" alt="Shopping Cart" />
                 <CountItem>5</CountItem>
               </Link>

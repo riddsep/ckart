@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "../ui/Button";
+import { NavLink } from "react-router-dom";
 
 function OrderSummary() {
   return (
@@ -49,7 +50,12 @@ function OrderSummary() {
           <span>Total</span>
           <span>$ 19.00</span>
         </p>
-        <Button $variant="primary" $fullWidth>
+        <Button
+          $variant="primary"
+          $fullWidth
+          as={NavLink}
+          to={"/shop/checkout/orderPlaced"}
+        >
           Place Order <img src="/icons/arrow-right.svg" alt="" />
         </Button>
       </div>

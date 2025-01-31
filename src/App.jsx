@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles";
 import ScrollToTop from "./hooks/useScrollToTop";
 import { lazy, Suspense } from "react";
@@ -8,6 +8,8 @@ import ProductDetail from "./pages/ProductDetail";
 import ShoppingCart from "./pages/ShoppingCart";
 import ShopList from "./ui/ShopList";
 import Checkout from "./pages/Checkout";
+import CheckoutItem from "./ui/CheckoutItem";
+import OrderPlaced from "./ui/OrderPlaced";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Home = lazy(() => import("./pages/Home"));
@@ -31,12 +33,11 @@ function App() {
               <Route index element={<ShopList />} />
               <Route path="1" element={<ProductDetail />} />
               <Route path="cart" element={<ShoppingCart />} />
-              <Route path="checkout" element={<Checkout />} />
+              <Route path="checkout" element={<Checkout />}>
+                <Route index element={<CheckoutItem />} />
+                <Route path="orderPlaced" element={<OrderPlaced />} />
+              </Route>
             </Route>
-            <Route
-              path="cart"
-              element={<Navigate to={"/shop/cart"} replace />}
-            />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -9,7 +9,7 @@ function ProductDetailCTA() {
       <div>
         <ProductDetailCount />
         <div>
-          <Button $variant="primary" as={NavLink} to={"/cart"}>
+          <Button $variant="primary" as={NavLink} to={"/shop/cart"}>
             Add to Cart <img src="/icons/shopping-cart-light.svg" alt="" />
           </Button>
           <Button $variant="outline" as={NavLink} to={"/shop/checkout"}>
