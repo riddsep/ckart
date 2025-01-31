@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
+import CheckoutItem from "../ui/CheckoutItem";
 
 function Checkout() {
   return (
     <>
-      <Outlet />
+      <CheckoutItem />
     </>
   );
 }

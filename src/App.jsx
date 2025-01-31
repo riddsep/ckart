@@ -8,7 +8,6 @@ import ProductDetail from "./pages/ProductDetail";
 import ShoppingCart from "./pages/ShoppingCart";
 import ShopList from "./ui/ShopList";
 import Checkout from "./pages/Checkout";
-import CheckoutItem from "./ui/CheckoutItem";
 import OrderPlaced from "./ui/OrderPlaced";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -33,10 +32,8 @@ function App() {
               <Route index element={<ShopList />} />
               <Route path="1" element={<ProductDetail />} />
               <Route path="cart" element={<ShoppingCart />} />
-              <Route path="checkout" element={<Checkout />}>
-                <Route index element={<CheckoutItem />} />
-                <Route path="orderPlaced" element={<OrderPlaced />} />
-              </Route>
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="orderPlaced" element={<OrderPlaced />} />
             </Route>
           </Route>
         </Routes>

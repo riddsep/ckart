@@ -28,7 +28,7 @@ function PaymentMethod() {
           <label htmlFor="card">
             <img src="/icons/card-pos.svg" alt="" />
             <span>Debid/Credit Card</span>
-            <input type="radio" name="payment" id="card" />
+            <input type="radio" name="payment" id="card" checked />
           </label>
         </RadioGroup>
         <div>

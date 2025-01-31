@@ -54,7 +54,7 @@ function OrderSummary() {
           $variant="primary"
           $fullWidth
           as={NavLink}
-          to={"/shop/checkout/orderPlaced"}
+          to={"/shop/orderPlaced"}
         >
           Place Order <img src="/icons/arrow-right.svg" alt="" />
         </Button>
