@@ -4,9 +4,16 @@ import Button from "./Button";
 import { NavLink } from "react-router-dom";
 
 function Product({ product }) {
+  console.log(product);
+  const discount = product.price * product.discount;
   return (
     <Wrapper>
-      <img src={product.image} alt={product.title} />
+      <img
+        src={
+          "https://mobkdagroxcwmolsyqaj.supabase.co/storage/v1/object/public/products/1/product-1.jpg"
+        }
+        alt={product.name}
+      />
       <div>
         <Button $variant="primary" $size="sm" as={NavLink} to={`1`}>
           <img src="/icons/shopping-cart-light.svg" alt="" />
@@ -18,15 +25,18 @@ function Product({ product }) {
       <Description>
         <Heading>
           <Category>{product.category}</Category>
-          <Title>{product.title}</Title>
+          <Title>{product.name}</Title>
         </Heading>
         <Reviews>
           <StarRating />
-          <span>({product.reviews.total} Reviews)</span>
+          <span>({product.reviews.length} Reviews)</span>
         </Reviews>
         <Price>
-          <FixPrice>$ {product.price.fixed}</FixPrice>
-          <Discount>$ {product.price.discount}</Discount>
+          <div>
+            <FixPrice>Rp. {product.price - discount}</FixPrice>
+            <DiscountRate>-{product.discount * 100}%</DiscountRate>
+          </div>
+          <Discount>Rp. {discount}</Discount>
         </Price>
       </Description>
     </Wrapper>
@@ -82,9 +92,9 @@ const Reviews = styled.div`
 
 const Price = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: bold;
 `;
 const FixPrice = styled.p`
@@ -94,5 +104,10 @@ const FixPrice = styled.p`
 const Discount = styled.p`
   color: var(--clr-dark-15);
   text-decoration: line-through;
+`;
+
+const DiscountRate = styled.p`
+  color: var(--clr-primary-100);
+  font-size: 16px;
 `;
 export default Product;

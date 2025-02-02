@@ -1,85 +1,34 @@
-import Product from "../ui/Product";
-import Button from "../ui/Button";
-import { products } from "../constant/constant";
 import Banner from "../ui/Banner";
 import styled from "styled-components";
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
+import CategoriesFilter from "./CategoriesFilter";
+import StyleFilter from "./StyleFilter";
+import BrandFilter from "./BrandFilter";
+import ShowingProducts from "./ShowingProducts";
+import Pagination from "./Pagination";
+import ProductList from "./ProductList";
+import { useEffect, useState } from "react";
+import { getProducts } from "../services/apiProducts";
 
 function ShopList() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts().then((data) => setProducts(data));
+  }, []);
+
   return (
     <>
       <Banner src={"/images/banner-1.png"} title={"Our Shop"} />
       <Wrapper>
         <SideBar>
-          <CategoriesFilter>
-            <h3>Categories</h3>
-            <Form>
-              <label>
-                <input type="checkbox" />
-                Furniture
-              </label>
-              <label>
-                <input type="checkbox" />
-                Decor
-              </label>
-              <label>
-                <input type="checkbox" />
-                Bedding & Textiles
-              </label>
-              <label>
-                <input type="checkbox" />
-                Kitchen & Dining
-              </label>
-              <label>
-                <input type="checkbox" />
-                Outdoor Decor
-              </label>
-            </Form>
-          </CategoriesFilter>
-          <StyleFilter>
-            <h3>Style</h3>
-
-            <Form>
-              <label>
-                <input type="checkbox" />
-                Modern
-              </label>
-              <label>
-                <input type="checkbox" />
-                Rustic
-              </label>
-              <label>
-                <input type="checkbox" />
-                Minimal
-              </label>
-              <label>
-                <input type="checkbox" />
-                Industrial
-              </label>
-            </Form>
-          </StyleFilter>
-          <BrandFilter>
-            <h3>Brand</h3>
-
-            <Form>
-              <label>
-                <input type="checkbox" />
-                Furniture
-              </label>
-              <label>
-                <input type="checkbox" />
-                Furai
-              </label>
-              <label>
-                <input type="checkbox" />
-                Home Brand
-              </label>
-            </Form>
-          </BrandFilter>
+          <CategoriesFilter />
+          <StyleFilter />
+          <BrandFilter />
         </SideBar>
         <Main>
           <Heading>
-            <p>Showing 1 - 12 of 19 products</p>
+            <ShowingProducts />
             <div>
               <p>Sort By</p>
               <Select>
@@ -90,27 +39,8 @@ function ShopList() {
               </Select>
             </div>
           </Heading>
-          <ProductList>
-            {products.map((product) => (
-              <Product key={product.id} product={product} />
-            ))}
-          </ProductList>
-          <Pagination>
-            <p>Showing 1 - 12 of 19 products</p>
-            <div>
-              <Button $variant="outline" $size="sm">
-                <img src="icons/arrow-left.svg" alt="" />
-              </Button>
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>...</span>
-              <span>10</span>
-              <Button $variant="outline" $size="sm">
-                <img src="icons/chevron-right-dark.svg" alt="" />
-              </Button>
-            </div>
-          </Pagination>
+          <ProductList products={products} />
+          <Pagination />
         </Main>
       </Wrapper>
     </>
@@ -134,46 +64,6 @@ const SideBar = styled.div`
     border-bottom: 2px solid var(--clr-dark-15);
   }
 `;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-
-  label {
-    margin-block-end: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  input {
-    appearance: none; /* Menghapus checkbox default */
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--clr-dark-15);
-    border-radius: 4px; /* Buat kotak jadi rounded */
-    outline: none;
-    cursor: pointer;
-
-    &:checked {
-      background-color: transparent; /* Warna saat dicentang */
-      border-color: var(--clr-primary-100);
-      position: relative;
-    }
-
-    &:checked::after {
-      content: url("icons/checked.svg"); /* Icon checklist */
-      font-size: 16px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-    }
-  }
-`;
-const CategoriesFilter = styled.div``;
-const StyleFilter = styled.div``;
-const BrandFilter = styled.div``;
 
 const Main = styled.div`
   flex: 1;
@@ -190,32 +80,10 @@ const Heading = styled.div`
     align-items: center;
   }
 `;
-const ProductList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-`;
 
 const Select = styled.select`
   padding: 8px;
   border: 1px solid var(--clr-dark-15);
-`;
-const Pagination = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-
-  div {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-
-    span {
-      cursor: pointer;
-      border: 1px solid var(--clr-dark-15);
-      padding: 10px 20px;
-    }
-  }
 `;
 
 export default ShopList;
