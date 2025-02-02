@@ -1,21 +1,23 @@
-import Banner from "../ui/Banner";
+import Banner from "../../ui/Banner";
 import styled from "styled-components";
-import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
-import CategoriesFilter from "./CategoriesFilter";
-import StyleFilter from "./StyleFilter";
-import BrandFilter from "./BrandFilter";
-import ShowingProducts from "./ShowingProducts";
-import Pagination from "./Pagination";
+import { MaxWidthWrapper } from "../../ui/MaxWidthWrapper";
+import CategoriesFilter from "../../ui/CategoriesFilter";
+import StyleFilter from "../../ui/StyleFilter";
+import BrandFilter from "../../ui/BrandFilter";
+import ShowingProducts from "../../ui/ShowingProducts";
+import Pagination from "../../ui/Pagination";
 import ProductList from "./ProductList";
-import { useEffect, useState } from "react";
-import { getProducts } from "../services/apiProducts";
+import { useQuery } from "@tanstack/react-query";
+import { getProducts } from "../../services/apiProducts";
+import Loader from "../../ui/Loader";
 
-function ShopList() {
-  const [products, setProducts] = useState([]);
+function ProductShop() {
+  const { data: products, isPending } = useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
 
-  useEffect(() => {
-    getProducts().then((data) => setProducts(data));
-  }, []);
+  if (isPending) return <Loader />;
 
   return (
     <>
@@ -86,4 +88,4 @@ const Select = styled.select`
   border: 1px solid var(--clr-dark-15);
 `;
 
-export default ShopList;
+export default ProductShop;

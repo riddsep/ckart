@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function ProductDetailImage() {
+function ProductDetailImage(images) {
   return (
     <Wrapper>
       <SlideWrapper>
@@ -11,7 +11,7 @@ function ProductDetailImage() {
         <SlideImg src="/images/product-detail-6.jpg" alt="" />
       </SlideWrapper>
       <div>
-        <MainImg src="/images/product-detail-1.png" alt="" />
+        <MainImg src={images.images?.[0]} alt="" />
       </div>
     </Wrapper>
   );

@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   width: 100%;
   min-height: 100dvh;
   display: flex;
-  background-color: var(--clr-primary-25);
   justify-content: center;
   align-items: center;
 `;

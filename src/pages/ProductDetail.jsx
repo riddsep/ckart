@@ -14,16 +14,35 @@ import ProductDetailInfo from "../ui/ProductDetailInfo";
 import ProductDetailReviewList from "../ui/ProductDetailReviewList";
 import ProductDetailAddReviews from "../ui/ProductDetailAddReviews";
 import RelatedProductList from "../ui/RelatedProductList";
+import { useQuery } from "@tanstack/react-query";
+import { getProductsById } from "../services/apiProducts";
+import { useParams } from "react-router-dom";
+import Loader from "../ui/Loader";
 
 function ProductDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { id } = useParams();
+  console.log(id);
+
+  const {
+    data: product,
+    isPending,
+    error,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: () => getProductsById(id),
+    enabled: !!id,
+  });
+
+  if (error) console.log(error);
+  if (isPending) return <Loader />;
 
   return (
     <MaxWidthWrapper>
       <DetailWrapper>
-        <ProductDetailImage />
+        <ProductDetailImage images={product.image} />
         <DescriptionDetail>
-          <ProductDetailHeader />
+          <ProductDetailHeader product={product} />
           <ProductDetailParagraph />
           <ProductDetailCTA />
         </DescriptionDetail>

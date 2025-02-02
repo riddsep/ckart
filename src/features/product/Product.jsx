@@ -1,21 +1,18 @@
 import styled from "styled-components";
-import StarRating from "./StarRating";
-import Button from "./Button";
+import StarRating from "../../ui/StarRating";
+import Button from "../../ui/Button";
 import { NavLink } from "react-router-dom";
+import rupiah from "../../hooks/useCurrency";
 
 function Product({ product }) {
-  console.log(product);
-  const discount = product.price * product.discount;
+  const { id, name, price, discount, categoryId, reviews, image } = product;
+
+  const discountPrice = price * discount;
   return (
     <Wrapper>
-      <img
-        src={
-          "https://mobkdagroxcwmolsyqaj.supabase.co/storage/v1/object/public/products/1/product-1.jpg"
-        }
-        alt={product.name}
-      />
+      <img src={image?.[0]} alt={name} />
       <div>
-        <Button $variant="primary" $size="sm" as={NavLink} to={`1`}>
+        <Button $variant="primary" $size="sm" as={NavLink} to={`/shop/${id}`}>
           <img src="/icons/shopping-cart-light.svg" alt="" />
         </Button>
         <Button $variant="primary" $size="sm">
@@ -24,19 +21,25 @@ function Product({ product }) {
       </div>
       <Description>
         <Heading>
-          <Category>{product.category}</Category>
-          <Title>{product.name}</Title>
+          <Category>
+            {categoryId === 1 && "furniture"}
+            {categoryId === 2 && "decor"}
+            {categoryId === 3 && "bedding & textiles"}
+            {categoryId === 4 && "kitchen & dining"}
+            {categoryId === 5 && "kitchen & dining"}
+          </Category>
+          <Title>{name}</Title>
         </Heading>
         <Reviews>
           <StarRating />
-          <span>({product.reviews.length} Reviews)</span>
+          <span>({reviews?.length} Reviews)</span>
         </Reviews>
         <Price>
           <div>
-            <FixPrice>Rp. {product.price - discount}</FixPrice>
-            <DiscountRate>-{product.discount * 100}%</DiscountRate>
+            <FixPrice>{rupiah(price - discountPrice)}</FixPrice>
+            {discount > 0 && <Discount>{rupiah(price)}</Discount>}
           </div>
-          <Discount>Rp. {discount}</Discount>
+          {discount > 0 && <DiscountRate>-{discount * 100}%</DiscountRate>}
         </Price>
       </Description>
     </Wrapper>
@@ -82,32 +85,36 @@ const Category = styled.p`
 const Title = styled.p`
   font-weight: bold;
   color: var(--clr-dark-100);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const Reviews = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
   color: var(--clr-dark-100);
+  margin-block-end: 10px;
 `;
 
 const Price = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 19px;
   font-weight: bold;
 `;
 const FixPrice = styled.p`
   color: var(--clr-dark-100);
+  font-size: 20px;
 `;
 
 const Discount = styled.p`
   color: var(--clr-dark-15);
   text-decoration: line-through;
+  font-size: 18px;
 `;
 
 const DiscountRate = styled.p`
   color: var(--clr-primary-100);
-  font-size: 16px;
 `;
 export default Product;
