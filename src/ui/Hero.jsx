@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
+import { NavLink } from "react-router-dom";
 
 function Hero() {
   return (
@@ -15,12 +16,18 @@ function Hero() {
           extensive selection of premium fixtures, designed to meet every
           aesthetic
         </Description>
-        <Button $variant="primary" $size="lg">
+        <Button
+          $variant="primary"
+          $size="lg"
+          as={NavLink}
+          to="/shop"
+          $width="fit-content"
+        >
           Shop Now
-          <img src="icons/arrow-right.svg" alt="" />
+          <img src="icons/arrow-right.svg" alt="Shop now icon" />
         </Button>
       </HeroContent>
-      <img src="images/hero.jpg" alt="hero banner" />
+      <img src="images/hero.jpg" alt="hero banner" loading="lazy" />
     </Wrapper>
   );
 }

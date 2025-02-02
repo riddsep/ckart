@@ -8,13 +8,17 @@ function AboutUs() {
     <Wrapper>
       <LeftContent>
         <Left>
-          <Img src="images/about-1.jpg" alt="" />
+          <Img src="images/about-home-1.jpg" alt="chair decor" loading="lazy" />
           <Experienced>
             <Em>25+</Em>
             Years of Experienced
           </Experienced>
         </Left>
-        <img src="images/about-2.png" alt="" />
+        <img
+          src="images/about-home-2.png"
+          alt="call to action image"
+          loading="lazy"
+        />
       </LeftContent>
       <RightContent>
         <Header>&mdash; About Us</Header>

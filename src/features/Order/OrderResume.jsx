@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import StarRating from "../../ui/StarRating";
 import Button from "../../ui/Button";
+import { NavLink } from "react-router-dom";
 
 function OrderResume() {
   return (
@@ -10,10 +11,15 @@ function OrderResume() {
         <Title>Review Product</Title>
       </Rating>
       <Cta>
-        <Button $size="large" $varint="outline">
+        <Button $size="large" $variant="outline">
           Order Again
         </Button>
-        <Button $size="large" $varint="primary">
+        <Button
+          $size="large"
+          $variant="primary"
+          as={NavLink}
+          to="/shop/orders/1"
+        >
           View Order Details
         </Button>
       </Cta>
