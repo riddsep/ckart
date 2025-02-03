@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function ProductDetailImage(images) {
+function ProductDetailImage({ productImage }) {
   return (
     <Wrapper>
       <SlideWrapper>
@@ -11,7 +11,7 @@ function ProductDetailImage(images) {
         <SlideImg src="/images/product-detail-6.jpg" alt="" />
       </SlideWrapper>
       <div>
-        <MainImg src={images.images?.[0]} alt="" />
+        <MainImg src={productImage[0]} alt="" />
       </div>
     </Wrapper>
   );
@@ -27,14 +27,13 @@ const SlideWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 100%; /* Pastikan tingginya sama dengan MainImg */
 `;
 
 const SlideImg = styled.img`
-  flex: 1; /* Membagi tinggi secara proporsional */
+  flex: 1;
   max-width: 126px;
-  max-height: 110px;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 const MainImg = styled.img`

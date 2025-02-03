@@ -1,20 +1,13 @@
 import styled from "styled-components";
 
-function ProductDetailParagraph() {
+function ProductDetailParagraph({ shortDescription }) {
+  const paragraphs = shortDescription.split("/n");
+
   return (
     <Wrapper>
-      <span>
-        Explore our vast selection at ‘The Creative Store’- your one-stop
-        destination for all construction and building needs. From the
-        foundational bricks to the final touches of lighting, discover quality
-        and variety like never before.
-      </span>
-      <span>
-        Explore our vast selection at ‘The Creative Store’- your one-stop
-        destination for all construction and building needs. From the
-        foundational bricks to the final touches of lighting, discover quality
-        and variety like never before.
-      </span>
+      {paragraphs.map((paragraph, index) => (
+        <span key={index}>{paragraph}</span>
+      ))}
     </Wrapper>
   );
 }

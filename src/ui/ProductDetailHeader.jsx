@@ -1,18 +1,22 @@
 import rupiah from "../hooks/useCurrency";
+import { discountPrice } from "../hooks/useDiscount";
 import StarRating from "../ui/StarRating";
 
-function ProductDetailHeader({ product }) {
+function ProductDetailHeader({ product, category }) {
+  const { name, reviews, price, discount } = product;
+
   return (
     <>
-      <p>Furniture</p>
-      <h1>{product.name}</h1>
+      <p>{category?.name}</p>
+      <h1>{name}</h1>
       <div>
         <StarRating />
-        <p>({product.reviews?.length} Reviews)</p>
+        <p>({reviews?.length} Reviews)</p>
       </div>
       <div>
-        <p>{rupiah(product.price - product.price * product.discount)}</p>
-        <p>{rupiah(product.price)}</p>
+        <p>{rupiah(discountPrice(price, discount))}</p>
+        <p>{rupiah(price)}</p>
+        <p>{discount * 100}% OFF</p>
       </div>
     </>
   );

@@ -15,35 +15,42 @@ import ProductDetailReviewList from "../ui/ProductDetailReviewList";
 import ProductDetailAddReviews from "../ui/ProductDetailAddReviews";
 import RelatedProductList from "../ui/RelatedProductList";
 import { useQuery } from "@tanstack/react-query";
-import { getProductsById } from "../services/apiProducts";
+import { getProductCategory, getProductsById } from "../services/apiProducts";
 import { useParams } from "react-router-dom";
 import Loader from "../ui/Loader";
 
 function ProductDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
   const { id } = useParams();
-  console.log(id);
 
   const {
     data: product,
     isPending,
     error,
   } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", id],
     queryFn: () => getProductsById(id),
     enabled: !!id,
+    gcTime: 1000 * 30,
   });
 
-  if (error) console.log(error);
+  const { data: category } = useQuery({
+    queryKey: ["categories", product?.categoryId],
+    queryFn: () => getProductCategory(product?.categoryId),
+    enabled: !!product?.categoryId,
+  });
+
+  if (error) console.error(error);
+
   if (isPending) return <Loader />;
 
   return (
     <MaxWidthWrapper>
       <DetailWrapper>
-        <ProductDetailImage images={product.image} />
+        <ProductDetailImage productImage={product.image} />
         <DescriptionDetail>
-          <ProductDetailHeader product={product} />
-          <ProductDetailParagraph />
+          <ProductDetailHeader product={product} category={category} />
+          <ProductDetailParagraph shortDescription={product.shortDescription} />
           <ProductDetailCTA />
         </DescriptionDetail>
       </DetailWrapper>
@@ -54,7 +61,9 @@ function ProductDetail() {
         />
 
         <TabContent>
-          {activeIndex === 0 && <ProductDetailMainDesc />}
+          {activeIndex === 0 && (
+            <ProductDetailMainDesc longDescription={product.longDescription} />
+          )}
           {activeIndex === 1 && (
             <AdditionalInfo>
               <ProductDetailFeature />
@@ -117,9 +126,14 @@ const DescriptionDetail = styled.div`
       font-size: 30px;
       font-weight: bold;
 
-      &:last-child {
+      &:nth-child(2) {
         text-decoration: line-through;
         color: var(--clr-dark-15);
+      }
+      &:nth-child(3) {
+        color: var(--clr-primary-100);
+        font-weight: 600;
+        font-size: 20px;
       }
     }
   }

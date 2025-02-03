@@ -3,11 +3,19 @@ import StarRating from "../../ui/StarRating";
 import Button from "../../ui/Button";
 import { NavLink } from "react-router-dom";
 import rupiah from "../../hooks/useCurrency";
+import { discountPrice } from "../../hooks/useDiscount";
+import { useQuery } from "@tanstack/react-query";
+import { getProductCategory } from "../../services/apiProducts";
+import { useEffect } from "react";
 
 function Product({ product }) {
-  const { id, name, price, discount, categoryId, reviews, image } = product;
+  const { id, name, price, discount, reviews, image, categoryId } = product;
 
-  const discountPrice = price * discount;
+  useEffect(() => {
+    const item = getProductCategory(categoryId);
+    console.log(item);
+  }, [categoryId]);
+
   return (
     <Wrapper>
       <img src={image?.[0]} alt={name} />
@@ -21,13 +29,7 @@ function Product({ product }) {
       </div>
       <Description>
         <Heading>
-          <Category>
-            {categoryId === 1 && "furniture"}
-            {categoryId === 2 && "decor"}
-            {categoryId === 3 && "bedding & textiles"}
-            {categoryId === 4 && "kitchen & dining"}
-            {categoryId === 5 && "kitchen & dining"}
-          </Category>
+          <Category>{category?.name}</Category>
           <Title>{name}</Title>
         </Heading>
         <Reviews>
@@ -36,7 +38,7 @@ function Product({ product }) {
         </Reviews>
         <Price>
           <div>
-            <FixPrice>{rupiah(price - discountPrice)}</FixPrice>
+            <FixPrice>{rupiah(discountPrice(price, discount))}</FixPrice>
             {discount > 0 && <Discount>{rupiah(price)}</Discount>}
           </div>
           {discount > 0 && <DiscountRate>-{discount * 100}%</DiscountRate>}

@@ -24,3 +24,18 @@ export async function getProductsById(id) {
 
   return data;
 }
+
+export async function getProductCategory(id) {
+  const { data, error } = await supabase
+    .from("categories")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Product could not be loaded");
+  }
+
+  return data;
+}
