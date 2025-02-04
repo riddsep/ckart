@@ -4,16 +4,15 @@ import Button from "../../ui/Button";
 import { NavLink } from "react-router-dom";
 import rupiah from "../../hooks/useCurrency";
 import { discountPrice } from "../../hooks/useDiscount";
-import { useQuery } from "@tanstack/react-query";
 import { getProductCategory } from "../../services/apiProducts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Product({ product }) {
   const { id, name, price, discount, reviews, image, categoryId } = product;
+  const [category, setCategory] = useState({});
 
   useEffect(() => {
-    const item = getProductCategory(categoryId);
-    console.log(item);
+    getProductCategory(categoryId).then((data) => setCategory(data));
   }, [categoryId]);
 
   return (

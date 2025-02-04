@@ -4,8 +4,6 @@ import styled from "styled-components";
 function ProductDetailMainDesc({ longDescription }) {
   const { intro, features } = longDescription[0];
 
-  console.log(longDescription);
-
   return (
     <Wrapper>
       <p>{intro}</p>

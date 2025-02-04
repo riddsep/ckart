@@ -15,7 +15,7 @@ import ProductDetailReviewList from "../ui/ProductDetailReviewList";
 import ProductDetailAddReviews from "../ui/ProductDetailAddReviews";
 import RelatedProductList from "../ui/RelatedProductList";
 import { useQuery } from "@tanstack/react-query";
-import { getProductCategory, getProductsById } from "../services/apiProducts";
+import { getProductsById } from "../services/apiProducts";
 import { useParams } from "react-router-dom";
 import Loader from "../ui/Loader";
 
@@ -34,12 +34,6 @@ function ProductDetail() {
     gcTime: 1000 * 30,
   });
 
-  const { data: category } = useQuery({
-    queryKey: ["categories", product?.categoryId],
-    queryFn: () => getProductCategory(product?.categoryId),
-    enabled: !!product?.categoryId,
-  });
-
   if (error) console.error(error);
 
   if (isPending) return <Loader />;
@@ -49,7 +43,7 @@ function ProductDetail() {
       <DetailWrapper>
         <ProductDetailImage productImage={product.image} />
         <DescriptionDetail>
-          <ProductDetailHeader product={product} category={category} />
+          <ProductDetailHeader product={product} />
           <ProductDetailParagraph shortDescription={product.shortDescription} />
           <ProductDetailCTA />
         </DescriptionDetail>

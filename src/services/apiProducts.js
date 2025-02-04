@@ -26,6 +26,8 @@ export async function getProductsById(id) {
 }
 
 export async function getProductCategory(id) {
+  if (!id) return;
+
   const { data, error } = await supabase
     .from("categories")
     .select("*")

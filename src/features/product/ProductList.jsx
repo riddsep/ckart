@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Product from "./Product";
 
-function ProductList({ products = [], category }) {
+function ProductList({ products = [] }) {
   if (products.length === 0) return null;
   return (
     <Wrapper>
       {products.map((product) => (
-        <Product key={product.id} product={product} category={category} />
+        <Product key={product.id} product={product} />
       ))}
     </Wrapper>
   );
