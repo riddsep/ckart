@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Product from "./Product";
+import Product from "../features/product/Product";
 import { products } from "../constant/constant";
 
 function RelatedProductList() {

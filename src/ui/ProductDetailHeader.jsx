@@ -1,17 +1,24 @@
+import { useCategory } from "../hooks/useCategory";
+import rupiah from "../hooks/useCurrency";
+import { discountPrice } from "../hooks/useDiscount";
 import StarRating from "../ui/StarRating";
 
-function ProductDetailHeader() {
+function ProductDetailHeader({ product }) {
+  const { name, reviews, price, discount, categoryId } = product;
+  const category = useCategory(categoryId);
+
   return (
     <>
-      <p>Furniture</p>
-      <h1>Pilke Wooden Storage</h1>
+      <p>{category.name}</p>
+      <h1>{name}</h1>
       <div>
         <StarRating />
-        <p>(145 Reviews)</p>
+        <p>({reviews?.length} Reviews)</p>
       </div>
       <div>
-        <p>$ 245.52</p>
-        <p>$ 22.52</p>
+        <p>{rupiah(discountPrice(price, discount))}</p>
+        <p>{rupiah(price)}</p>
+        <p>{discount * 100}% OFF</p>
       </div>
     </>
   );

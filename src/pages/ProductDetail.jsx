@@ -14,17 +14,37 @@ import ProductDetailInfo from "../ui/ProductDetailInfo";
 import ProductDetailReviewList from "../ui/ProductDetailReviewList";
 import ProductDetailAddReviews from "../ui/ProductDetailAddReviews";
 import RelatedProductList from "../ui/RelatedProductList";
+import { useQuery } from "@tanstack/react-query";
+import { getProductsById } from "../services/apiProducts";
+import { useParams } from "react-router-dom";
+import Loader from "../ui/Loader";
 
 function ProductDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { id } = useParams();
+
+  const {
+    data: product,
+    isPending,
+    error,
+  } = useQuery({
+    queryKey: ["products", id],
+    queryFn: () => getProductsById(id),
+    enabled: !!id,
+    gcTime: 1000 * 30,
+  });
+
+  if (error) console.error(error);
+
+  if (isPending) return <Loader />;
 
   return (
     <MaxWidthWrapper>
       <DetailWrapper>
-        <ProductDetailImage />
+        <ProductDetailImage productImage={product.image} />
         <DescriptionDetail>
-          <ProductDetailHeader />
-          <ProductDetailParagraph />
+          <ProductDetailHeader product={product} />
+          <ProductDetailParagraph shortDescription={product.shortDescription} />
           <ProductDetailCTA />
         </DescriptionDetail>
       </DetailWrapper>
@@ -35,7 +55,9 @@ function ProductDetail() {
         />
 
         <TabContent>
-          {activeIndex === 0 && <ProductDetailMainDesc />}
+          {activeIndex === 0 && (
+            <ProductDetailMainDesc longDescription={product.longDescription} />
+          )}
           {activeIndex === 1 && (
             <AdditionalInfo>
               <ProductDetailFeature />
@@ -98,9 +120,14 @@ const DescriptionDetail = styled.div`
       font-size: 30px;
       font-weight: bold;
 
-      &:last-child {
+      &:nth-child(2) {
         text-decoration: line-through;
         color: var(--clr-dark-15);
+      }
+      &:nth-child(3) {
+        color: var(--clr-primary-100);
+        font-weight: 600;
+        font-size: 20px;
       }
     }
   }
