@@ -41,3 +41,16 @@ export async function getProductCategory(id) {
 
   return data;
 }
+
+export async function getProductsByCategory(categoryId) {
+  if (!categoryId) return;
+
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("categoryId", categoryId);
+
+  if (error) throw new Error("Product could not be loaded");
+
+  return data;
+}

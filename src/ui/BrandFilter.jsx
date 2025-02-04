@@ -51,7 +51,7 @@ const Form = styled.form`
     }
 
     &:checked::after {
-      content: url("icons/checked.svg"); /* Icon checklist */
+      content: url("/icons/checked.svg"); /* Icon checklist */
       font-size: 16px;
       position: absolute;
       top: 50%;

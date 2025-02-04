@@ -34,9 +34,8 @@ function ProductDetail() {
     gcTime: 1000 * 30,
   });
 
-  if (error) console.error(error);
-
   if (isPending) return <Loader />;
+  if (error) console.error(error);
 
   return (
     <MaxWidthWrapper>
@@ -77,7 +76,10 @@ function ProductDetail() {
       <RelatedProduct>
         <p>&mdash; Product &mdash;</p>
         <h1>Related Product</h1>
-        <RelatedProductList />
+        <RelatedProductList
+          categoryId={product.categoryId}
+          productId={product.id}
+        />
       </RelatedProduct>
     </MaxWidthWrapper>
   );
