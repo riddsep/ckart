@@ -44,7 +44,7 @@ function ProductDetail() {
         <DescriptionDetail>
           <ProductDetailHeader product={product} />
           <ProductDetailParagraph shortDescription={product.shortDescription} />
-          <ProductDetailCTA />
+          <ProductDetailCTA product={product} />
         </DescriptionDetail>
       </DetailWrapper>
       <div>

@@ -2,12 +2,19 @@ import styled from "styled-components";
 import Button from "./Button";
 import ProductDetailCount from "./ProductDetailCount";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
-function ProductDetailCTA() {
+function ProductDetailCTA({ product }) {
+  const [count, setCount] = useState(1);
+
   return (
     <CallToAction>
       <div>
-        <ProductDetailCount />
+        <ProductDetailCount
+          setCount={setCount}
+          count={count}
+          product={product}
+        />
         <div>
           <Button $variant="primary" as={NavLink} to={"/shop/cart"}>
             Add to Cart <img src="/icons/shopping-cart-light.svg" alt="" />
