@@ -1,7 +1,12 @@
 import { Fragment } from "react";
 import styled from "styled-components";
+import { useCart } from "../context/CartContext";
 
-function ProductDetailMainDesc({ longDescription }) {
+function ProductDetailMainDesc() {
+  const {
+    product: { longDescription },
+  } = useCart();
+
   const { intro, features } = longDescription[0];
 
   return (

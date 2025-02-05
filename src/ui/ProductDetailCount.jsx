@@ -1,14 +1,9 @@
 import styled from "styled-components";
+import { useCart } from "../context/CartContext";
 
-function ProductDetailCount({ setCount, count, product }) {
-  const handleClickDecrease = () => {
-    if (count - 1 === 0) return;
-    setCount((prev) => prev - 1);
-  };
-  const handleClickIncrease = () => {
-    if (count + 1 > product.stock) return;
-    setCount((prev) => prev + 1);
-  };
+function ProductDetailCount() {
+  const { count, handleClickDecrease, handleClickIncrease } = useCart();
+
   return (
     <Wrapper>
       <Decrease onClick={handleClickDecrease}>-</Decrease>

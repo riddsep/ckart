@@ -1,6 +1,11 @@
 import styled from "styled-components";
+import { useCart } from "../context/CartContext";
 
-function ProductDetailImage({ productImage }) {
+function ProductDetailImage() {
+  const {
+    product: { image: productImage },
+  } = useCart();
+
   return (
     <Wrapper>
       <SlideWrapper>

@@ -1,10 +1,13 @@
+import { useCart } from "../context/CartContext";
 import { useCategory } from "../hooks/useCategory";
 import rupiah from "../hooks/useCurrency";
 import { discountPrice } from "../hooks/useDiscount";
 import StarRating from "../ui/StarRating";
 
-function ProductDetailHeader({ product }) {
-  const { name, reviews, price, discount, categoryId } = product;
+function ProductDetailHeader() {
+  const {
+    product: { name, reviews, price, discount, categoryId },
+  } = useCart();
   const category = useCategory(categoryId);
 
   return (

@@ -2,19 +2,12 @@ import styled from "styled-components";
 import Button from "./Button";
 import ProductDetailCount from "./ProductDetailCount";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
-function ProductDetailCTA({ product }) {
-  const [count, setCount] = useState(1);
-
+function ProductDetailCTA() {
   return (
-    <CallToAction>
+    <Wrapper>
       <div>
-        <ProductDetailCount
-          setCount={setCount}
-          count={count}
-          product={product}
-        />
+        <ProductDetailCount />
         <div>
           <Button $variant="primary" as={NavLink} to={"/shop/cart"}>
             Add to Cart <img src="/icons/shopping-cart-light.svg" alt="" />
@@ -27,11 +20,11 @@ function ProductDetailCTA({ product }) {
       <p>
         Estimate delivery time: <span>12-26 days</span>
       </p>
-    </CallToAction>
+    </Wrapper>
   );
 }
 
-const CallToAction = styled.div`
+const Wrapper = styled.div`
   & > div {
     display: flex;
     justify-content: space-between;

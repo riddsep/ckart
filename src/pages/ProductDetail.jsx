@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
-import { useState } from "react";
 import ProductDetailImage from "../ui/ProductDetailImage";
 import ProductDetailHeader from "../ui/ProductDetailHeader";
 import ProductDetailParagraph from "../ui/ProductDetailParagraph";
@@ -14,49 +13,27 @@ import ProductDetailInfo from "../ui/ProductDetailInfo";
 import ProductDetailReviewList from "../ui/ProductDetailReviewList";
 import ProductDetailAddReviews from "../ui/ProductDetailAddReviews";
 import RelatedProductList from "../ui/RelatedProductList";
-import { useQuery } from "@tanstack/react-query";
-import { getProductsById } from "../services/apiProducts";
-import { useParams } from "react-router-dom";
-import Loader from "../ui/Loader";
+
+import { useCart } from "../context/CartContext";
 
 function ProductDetail() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const { id } = useParams();
-
-  const {
-    data: product,
-    isPending,
-    error,
-  } = useQuery({
-    queryKey: ["products", id],
-    queryFn: () => getProductsById(id),
-    enabled: !!id,
-    gcTime: 1000 * 30,
-  });
-
-  if (isPending) return <Loader />;
-  if (error) console.error(error);
+  const { activeIndex } = useCart();
 
   return (
     <MaxWidthWrapper>
       <DetailWrapper>
-        <ProductDetailImage productImage={product.image} />
+        <ProductDetailImage />
         <DescriptionDetail>
-          <ProductDetailHeader product={product} />
-          <ProductDetailParagraph shortDescription={product.shortDescription} />
-          <ProductDetailCTA product={product} />
+          <ProductDetailHeader />
+          <ProductDetailParagraph />
+          <ProductDetailCTA />
         </DescriptionDetail>
       </DetailWrapper>
       <div>
-        <ProductDetailTab
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
-        />
+        <ProductDetailTab />
 
         <TabContent>
-          {activeIndex === 0 && (
-            <ProductDetailMainDesc longDescription={product.longDescription} />
-          )}
+          {activeIndex === 0 && <ProductDetailMainDesc />}
           {activeIndex === 1 && (
             <AdditionalInfo>
               <ProductDetailFeature />
@@ -76,10 +53,7 @@ function ProductDetail() {
       <RelatedProduct>
         <p>&mdash; Product &mdash;</p>
         <h1>Related Product</h1>
-        <RelatedProductList
-          categoryId={product.categoryId}
-          productId={product.id}
-        />
+        <RelatedProductList />
       </RelatedProduct>
     </MaxWidthWrapper>
   );

@@ -2,8 +2,13 @@ import styled from "styled-components";
 import Product from "../features/product/Product";
 import { useEffect, useState } from "react";
 import { getProductsByCategory } from "../services/apiProducts";
+import { useCart } from "../context/CartContext";
 
-function RelatedProductList({ categoryId, productId }) {
+function RelatedProductList() {
+  const {
+    product: { id: productId, categoryId },
+  } = useCart();
+
   const [relatedProduct, setRelatedProduct] = useState([]);
 
   useEffect(() => {
@@ -17,7 +22,7 @@ function RelatedProductList({ categoryId, productId }) {
   );
 
   return (
-    <Wrapper isEmpty={filteredProduct.length === 0}>
+    <Wrapper $isEmpty={filteredProduct.length === 0}>
       {filteredProduct.length > 0 ? (
         filteredProduct.map((product) => (
           <Product key={product.id} product={product} />
@@ -31,7 +36,7 @@ function RelatedProductList({ categoryId, productId }) {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: ${(props) =>
-    props.isEmpty ? "1fr" : "repeat(4, 1fr)"};
+    props.$isEmpty ? "1fr" : "repeat(4, 1fr)"};
   gap: 30px;
 `;
 

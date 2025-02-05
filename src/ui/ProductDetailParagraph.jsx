@@ -1,6 +1,11 @@
 import styled from "styled-components";
+import { useCart } from "../context/CartContext";
 
-function ProductDetailParagraph({ shortDescription }) {
+function ProductDetailParagraph() {
+  const {
+    product: { shortDescription },
+  } = useCart();
+
   const paragraphs = shortDescription.split("/n");
 
   return (
