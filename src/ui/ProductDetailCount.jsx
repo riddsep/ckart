@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import { useProduct } from "../context/ProductContext";
 
 function ProductDetailCount() {
+  const { count, handleClickDecrease, handleClickIncrease } = useProduct();
+
   return (
     <Wrapper>
-      <Decrease>-</Decrease>
-      <span>1</span>
-      <Increase>+</Increase>
+      <Decrease onClick={handleClickDecrease}>-</Decrease>
+      <span>{count}</span>
+      <Increase onClick={handleClickIncrease}>+</Increase>
     </Wrapper>
   );
 }
@@ -19,10 +22,12 @@ const Wrapper = styled.div`
 
 const Decrease = styled.span`
   cursor: pointer;
+  user-select: none;
 `;
 
 const Increase = styled.span`
   cursor: pointer;
+  user-select: none;
 `;
 
 export default ProductDetailCount;

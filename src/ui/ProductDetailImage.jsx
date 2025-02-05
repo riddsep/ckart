@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import { useProduct } from "../context/ProductContext";
 
-function ProductDetailImage({ productImage }) {
+function ProductDetailImage() {
+  const {
+    product: { image: productImage },
+  } = useProduct();
+
+  if (!productImage) return null;
+
   return (
     <Wrapper>
       <SlideWrapper>

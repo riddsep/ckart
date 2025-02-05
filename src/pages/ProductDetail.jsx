@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
-import { useState } from "react";
 import ProductDetailImage from "../ui/ProductDetailImage";
 import ProductDetailHeader from "../ui/ProductDetailHeader";
 import ProductDetailParagraph from "../ui/ProductDetailParagraph";
@@ -17,10 +16,12 @@ import RelatedProductList from "../ui/RelatedProductList";
 import { useQuery } from "@tanstack/react-query";
 import { getProductsById } from "../services/apiProducts";
 import { useParams } from "react-router-dom";
+import { useProduct } from "../context/ProductContext";
 import Loader from "../ui/Loader";
+import { useEffect } from "react";
 
 function ProductDetail() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const { activeIndex, setProduct } = useProduct();
   const { id } = useParams();
 
   const {
@@ -28,36 +29,35 @@ function ProductDetail() {
     isPending,
     error,
   } = useQuery({
-    queryKey: ["products", id],
+    queryKey: ["productDetail", id],
     queryFn: () => getProductsById(id),
     enabled: !!id,
     gcTime: 1000 * 30,
   });
 
-  if (error) console.error(error);
+  useEffect(() => {
+    if (product) setProduct(product);
+  }, [product, setProduct]);
 
   if (isPending) return <Loader />;
+
+  if (error) console.error(error);
 
   return (
     <MaxWidthWrapper>
       <DetailWrapper>
-        <ProductDetailImage productImage={product.image} />
+        <ProductDetailImage />
         <DescriptionDetail>
-          <ProductDetailHeader product={product} />
-          <ProductDetailParagraph shortDescription={product.shortDescription} />
+          <ProductDetailHeader />
+          <ProductDetailParagraph />
           <ProductDetailCTA />
         </DescriptionDetail>
       </DetailWrapper>
       <div>
-        <ProductDetailTab
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
-        />
+        <ProductDetailTab />
 
         <TabContent>
-          {activeIndex === 0 && (
-            <ProductDetailMainDesc longDescription={product.longDescription} />
-          )}
+          {activeIndex === 0 && <ProductDetailMainDesc />}
           {activeIndex === 1 && (
             <AdditionalInfo>
               <ProductDetailFeature />

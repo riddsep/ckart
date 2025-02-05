@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function ProductDetailCTA() {
   return (
-    <CallToAction>
+    <Wrapper>
       <div>
         <ProductDetailCount />
         <div>
@@ -20,11 +20,11 @@ function ProductDetailCTA() {
       <p>
         Estimate delivery time: <span>12-26 days</span>
       </p>
-    </CallToAction>
+    </Wrapper>
   );
 }
 
-const CallToAction = styled.div`
+const Wrapper = styled.div`
   & > div {
     display: flex;
     justify-content: space-between;

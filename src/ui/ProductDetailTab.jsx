@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
 import { tabProductDetails } from "../constant/constant";
 import Tab from "./Tab";
+import { useProduct } from "../context/ProductContext";
 
-function ProductDetailTab({ activeIndex, setActiveIndex }) {
+function ProductDetailTab() {
+  const { activeIndex, setActiveIndex } = useProduct();
   return (
     <Tab>
       {tabProductDetails.map((tab, index) => (

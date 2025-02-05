@@ -1,15 +1,18 @@
+import { useProduct } from "../context/ProductContext";
 import { useCategory } from "../hooks/useCategory";
 import rupiah from "../hooks/useCurrency";
 import { discountPrice } from "../hooks/useDiscount";
 import StarRating from "../ui/StarRating";
 
-function ProductDetailHeader({ product }) {
-  const { name, reviews, price, discount, categoryId } = product;
+function ProductDetailHeader() {
+  const {
+    product: { name, reviews, price, discount, categoryId },
+  } = useProduct();
   const category = useCategory(categoryId);
 
   return (
     <>
-      <p>{category.name}</p>
+      <p>{category?.name}</p>
       <h1>{name}</h1>
       <div>
         <StarRating />
