@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { useCart } from "../context/CartContext";
+import { useProduct } from "../context/ProductContext";
 
 function ProductDetailImage() {
   const {
     product: { image: productImage },
-  } = useCart();
+  } = useProduct();
+
+  if (!productImage) return null;
 
   return (
     <Wrapper>

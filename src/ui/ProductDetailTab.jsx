@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 import { tabProductDetails } from "../constant/constant";
 import Tab from "./Tab";
-import { useCart } from "../context/CartContext";
+import { useProduct } from "../context/ProductContext";
 
 function ProductDetailTab() {
-  const { activeIndex, setActiveIndex } = useCart();
+  const { activeIndex, setActiveIndex } = useProduct();
   return (
     <Tab>
       {tabProductDetails.map((tab, index) => (

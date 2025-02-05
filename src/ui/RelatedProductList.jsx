@@ -2,17 +2,17 @@ import styled from "styled-components";
 import Product from "../features/product/Product";
 import { useEffect, useState } from "react";
 import { getProductsByCategory } from "../services/apiProducts";
-import { useCart } from "../context/CartContext";
+import { useProduct } from "../context/ProductContext";
 
 function RelatedProductList() {
   const {
     product: { id: productId, categoryId },
-  } = useCart();
+  } = useProduct();
 
   const [relatedProduct, setRelatedProduct] = useState([]);
 
   useEffect(() => {
-    if (!categoryId) return null;
+    if (!categoryId) return;
 
     getProductsByCategory(categoryId).then((data) => setRelatedProduct(data));
   }, [categoryId]);

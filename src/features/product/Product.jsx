@@ -6,10 +6,16 @@ import rupiah from "../../hooks/useCurrency";
 import { discountPrice } from "../../hooks/useDiscount";
 import { getProductCategory } from "../../services/apiProducts";
 import { useEffect, useState } from "react";
+import { useProduct } from "../../context/ProductContext";
 
 function Product({ product }) {
   const { id, name, price, discount, reviews, image, categoryId } = product;
   const [category, setCategory] = useState({});
+  const { setActiveIndex } = useProduct();
+
+  const handleClick = () => {
+    setActiveIndex(0);
+  };
 
   useEffect(() => {
     getProductCategory(categoryId).then((data) => setCategory(data));
@@ -19,7 +25,13 @@ function Product({ product }) {
     <Wrapper>
       <img src={image?.[0]} alt={name} />
       <div>
-        <Button $variant="primary" $size="sm" as={NavLink} to={`/shop/${id}`}>
+        <Button
+          $variant="primary"
+          $size="sm"
+          as={NavLink}
+          to={`/shop/${id}`}
+          onClick={handleClick}
+        >
           <img src="/icons/shopping-cart-light.svg" alt="" />
         </Button>
         <Button $variant="primary" $size="sm">

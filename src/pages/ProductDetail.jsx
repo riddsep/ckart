@@ -13,11 +13,35 @@ import ProductDetailInfo from "../ui/ProductDetailInfo";
 import ProductDetailReviewList from "../ui/ProductDetailReviewList";
 import ProductDetailAddReviews from "../ui/ProductDetailAddReviews";
 import RelatedProductList from "../ui/RelatedProductList";
-
-import { useCart } from "../context/CartContext";
+import { useQuery } from "@tanstack/react-query";
+import { getProductsById } from "../services/apiProducts";
+import { useParams } from "react-router-dom";
+import { useProduct } from "../context/ProductContext";
+import Loader from "../ui/Loader";
+import { useEffect } from "react";
 
 function ProductDetail() {
-  const { activeIndex } = useCart();
+  const { activeIndex, setProduct } = useProduct();
+  const { id } = useParams();
+
+  const {
+    data: product,
+    isPending,
+    error,
+  } = useQuery({
+    queryKey: ["productDetail", id],
+    queryFn: () => getProductsById(id),
+    enabled: !!id,
+    gcTime: 1000 * 30,
+  });
+
+  useEffect(() => {
+    if (product) setProduct(product);
+  }, [product, setProduct]);
+
+  if (isPending) return <Loader />;
+
+  if (error) console.error(error);
 
   return (
     <MaxWidthWrapper>

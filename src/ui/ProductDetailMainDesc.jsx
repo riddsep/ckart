@@ -1,11 +1,13 @@
 import { Fragment } from "react";
 import styled from "styled-components";
-import { useCart } from "../context/CartContext";
+import { useProduct } from "../context/ProductContext";
 
 function ProductDetailMainDesc() {
   const {
     product: { longDescription },
-  } = useCart();
+  } = useProduct();
+
+  if (!longDescription) return null;
 
   const { intro, features } = longDescription[0];
 

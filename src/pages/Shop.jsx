@@ -1,13 +1,11 @@
 import { Outlet } from "react-router-dom";
-import { CartProvider } from "../context/CartContext";
+import { ProductProvider } from "../context/ProductContext";
 
 function Shop() {
   return (
-    <>
-      <CartProvider>
-        <Outlet />
-      </CartProvider>
-    </>
+    <ProductProvider>
+      <Outlet />
+    </ProductProvider>
   );
 }
 

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { useCart } from "../context/CartContext";
+import { useProduct } from "../context/ProductContext";
 
 function ProductDetailCount() {
-  const { count, handleClickDecrease, handleClickIncrease } = useCart();
+  const { count, handleClickDecrease, handleClickIncrease } = useProduct();
 
   return (
     <Wrapper>

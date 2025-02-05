@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import { useCart } from "../context/CartContext";
+import { useProduct } from "../context/ProductContext";
 
 function ProductDetailParagraph() {
   const {
     product: { shortDescription },
-  } = useCart();
+  } = useProduct();
 
-  const paragraphs = shortDescription.split("/n");
+  const paragraphs = shortDescription?.split("/n");
 
   return (
     <Wrapper>
-      {paragraphs.map((paragraph, index) => (
+      {paragraphs?.map((paragraph, index) => (
         <span key={index}>{paragraph}</span>
       ))}
     </Wrapper>
