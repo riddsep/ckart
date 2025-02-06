@@ -5,6 +5,7 @@ import { lazy, Suspense } from "react";
 import Loader from "./ui/Loader";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { CartProvider } from "./context/CartContext";
 
 // Lazy load komponen besar
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -35,30 +36,31 @@ function App() {
     <Suspense fallback={<Loader />}>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
-
-        <GlobalStyles />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />}>
-              <Route index element={<Home />} />
-              <Route path="aboutus" element={<About />} />
-              <Route path="contactus" element={<Contact />} />
-              <Route path="blog" element={<Blog />} />
-              <Route path="shop" element={<Shop />}>
-                <Route index element={<ProductShop />} />
-                <Route path=":id" element={<ProductDetail />} />
-                <Route path="cart" element={<ShoppingCart />} />
-                <Route path="checkout" element={<Checkout />} />
-                <Route path="orderPlaced" element={<OrderPlaced />} />
-                <Route path="orders" element={<Order />}>
-                  <Route index element={<OrderMain />} />
-                  <Route path="1" element={<OrderDetail />} />
+        <CartProvider>
+          <GlobalStyles />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<HomePage />}>
+                <Route index element={<Home />} />
+                <Route path="aboutus" element={<About />} />
+                <Route path="contactus" element={<Contact />} />
+                <Route path="blog" element={<Blog />} />
+                <Route path="shop" element={<Shop />}>
+                  <Route index element={<ProductShop />} />
+                  <Route path=":id" element={<ProductDetail />} />
+                  <Route path="cart" element={<ShoppingCart />} />
+                  <Route path="checkout" element={<Checkout />} />
+                  <Route path="orderPlaced" element={<OrderPlaced />} />
+                  <Route path="orders" element={<Order />}>
+                    <Route index element={<OrderMain />} />
+                    <Route path="1" element={<OrderDetail />} />
+                  </Route>
                 </Route>
               </Route>
-            </Route>
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
       </QueryClientProvider>
     </Suspense>
   );

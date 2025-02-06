@@ -5,29 +5,14 @@ import { useState } from "react";
 const ProductContext = createContext();
 
 function ProductProvider({ children }) {
-  const [count, setCount] = useState(1);
   const [product, setProduct] = useState({});
-
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleClickDecrease = () => {
-    if (count - 1 === 0) return;
-    setCount((prev) => prev - 1);
-  };
-  const handleClickIncrease = () => {
-    if (count + 1 > product.stock) return;
-    setCount((prev) => prev + 1);
-  };
 
   return (
     <ProductContext.Provider
       value={{
         product,
         setProduct,
-        count,
-        setCount,
-        handleClickDecrease,
-        handleClickIncrease,
         activeIndex,
         setActiveIndex,
       }}

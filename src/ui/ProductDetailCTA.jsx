@@ -1,15 +1,40 @@
 import styled from "styled-components";
 import Button from "./Button";
 import ProductDetailCount from "./ProductDetailCount";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useProduct } from "../context/ProductContext";
+import { useCart } from "../context/CartContext";
 
 function ProductDetailCTA() {
+  const { product } = useProduct();
+  const { count, setCount, handleAddToCart } = useCart();
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    handleAddToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      discount: product.discount,
+      image: product.image,
+      quantity: count,
+      stock: product.stock,
+    });
+    setCount(1);
+    navigate("/shop/cart");
+  };
+
   return (
     <Wrapper>
       <div>
-        <ProductDetailCount />
+        <ProductDetailCount
+          setCount={setCount}
+          count={count}
+          product={product}
+        />
         <div>
-          <Button $variant="primary" as={NavLink} to={"/shop/cart"}>
+          <Button $variant="primary" onClick={handleClick}>
             Add to Cart <img src="/icons/shopping-cart-light.svg" alt="" />
           </Button>
           <Button $variant="outline" as={NavLink} to={"/shop/checkout"}>

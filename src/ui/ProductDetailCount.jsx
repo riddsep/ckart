@@ -1,14 +1,20 @@
 import styled from "styled-components";
-import { useProduct } from "../context/ProductContext";
 
-function ProductDetailCount() {
-  const { count, handleClickDecrease, handleClickIncrease } = useProduct();
+function ProductDetailCount({ count, setCount, product }) {
+  const handleIncrease = () => {
+    if (count + 1 > product.stock) return;
+    setCount((prev) => prev + 1);
+  };
+  const handleDecrease = () => {
+    if (count - 1 === 0) return;
+    setCount((prev) => prev - 1);
+  };
 
   return (
     <Wrapper>
-      <Decrease onClick={handleClickDecrease}>-</Decrease>
+      <Decrease onClick={handleDecrease}>-</Decrease>
       <span>{count}</span>
-      <Increase onClick={handleClickIncrease}>+</Increase>
+      <Increase onClick={handleIncrease}>+</Increase>
     </Wrapper>
   );
 }
