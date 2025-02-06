@@ -1,20 +1,16 @@
 import styled from "styled-components";
+import { useCart } from "../context/CartContext";
 
-function ProductDetailCount({ count, setCount, product }) {
-  const handleIncrease = () => {
-    if (count + 1 > product.stock) return;
-    setCount((prev) => prev + 1);
-  };
-  const handleDecrease = () => {
-    if (count - 1 === 0) return;
-    setCount((prev) => prev - 1);
-  };
+function ProductDetailCount({ product }) {
+  const { increaseQuantity, decreaseQuantity, cartItems } = useCart();
+
+  const itemExist = cartItems.find((item) => item.id === product?.id);
 
   return (
     <Wrapper>
-      <Decrease onClick={handleDecrease}>-</Decrease>
-      <span>{count}</span>
-      <Increase onClick={handleIncrease}>+</Increase>
+      <Decrease onClick={() => decreaseQuantity(product)}>-</Decrease>
+      <span>{itemExist?.quantity || 1}</span>
+      <Increase onClick={() => increaseQuantity(product)}>+</Increase>
     </Wrapper>
   );
 }

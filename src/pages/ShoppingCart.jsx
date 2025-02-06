@@ -3,8 +3,12 @@ import Button from "../ui/Button";
 import ProductDetailCount from "../ui/ProductDetailCount";
 import { MaxWidthWrapper } from "../ui/MaxWidthWrapper";
 import { NavLink } from "react-router-dom";
+import { rupiah } from "../hooks/useCurrency";
+import { discountPrice } from "../hooks/useDiscount";
+import { useCart } from "../context/CartContext";
 
 function ShoppingCart() {
+  const { cartItems } = useCart();
   return (
     <Wrapper>
       <h1>Shopping Cart</h1>
@@ -19,24 +23,30 @@ function ShoppingCart() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <img src="/images/product-detail-1.png" alt="" />
-                <div>
-                  <p>Pilke Wooden Storage</p>
-                  <p>$ 245.52</p>
-                </div>
-              </td>
-              <td>
-                <ProductDetailCount />
-              </td>
-              <td>$ 254.50</td>
-              <td>
-                <span>
-                  <img src="/icons/trash.svg" alt="" />
-                </span>
-              </td>
-            </tr>
+            {cartItems.map((item) => (
+              <tr key={item.id}>
+                <td>
+                  <img src={item.image} alt="" />
+                  <div>
+                    <p>{item.name}</p>
+                    <p>{rupiah(discountPrice(item.price, item.discount))}</p>
+                  </div>
+                </td>
+                <td>
+                  <ProductDetailCount productId={item} />
+                </td>
+                <td>
+                  {rupiah(
+                    discountPrice(item.price, item.discount) * item.quantity
+                  )}
+                </td>
+                <td>
+                  <span>
+                    <img src="/icons/trash.svg" alt="" />
+                  </span>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
         <Summary>
