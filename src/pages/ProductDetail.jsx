@@ -122,12 +122,13 @@ const DescriptionDetail = styled.div`
 
       &:nth-child(2) {
         text-decoration: line-through;
+        font-size: 24px;
         color: var(--clr-dark-15);
       }
       &:nth-child(3) {
         color: var(--clr-primary-100);
         font-weight: 600;
-        font-size: 20px;
+        font-size: 24px;
       }
     }
   }

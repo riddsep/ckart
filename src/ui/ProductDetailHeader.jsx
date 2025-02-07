@@ -1,6 +1,6 @@
 import { useProduct } from "../context/ProductContext";
 import { useCategory } from "../hooks/useCategory";
-import rupiah from "../hooks/useCurrency";
+import { rupiah } from "../hooks/useCurrency";
 import { discountPrice } from "../hooks/useDiscount";
 import StarRating from "../ui/StarRating";
 

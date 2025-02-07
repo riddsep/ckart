@@ -2,7 +2,7 @@ import styled from "styled-components";
 import StarRating from "../../ui/StarRating";
 import Button from "../../ui/Button";
 import { NavLink } from "react-router-dom";
-import rupiah from "../../hooks/useCurrency";
+import { rupiah } from "../../hooks/useCurrency";
 import { discountPrice } from "../../hooks/useDiscount";
 import { getProductCategory } from "../../services/apiProducts";
 import { useEffect, useState } from "react";
