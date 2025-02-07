@@ -2,22 +2,42 @@ import styled from "styled-components";
 import Button from "./Button";
 import ProductDetailCount from "./ProductDetailCount";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 import { useProduct } from "../context/ProductContext";
+import { useCart } from "../context/CartContext";
+import { useState } from "react";
 
 function ProductDetailCTA() {
-  const { addToCart } = useCart();
   const { product } = useProduct();
+  const { addToCart } = useCart();
+  const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
-  const handleAddToCart = () => {
-    addToCart(product);
-    navigate("/shop/cart");
+  const increaseQuantity = () => {
+    setQuantity((prev) => {
+      return prev + 1 > product.stock ? prev : prev + 1;
+    });
   };
+
+  const decreaseQuantity = () => {
+    setQuantity((prev) => {
+      return prev - 1 < 1 ? prev : prev - 1;
+    });
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    navigate("/shop/cart");
+    setQuantity(1);
+  };
+
   return (
     <Wrapper>
       <div>
-        <ProductDetailCount product={product} />
+        <ProductDetailCount
+          quantity={quantity}
+          onDecreaseQuantity={decreaseQuantity}
+          onIncreaseQuantity={increaseQuantity}
+        />
         <div>
           <Button $variant="primary" onClick={handleAddToCart}>
             Add to Cart <img src="/icons/shopping-cart-light.svg" alt="" />

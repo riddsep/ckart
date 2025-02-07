@@ -1,16 +1,15 @@
 import styled from "styled-components";
-import { useCart } from "../context/CartContext";
 
-function ProductDetailCount({ product }) {
-  const { increaseQuantity, decreaseQuantity, cartItems } = useCart();
-
-  const itemExist = cartItems.find((item) => item.id === product?.id);
-
+function ProductDetailCount({
+  quantity,
+  onDecreaseQuantity,
+  onIncreaseQuantity,
+}) {
   return (
     <Wrapper>
-      <Decrease onClick={() => decreaseQuantity(product)}>-</Decrease>
-      <span>{itemExist?.quantity || 1}</span>
-      <Increase onClick={() => increaseQuantity(product)}>+</Increase>
+      <Decrease onClick={onDecreaseQuantity}>-</Decrease>
+      <span>{quantity}</span>
+      <Increase onClick={onIncreaseQuantity}>+</Increase>
     </Wrapper>
   );
 }

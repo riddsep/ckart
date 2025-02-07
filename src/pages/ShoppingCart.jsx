@@ -8,7 +8,16 @@ import { discountPrice } from "../hooks/useDiscount";
 import { useCart } from "../context/CartContext";
 
 function ShoppingCart() {
-  const { cartItems } = useCart();
+  const { cartItems, increaseQuantity, decreaseQuantity } = useCart();
+
+  const handleIncrease = (item) => {
+    increaseQuantity(item.id);
+  };
+
+  const handleDecrease = (item) => {
+    decreaseQuantity(item.id);
+  };
+
   return (
     <Wrapper>
       <h1>Shopping Cart</h1>
@@ -33,7 +42,11 @@ function ShoppingCart() {
                   </div>
                 </td>
                 <td>
-                  <ProductDetailCount productId={item} />
+                  <ProductDetailCount
+                    quantity={item.quantity}
+                    onIncreaseQuantity={() => handleIncrease(item)}
+                    onDecreaseQuantity={() => handleDecrease(item)}
+                  />
                 </td>
                 <td>
                   {rupiah(
