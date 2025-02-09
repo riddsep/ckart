@@ -4,22 +4,16 @@ import Button from "../../ui/Button";
 import { NavLink } from "react-router-dom";
 import { rupiah } from "../../hooks/useCurrency";
 import { discountPrice } from "../../hooks/useDiscount";
-import { getProductCategory } from "../../services/apiProducts";
-import { useEffect, useState } from "react";
+
 import { useProduct } from "../../context/ProductContext";
 
 function Product({ product }) {
-  const { id, name, price, discount, reviews, image, categoryId } = product;
-  const [category, setCategory] = useState({});
+  const { id, name, price, discount, reviews, image, categories } = product;
   const { setActiveIndex } = useProduct();
 
   const handleClick = () => {
     setActiveIndex(0);
   };
-
-  useEffect(() => {
-    getProductCategory(categoryId).then((data) => setCategory(data));
-  }, [categoryId]);
 
   return (
     <Wrapper>
@@ -40,7 +34,7 @@ function Product({ product }) {
       </div>
       <Description>
         <Heading>
-          <Category>{category?.name}</Category>
+          <Category>{categories?.name}</Category>
           <Title>{name}</Title>
         </Heading>
         <Reviews>

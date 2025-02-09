@@ -7,8 +7,6 @@ function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState(1);
 
-  console.log(cartItems);
-
   const addToCart = (product, quantity) => {
     setCartItems((prev) => {
       const itemExist = prev.some((item) => item.id === product.id);

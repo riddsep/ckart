@@ -5,10 +5,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useProduct } from "../context/ProductContext";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 function ProductDetailCTA() {
   const { product } = useProduct();
-  const { addToCart } = useCart();
+  const { addToCart, cartItems } = useCart();
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
@@ -25,9 +26,16 @@ function ProductDetailCTA() {
   };
 
   const handleAddToCart = () => {
-    addToCart(product, quantity);
-    navigate("/shop/cart");
-    setQuantity(1);
+    const itemExist = cartItems.find((item) => item.id === product.id);
+
+    if (itemExist && itemExist.quantity + quantity > itemExist.stock) {
+      return toast.error(`Product is out of stock`);
+    } else {
+      addToCart(product, quantity);
+      toast.success("Product added to cart");
+      navigate("/shop/cart");
+      setQuantity(1);
+    }
   };
 
   return (
