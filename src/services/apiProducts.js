@@ -1,7 +1,9 @@
 import supabase from "./supabase";
 
 export async function getProducts() {
-  const { data, error } = await supabase.from("products").select("*");
+  const { data, error } = await supabase
+    .from("products")
+    .select("*, categories(name)");
   if (error) {
     console.error(error);
     throw new Error("Product could not be loaded");
@@ -13,24 +15,7 @@ export async function getProducts() {
 export async function getProductsById(id) {
   const { data, error } = await supabase
     .from("products")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) {
-    console.error(error);
-    throw new Error("Product could not be loaded");
-  }
-
-  return data;
-}
-
-export async function getProductCategory(id) {
-  if (!id) return;
-
-  const { data, error } = await supabase
-    .from("categories")
-    .select("*")
+    .select("*, categories(name)")
     .eq("id", id)
     .single();
 
@@ -47,7 +32,7 @@ export async function getProductsByCategory(categoryId) {
 
   const { data, error } = await supabase
     .from("products")
-    .select("*")
+    .select("*, categories(name)")
     .eq("categoryId", categoryId);
 
   if (error) throw new Error("Product could not be loaded");
