@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from "react";
+import { discountPrice } from "../hooks/useDiscount";
 
 const CartContext = createContext();
 
@@ -43,6 +44,13 @@ function CartProvider({ children }) {
     );
   };
 
+  const subTotal = () =>
+    cartItems.reduce(
+      (a, b) => a + discountPrice(b.price, b.discount) * b.quantity,
+      0
+    );
+  console.log(cartItems);
+
   return (
     <CartContext.Provider
       value={{
@@ -52,6 +60,7 @@ function CartProvider({ children }) {
         cartItems,
         increaseQuantity,
         decreaseQuantity,
+        subTotal,
       }}
     >
       {children}
