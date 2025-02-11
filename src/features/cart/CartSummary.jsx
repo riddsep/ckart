@@ -3,14 +3,10 @@ import { NavLink } from "react-router-dom";
 import Button from "../../ui/Button";
 import { useCart } from "../../context/CartContext";
 import { rupiah } from "../../hooks/useCurrency";
-import { useState } from "react";
 
 function CartSummary() {
   const { subTotal } = useCart();
-  const [code, setCode] = useState();
 
-  console.log(subTotal);
-  const discountCode = "TDR3000";
   return (
     <Summary>
       <h3>Summary</h3>

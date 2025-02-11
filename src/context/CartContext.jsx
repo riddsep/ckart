@@ -44,6 +44,10 @@ function CartProvider({ children }) {
     );
   };
 
+  const removeCartItem = (id) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
   const subTotal = () =>
     cartItems.reduce(
       (a, b) => a + discountPrice(b.price, b.discount) * b.quantity,
@@ -60,6 +64,7 @@ function CartProvider({ children }) {
         cartItems,
         increaseQuantity,
         decreaseQuantity,
+        removeCartItem,
         subTotal,
       }}
     >

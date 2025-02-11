@@ -7,7 +7,8 @@ import { useCart } from "../../context/CartContext";
 import CartSummary from "./CartSummary";
 
 function Cart() {
-  const { cartItems, increaseQuantity, decreaseQuantity } = useCart();
+  const { cartItems, increaseQuantity, decreaseQuantity, removeCartItem } =
+    useCart();
 
   const handleIncrease = (item) => {
     increaseQuantity(item.id);
@@ -53,7 +54,7 @@ function Cart() {
                   )}
                 </td>
                 <td>
-                  <span>
+                  <span onClick={() => removeCartItem(item.id)}>
                     <img src="/icons/trash.svg" alt="" />
                   </span>
                 </td>
