@@ -3,9 +3,24 @@ import { NavLink } from "react-router-dom";
 import Button from "../../ui/Button";
 import { useCart } from "../../context/CartContext";
 import { rupiah } from "../../hooks/useCurrency";
+import { useState } from "react";
 
 function CartSummary() {
-  const { subTotal } = useCart();
+  const { subTotal, cartItems } = useCart();
+  const [code, setCode] = useState("TDR3000");
+  const [discount, setDiscount] = useState(0);
+  const shipping = 0;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!code) return;
+    const discountValue =
+      cartItems.length > 0 && code && code === "TDR3000" ? 0.1 : 0;
+    setDiscount(discountValue);
+    setCode("");
+  };
+
+  const total = subTotal() + shipping - subTotal() * discount;
 
   return (
     <Summary>
@@ -21,19 +36,25 @@ function CartSummary() {
         </Row>
       </div>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="discount">Discount Code</label>
         <div>
-          <input type="text" placeholder="Discount Code" id="discount" />
+          <input
+            type="text"
+            placeholder="Discount Code"
+            id="discount"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+          />
 
-          <Button $width="134px" $variant="outline">
+          <Button $width="134px" $variant="outline" type="submit">
             Apply
           </Button>
         </div>
       </form>
       <Row data-type="total">
         <span>Total</span>
-        <span>$ 254.22</span>
+        <span>{rupiah(total)}</span>
       </Row>
       <Button $variant="primary" $fullWidth as={NavLink} to={"/shop/checkout"}>
         Proceed To Checkout <img src="/icons/arrow-right.svg" alt="" />

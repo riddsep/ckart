@@ -1,38 +1,35 @@
 import styled from "styled-components";
 import Button from "../ui/Button";
 import { NavLink } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import { rupiah } from "../hooks/useCurrency";
 
 function OrderSummary() {
+  const { cartItems, subTotal } = useCart();
+  console.log(cartItems);
+
   return (
     <Wrapper>
       <h3>Order Summary</h3>
       <div>
-        <OrderProduct>
-          <img src="/images/product-detail-1.png" alt="" />
-          <div>
-            <p>Pilke Wooden Storage</p>
+        {cartItems.map((item) => (
+          <OrderProduct key={item.id}>
+            <img src={item.image[0]} alt="" />
             <div>
-              <span>1x</span>
-              <span>$ 254.50</span>
+              <p>{item.name}</p>
+              <div>
+                <span>{item.quantity}x</span>
+                <span>{rupiah(item.price)}</span>
+              </div>
             </div>
-          </div>
-        </OrderProduct>
-        <OrderProduct>
-          <img src="/images/product-detail-1.png" alt="" />
-          <div>
-            <p>Pilke Wooden Storage</p>
-            <div>
-              <span>1x</span>
-              <span>$ 254.50</span>
-            </div>
-          </div>
-        </OrderProduct>
+          </OrderProduct>
+        ))}
       </div>
 
       <div>
         <p>
           <span>Subtotal</span>
-          <span>$ 254.50</span>
+          <span>{rupiah(subTotal())}</span>
         </p>
         <p>
           <span>Shipping</span>
@@ -114,6 +111,10 @@ const OrderProduct = styled.div`
 
   & p {
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 270px;
   }
 
   & div div {

@@ -54,7 +54,7 @@ function Cart() {
                   )}
                 </td>
                 <td>
-                  <span onClick={() => removeCartItem(item.id)}>
+                  <span onClick={() => removeCartItem(item.id)} role="button">
                     <img src="/icons/trash.svg" alt="" />
                   </span>
                 </td>
