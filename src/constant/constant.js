@@ -18,10 +18,10 @@ export const menuGroups = [
 ];
 
 export const socialMediaData = [
-  { name: "facebook", href: "#", src: "icons/facebook.svg" },
-  { name: "pinterest", href: "#", src: "icons/pinterest.svg" },
-  { name: "instagram", href: "#", src: "icons/instagram.svg" },
-  { name: "twitter", href: "#", src: "icons/twitter.svg" },
+  { name: "facebook", href: "#", src: "/icons/facebook.svg" },
+  { name: "pinterest", href: "#", src: "/icons/pinterest.svg" },
+  { name: "instagram", href: "#", src: "/icons/instagram.svg" },
+  { name: "twitter", href: "#", src: "/icons/twitter.svg" },
 ];
 
 export const categoryData = [
