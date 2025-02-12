@@ -1,8 +1,21 @@
-# React + Vite
+# CK Art
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview
 
-Currently, two official plugins are available:
+CK Art adalah aplikasi berbasis web yang memungkinkan pengguna untuk menjelajahi, mencari, dan membeli produk secara online dengan pengalaman yang cepat dan responsif.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+
+- 🔍 **Pencarian Produk**: Cari produk berdasarkan kategori, nama, atau harga.
+   _(Dalam tahap pengembangan)_
+   _(Dalam tahap pengembangan)_
+   _(Dalam tahap pengembangan)_
+   _(Dalam tahap pengembangan)_
+   _(Dalam tahap pengembangan)_
+
+## 🛠 Tech Stack
+
+- **Frontend**: React, Tailwind CSS, React Router
+- **State Management**: TanStack Query
+- **Backend**: Supabase (Authentication & Database)
+- **Deployment**: Vercel
