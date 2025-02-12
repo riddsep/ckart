@@ -17,7 +17,7 @@ export const menuGroups = [
   },
 ];
 
-export const socialMediaData = [
+export const socialMedia = [
   { name: "facebook", href: "#", src: "/icons/facebook.svg" },
   { name: "pinterest", href: "#", src: "/icons/pinterest.svg" },
   { name: "instagram", href: "#", src: "/icons/instagram.svg" },

@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { socialMediaData } from "../constant/constant";
+import { socialMedia } from "../constant/constant";
 
 function SocialMedia() {
   return (
     <SocialMediaList>
-      {socialMediaData.map((data) => (
+      {socialMedia.map((data) => (
         <li key={data.name}>
           <a href={data.href}>
             <img src={data.src} alt={`${data.name} icon`} />
