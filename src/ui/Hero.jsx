@@ -35,6 +35,7 @@ function Hero() {
 const Wrapper = styled(MaxWidthWrapper)`
   display: flex;
   gap: 40px;
+  margin-top: 30px;
 
   & > img {
     width: 100%;
