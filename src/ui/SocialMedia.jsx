@@ -5,22 +5,22 @@ function SocialMedia() {
     <SocialMediaList>
       <li>
         <a href="#">
-          <img src="public/icons/facebook.svg" alt="facebook icon" />
+          <img src="/icons/facebook.svg" alt="facebook icon" />
         </a>
       </li>
       <li>
         <a href="#">
-          <img src="public/icons/pinterest.svg" alt="pinterest icon" />
+          <img src="/icons/pinterest.svg" alt="pinterest icon" />
         </a>
       </li>
       <li>
         <a href="#">
-          <img src="public/icons/instagram.svg" alt="instagram icon" />
+          <img src="/icons/instagram.svg" alt="instagram icon" />
         </a>
       </li>
       <li>
         <a href="#">
-          <img src="public/icons/twitter.svg" alt="twitter icon" />
+          <img src="/icons/twitter.svg" alt="twitter icon" />
         </a>
       </li>
     </SocialMediaList>
