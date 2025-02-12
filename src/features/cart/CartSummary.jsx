@@ -6,21 +6,15 @@ import { rupiah } from "../../hooks/useCurrency";
 import { useState } from "react";
 
 function CartSummary() {
-  const { subTotal, cartItems } = useCart();
+  const { subTotal, applyCode, total, shippingRate } = useCart();
   const [code, setCode] = useState("TDR3000");
-  const [discount, setDiscount] = useState(0);
-  const shipping = 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!code) return;
-    const discountValue =
-      cartItems.length > 0 && code && code === "TDR3000" ? 0.1 : 0;
-    setDiscount(discountValue);
+    applyCode(code);
     setCode("");
   };
-
-  const total = subTotal() + shipping - subTotal() * discount;
 
   return (
     <Summary>
@@ -32,7 +26,9 @@ function CartSummary() {
         </Row>
         <Row>
           <span>Shipping</span>
-          <span>Free</span>
+          <span>
+            {shippingRate === 0 ? "Free" : rupiah(shippingRate * subTotal())}
+          </span>
         </Row>
       </div>
 
@@ -54,7 +50,7 @@ function CartSummary() {
       </form>
       <Row data-type="total">
         <span>Total</span>
-        <span>{rupiah(total)}</span>
+        <span>{rupiah(total())}</span>
       </Row>
       <Button $variant="primary" $fullWidth as={NavLink} to={"/shop/checkout"}>
         Proceed To Checkout <img src="/icons/arrow-right.svg" alt="" />

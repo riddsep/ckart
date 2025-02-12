@@ -3,10 +3,11 @@ import Button from "../ui/Button";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { rupiah } from "../hooks/useCurrency";
+import { discountPrice } from "../hooks/useDiscount";
 
 function OrderSummary() {
-  const { cartItems, subTotal } = useCart();
-  console.log(cartItems);
+  const { cartItems, subTotal, shippingRate, discount, total } = useCart();
+  const tax = subTotal() * 0.02;
 
   return (
     <Wrapper>
@@ -19,7 +20,7 @@ function OrderSummary() {
               <p>{item.name}</p>
               <div>
                 <span>{item.quantity}x</span>
-                <span>{rupiah(item.price)}</span>
+                <span>{rupiah(discountPrice(item.price, item.discount))}</span>
               </div>
             </div>
           </OrderProduct>
@@ -33,19 +34,21 @@ function OrderSummary() {
         </p>
         <p>
           <span>Shipping</span>
-          <span>Free</span>
+          <span>
+            {shippingRate === 0 ? "Free" : rupiah(shippingRate * subTotal())}
+          </span>
         </p>
         <p>
           <span>Discount</span>
-          <span>10%</span>
+          <span>{discount * 100}%</span>
         </p>
         <p>
           <span>Tax</span>
-          <span>$ 0.21</span>
+          <span>{rupiah(tax)}</span>
         </p>
         <p>
           <span>Total</span>
-          <span>$ 19.00</span>
+          <span>{rupiah(total() + tax)}</span>
         </p>
         <Button
           $variant="primary"
