@@ -1,16 +1,28 @@
 import styled from "styled-components";
-import { socialMediaData } from "../constant/constant";
 
 function SocialMedia() {
   return (
     <SocialMediaList>
-      {socialMediaData.map((data) => (
-        <li key={data.name}>
-          <a href={data.href}>
-            <img src={data.src} alt={`${data.name} icon`} />
-          </a>
-        </li>
-      ))}
+      <li>
+        <a href="#">
+          <img src="/icons/facebook.svg" alt="facebook icon" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="/icons/pinterest.svg" alt="pinterest icon" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="/icons/instagram.svg" alt="instagram icon" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="/icons/twitter.svg" alt="twitter icon" />
+        </a>
+      </li>
     </SocialMediaList>
   );
 }
