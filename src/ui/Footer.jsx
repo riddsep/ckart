@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
 import FooterList from "./FooterList";
 import { menuGroups } from "../constant/constant";
-import SocialMedia from "./SocialMedia";
 
 function Footer() {
   return (
@@ -16,7 +15,6 @@ function Footer() {
       </Menus>
       <CopyRight>
         <p>© 2024 All rights reserved by UIUX Ocean Design Agency</p>
-        <SocialMedia />
       </CopyRight>
     </Wrapper>
   );
