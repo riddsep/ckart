@@ -7,7 +7,7 @@ function SocialMedia() {
       {socialMediaData.map((data) => (
         <li key={data.name}>
           <a href={data.href}>
-            <img src={"/icons/facebook.svg"} alt={`${data.name} icon`} />
+            <img src={data.src} alt={`${data.name} icon`} />
           </a>
         </li>
       ))}
