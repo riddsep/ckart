@@ -1,11 +1,17 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { discountPrice } from "../hooks/useDiscount";
 
 const CartContext = createContext();
 
 function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const [discount, setDiscount] = useState(0);
+
+  useEffect(() => {
+    setDiscount(0);
+  }, [cartItems]);
 
   const addToCart = (product, quantity) => {
     setCartItems((prev) => {
@@ -43,6 +49,35 @@ function CartProvider({ children }) {
     );
   };
 
+  const removeCartItem = (id) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const subTotal = () => {
+    return cartItems.length > 0
+      ? cartItems.reduce(
+          (a, b) => a + discountPrice(b.price, b.discount) * b.quantity,
+          0
+        )
+      : 0;
+  };
+
+  const applyCode = (code) => {
+    const discountValue =
+      cartItems.length > 0 && code && code === "TDR3000" ? 0.1 : 0;
+    setDiscount(discountValue);
+  };
+
+  const shippingRate = subTotal() > 3000000 ? 0 : 0.05;
+
+  const total = () => {
+    const subtotalValue = subTotal();
+    const discountValue = subtotalValue * discount;
+    const shippingCost = subtotalValue * shippingRate;
+
+    return subtotalValue - discountValue + shippingCost;
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -52,6 +87,12 @@ function CartProvider({ children }) {
         cartItems,
         increaseQuantity,
         decreaseQuantity,
+        removeCartItem,
+        subTotal,
+        applyCode,
+        discount,
+        total,
+        shippingRate,
       }}
     >
       {children}

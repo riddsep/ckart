@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
 import ProductDetailCount from "./ProductDetailCount";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useProduct } from "../context/ProductContext";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
@@ -11,7 +11,6 @@ function ProductDetailCTA() {
   const { product } = useProduct();
   const { addToCart, cartItems } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const navigate = useNavigate();
 
   const increaseQuantity = () => {
     setQuantity((prev) => {
@@ -33,7 +32,6 @@ function ProductDetailCTA() {
     } else {
       addToCart(product, quantity);
       toast.success("Product added to cart");
-      navigate("/shop/cart");
       setQuantity(1);
     }
   };

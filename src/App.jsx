@@ -16,7 +16,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Shop = lazy(() => import("./pages/Shop"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
-const ShoppingCart = lazy(() => import("./pages/ShoppingCart"));
+const ShopCart = lazy(() => import("./pages/ShopCart"));
 const ProductShop = lazy(() => import("./features/product/ProductShop"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const OrderPlaced = lazy(() => import("./ui/OrderPlaced"));
@@ -50,7 +50,7 @@ function App() {
                 <Route path="shop" element={<Shop />}>
                   <Route index element={<ProductShop />} />
                   <Route path=":id" element={<ProductDetail />} />
-                  <Route path="cart" element={<ShoppingCart />} />
+                  <Route path="cart" element={<ShopCart />} />
                   <Route path="checkout" element={<Checkout />} />
                   <Route path="orderPlaced" element={<OrderPlaced />} />
                   <Route path="orders" element={<Order />}>
