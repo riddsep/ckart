@@ -6,9 +6,7 @@ function SocialMedia() {
     <SocialMediaList>
       {socialMediaData.map((data) => (
         <li key={data.name}>
-          <a href={data.href}>
-            <img src={data.src} alt={`${data.name} icon`} />
-          </a>
+          <img src={data.src} alt={`${data.name} icon`} />
         </li>
       ))}
     </SocialMediaList>
