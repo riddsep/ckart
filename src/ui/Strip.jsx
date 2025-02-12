@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
+import SocialMedia from "./SocialMedia";
 
 function Strip() {
   return (
@@ -21,6 +22,7 @@ function Strip() {
             <img src="/icons/chevron-down.svg" alt="Currency selector" />
           </Curr>
         </LangnCurrency>
+        <SocialMedia />
       </RightSection>
     </Wrapper>
   );
