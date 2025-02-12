@@ -5,7 +5,7 @@ function SocialMedia() {
     <SocialMediaList>
       <li>
         <a href="#">
-          <img src="/icons/facebook.svg" alt="facebook icon" />
+          <img src="/icons/sms.svg" alt="facebook icon" />
         </a>
       </li>
       <li>
