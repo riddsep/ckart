@@ -17,7 +17,7 @@ function Product({ product }) {
 
   return (
     <Wrapper>
-      <img src={image?.[0]} alt={name} />
+      <img src={image?.[0]} alt={name} height={250} />
       <div>
         <Button
           $variant="primary"
