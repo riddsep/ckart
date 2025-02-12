@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import SocialMedia from "./SocialMedia";
 import { MaxWidthWrapper } from "./MaxWidthWrapper";
+import SocialMedia from "./SocialMedia";
 
 function Strip() {
   return (

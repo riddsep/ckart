@@ -3,9 +3,12 @@ import { MaxWidthWrapper } from "./MaxWidthWrapper";
 import { useState } from "react";
 import MegaMenu from "./MegaMenu";
 import { NavLink } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 function Navbar({ isFooter }) {
   const [active, setActive] = useState(false);
+  const { cartItems } = useCart();
+  const itemInCart = cartItems.reduce((a, b) => a + b.quantity, 0);
 
   // Fungsi untuk menangani klik pada item navigasi
   const handleNavClick = () => {
@@ -66,7 +69,7 @@ function Navbar({ isFooter }) {
             <li>
               <Link to={"/shop/cart"} onClick={handleNavClick}>
                 <img src="/icons/shopping-cart.svg" alt="Shopping Cart" />
-                <CountItem>5</CountItem>
+                {cartItems.length > 0 && <CountItem>{itemInCart}</CountItem>}
               </Link>
             </li>
             <li>

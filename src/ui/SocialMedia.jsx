@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 function SocialMedia() {
   return (
-    <SocialMediaList>
+    <Wrapper>
       <li>
         <a href="#">
           <img src="/icons/facebook.svg" alt="facebook icon" />
@@ -23,11 +23,11 @@ function SocialMedia() {
           <img src="/icons/twitter.svg" alt="twitter icon" />
         </a>
       </li>
-    </SocialMediaList>
+    </Wrapper>
   );
 }
 
-const SocialMediaList = styled.ul`
+const Wrapper = styled.ul`
   display: flex;
   gap: 20px;
   align-items: center;
