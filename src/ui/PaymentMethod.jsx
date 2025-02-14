@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-function PaymentMethod() {
+function PaymentMethod({ register, watch }) {
+  const selectedPayment = watch("payment");
+
   return (
     <Wrapper>
       <h3>Payment Method</h3>
@@ -8,47 +10,77 @@ function PaymentMethod() {
       <Form>
         <RadioGroup>
           <label htmlFor="cod">
-            <img src="/icons/dollar-circle.svg" alt="" />
+            <img src="/icons/dollar-circle.svg" alt="cash on delivery icon" />
             <span>Cash on Delivery</span>
-            <input type="radio" name="payment" id="cod" />
+            <input
+              type="radio"
+              name="payment"
+              id="cod"
+              value="cod"
+              {...register("payment")}
+            />
           </label>
 
           <label htmlFor="paypal">
             <img src="/icons/paypal.svg" alt="" />
             <span>Paypal</span>
-            <input type="radio" name="payment" id="paypal" />
+            <input
+              type="radio"
+              name="payment"
+              id="paypal"
+              value="paypal"
+              {...register("payment")}
+            />
           </label>
 
           <label htmlFor="btc">
             <img src="/icons/bitcoin.svg" alt="" />
             <span>Bitcoin</span>
-            <input type="radio" name="payment" id="btc" />
+            <input
+              type="radio"
+              name="payment"
+              id="btc"
+              value="btc"
+              {...register("payment")}
+            />
           </label>
 
           <label htmlFor="card">
             <img src="/icons/card-pos.svg" alt="" />
             <span>Debid/Credit Card</span>
-            <input type="radio" name="payment" id="card" />
+            <input
+              type="radio"
+              name="payment"
+              id="card"
+              value="card"
+              {...register("payment")}
+            />
           </label>
         </RadioGroup>
-        <div>
-          <label htmlFor="nameOnCard">
-            Name on Card
-            <input type="text" placeholder="Name" id="nameOnCard" />
-          </label>
-          <label htmlFor="cardNumber">
-            Card Number{" "}
-            <input type="text" placeholder="Card Number" id="cardNumber" />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="expire">
-            Expire Date <input type="text" placeholder="MM/YY" id="expire" />
-          </label>
-          <label htmlFor="cvv">
-            CVV <input type="text" placeholder="CVV" id="cvv" />
-          </label>
-        </div>
+
+        {selectedPayment === "card" && (
+          <>
+            <div>
+              <label htmlFor="nameOnCard">
+                Name on Card
+                <input type="text" placeholder="Name" id="nameOnCard" />
+              </label>
+              <label htmlFor="cardNumber">
+                Card Number{" "}
+                <input type="text" placeholder="Card Number" id="cardNumber" />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="expire">
+                Expire Date{" "}
+                <input type="text" placeholder="MM/YY" id="expire" />
+              </label>
+              <label htmlFor="cvv">
+                CVV <input type="text" placeholder="CVV" id="cvv" />
+              </label>
+            </div>
+          </>
+        )}
       </Form>
     </Wrapper>
   );
@@ -57,6 +89,11 @@ function PaymentMethod() {
 const Wrapper = styled.div`
   border: 1px solid var(--clr-dark-15);
   margin-block-end: 30px;
+
+  h3 {
+    padding: 20px;
+    border-bottom: 1px solid var(--clr-dark-15);
+  }
 `;
 
 const Form = styled.form`

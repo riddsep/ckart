@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function BillingInformation() {
+function BillingInformation({ register }) {
   return (
     <Wrapper>
       <h3>Billing Information</h3>
@@ -8,11 +8,22 @@ function BillingInformation() {
       <Form>
         <div>
           <label htmlFor="name">
-            Name <input type="text" placeholder="Enter Your Name" id="name" />
+            Name{" "}
+            <input
+              type="text"
+              placeholder="Enter Your Name"
+              id="name"
+              {...register("name")}
+            />
           </label>
           <label htmlFor="email">
             Email{" "}
-            <input type="text" placeholder="Enter Your email" id="email" />
+            <input
+              type="text"
+              placeholder="Enter Your email"
+              id="email"
+              {...register("email")}
+            />
           </label>
         </div>
         <div>
@@ -22,6 +33,7 @@ function BillingInformation() {
               type="text"
               placeholder="Enter Your Phone Number"
               id="phone"
+              {...register("phone")}
             />
           </label>
           <label htmlFor="address-optional">
@@ -30,13 +42,19 @@ function BillingInformation() {
               type="text"
               placeholder="Enter Your Optional Adrress"
               id="address-optional"
+              {...register("address-optional")}
             />
           </label>
         </div>
         <div>
           <label htmlFor="address">
             Adrress{" "}
-            <input type="text" placeholder="Enter Your Adrress" id="address" />
+            <input
+              type="text"
+              placeholder="Enter Your Adrress"
+              id="address"
+              {...register("address")}
+            />
           </label>
         </div>
         <div>
@@ -46,6 +64,7 @@ function BillingInformation() {
               type="text"
               placeholder="Enter Your Province"
               id="province"
+              {...register("province")}
             />
           </label>
           <label htmlFor="city">
@@ -59,6 +78,7 @@ function BillingInformation() {
               type="text"
               placeholder="Enter Your Subdistrict Code"
               id="subdistrict"
+              {...register("subdistrict")}
             />
           </label>
           <label htmlFor="postcode">
@@ -67,6 +87,7 @@ function BillingInformation() {
               type="text"
               placeholder="Enter Your Postcode"
               id="postcode"
+              {...register("postcode")}
             />
           </label>
         </div>

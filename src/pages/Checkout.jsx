@@ -1,9 +1,9 @@
-import CheckoutItem from "../ui/CheckoutItem";
+import CheckoutDetail from "../ui/CheckoutDetail";
 
 function Checkout() {
   return (
     <>
-      <CheckoutItem />
+      <CheckoutDetail />
     </>
   );
 }

@@ -1,19 +1,30 @@
 import styled from "styled-components";
 import Button from "../ui/Button";
-import { NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { rupiah } from "../hooks/useCurrency";
 import { discountPrice } from "../hooks/useDiscount";
+import { NavLink, useLocation } from "react-router-dom";
 
-function OrderSummary() {
-  const { cartItems, subTotal, shippingRate, discount, total } = useCart();
-  const tax = subTotal() * 0.02;
+function OrderSummary({ handleSubmit, isSubmitting, onSubmit }) {
+  const { discount } = useCart();
+  const location = useLocation();
+  const items = location.state?.cartItems;
+  console.log(items);
+
+  const subTotal = items.reduce(
+    (a, b) => a + discountPrice(b.price, b.discount) * b.quantity,
+    0
+  );
+  const shippingCost = subTotal >= 3_000_000 ? 0 : subTotal * 0.05;
+  const discountCost = subTotal * discount;
+  const tax = subTotal * 0.1;
+  const total = subTotal - discountCost + shippingCost + tax;
 
   return (
     <Wrapper>
       <h3>Order Summary</h3>
       <div>
-        {cartItems.map((item) => (
+        {items?.map((item) => (
           <OrderProduct key={item.id}>
             <img src={item.image[0]} alt="" />
             <div>
@@ -30,17 +41,15 @@ function OrderSummary() {
       <div>
         <p>
           <span>Subtotal</span>
-          <span>{rupiah(subTotal())}</span>
+          <span>{rupiah(subTotal)}</span>
         </p>
         <p>
           <span>Shipping</span>
-          <span>
-            {shippingRate === 0 ? "Free" : rupiah(shippingRate * subTotal())}
-          </span>
+          <span>{rupiah(shippingCost)}</span>
         </p>
         <p>
           <span>Discount</span>
-          <span>{discount * 100}%</span>
+          <span>{discount * 100 === 0 ? "-" : `${discount * 100}%`}</span>
         </p>
         <p>
           <span>Tax</span>
@@ -48,15 +57,17 @@ function OrderSummary() {
         </p>
         <p>
           <span>Total</span>
-          <span>{rupiah(total() + tax)}</span>
+          <span>{rupiah(total)}</span>
         </p>
         <Button
           $variant="primary"
           $fullWidth
+          disabled={isSubmitting}
           as={NavLink}
-          to={"/shop/orderPlaced"}
+          onClick={handleSubmit(onSubmit)}
         >
-          Place Order <img src="/icons/arrow-right.svg" alt="" />
+          Place Order{" "}
+          <img src="/icons/arrow-right.svg" alt="arrow right button icon" />
         </Button>
       </div>
     </Wrapper>
