@@ -1,19 +1,25 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import { useCart } from "../../context/CartContext";
 import { rupiah } from "../../hooks/useCurrency";
 import { useState } from "react";
 
 function CartSummary() {
-  const { subTotal, applyCode, total, shippingRate } = useCart();
+  const { subTotal, applyCode, total, shippingRate, cartItems } = useCart();
   const [code, setCode] = useState("TDR3000");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!code) return;
     applyCode(code);
     setCode("");
+  };
+
+  const handleClick = () => {
+    navigate("/shop/checkout", { state: { cartItems } });
   };
 
   return (
@@ -52,7 +58,7 @@ function CartSummary() {
         <span>Total</span>
         <span>{rupiah(total())}</span>
       </Row>
-      <Button $variant="primary" $fullWidth as={NavLink} to={"/shop/checkout"}>
+      <Button $variant="primary" $fullWidth onClick={handleClick}>
         Proceed To Checkout <img src="/icons/arrow-right.svg" alt="" />
       </Button>
     </Summary>

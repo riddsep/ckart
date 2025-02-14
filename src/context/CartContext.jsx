@@ -68,7 +68,7 @@ function CartProvider({ children }) {
     setDiscount(discountValue);
   };
 
-  const shippingRate = subTotal() > 3000000 ? 0 : 0.05;
+  const shippingRate = subTotal() >= 3000000 ? 0 : 0.05;
 
   const total = () => {
     const subtotalValue = subTotal();
