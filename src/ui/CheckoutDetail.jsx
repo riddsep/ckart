@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNewOrder } from "../services/apiOrder";
 import toast from "react-hot-toast";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { discountPrice } from "../hooks/useDiscount";
 import { useCart } from "../context/CartContext";
 
@@ -16,7 +16,8 @@ function CheckoutDetail() {
   const { register, handleSubmit, watch, reset } = useForm();
   const { discount } = useCart();
   const location = useLocation();
-  const products = location.state?.cartItems;
+  const products = location.state?.cartItems || [];
+  const navigate = useNavigate();
 
   const subTotal = products.reduce(
     (a, b) => a + discountPrice(b.price, b.discount) * b.quantity,
@@ -26,7 +27,6 @@ function CheckoutDetail() {
   const discountCost = subTotal * discount;
   const tax = subTotal * 0.1;
   const total = subTotal - discountCost + shippingCost + tax;
-  console.log(products);
 
   const queryClient = useQueryClient();
 
@@ -36,9 +36,10 @@ function CheckoutDetail() {
       toast.success("Order successfully created");
       queryClient.invalidateQueries({ queryKey: ["products"] });
       queryClient.invalidateQueries({ queryKey: ["orders"] });
+      navigate("/shop/orderPlaced");
       reset();
     },
-    onError: toast.error("Something went wrong"),
+    onError: () => toast.error("Something went wrong"),
   });
 
   const onSubmit = (data) => {
@@ -58,7 +59,7 @@ function CheckoutDetail() {
     const orderData = {
       user, // Update data user kalau ada perubahan
       orders: {
-        userId: user.id,
+        // userId: user.id,
         status: "pending",
         subTotal,
         shippingCost,
@@ -76,7 +77,6 @@ function CheckoutDetail() {
       })),
     };
 
-    console.log(orderData);
     mutate(orderData);
   };
 

@@ -37,6 +37,7 @@ export async function createNewOrder(orderData) {
     .select();
 
   if (orderItemsError) {
+    console.log(orderItemsError);
     throw orderItemsError;
   }
 
