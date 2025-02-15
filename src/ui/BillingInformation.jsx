@@ -36,13 +36,13 @@ function BillingInformation({ register }) {
               {...register("phone")}
             />
           </label>
-          <label htmlFor="address-optional">
-            Optional Adrress{" "}
+          <label htmlFor="otherPhoneNumber">
+            Other Phone Number{" "}
             <input
               type="text"
-              placeholder="Enter Your Optional Adrress"
-              id="address-optional"
-              {...register("address-optional")}
+              placeholder="Enter Your Other Phone Number"
+              id="otherPhoneNumber"
+              {...register("otherPhoneNumber")}
             />
           </label>
         </div>
@@ -68,26 +68,32 @@ function BillingInformation({ register }) {
             />
           </label>
           <label htmlFor="city">
-            City <input type="text" placeholder="Enter Your City" id="city" />
+            City{" "}
+            <input
+              type="text"
+              placeholder="Enter Your City"
+              id="city"
+              {...register("city")}
+            />
           </label>
         </div>
         <div>
-          <label htmlFor="subdistrict">
+          <label htmlFor="subDistrict">
             Subdistrict{" "}
             <input
               type="text"
               placeholder="Enter Your Subdistrict Code"
-              id="subdistrict"
-              {...register("subdistrict")}
+              id="subDistrict"
+              {...register("subDistrict")}
             />
           </label>
-          <label htmlFor="postcode">
+          <label htmlFor="postCode">
             Postcode{" "}
             <input
               type="text"
               placeholder="Enter Your Postcode"
-              id="postcode"
-              {...register("postcode")}
+              id="postCode"
+              {...register("postCode")}
             />
           </label>
         </div>
