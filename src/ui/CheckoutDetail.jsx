@@ -8,13 +8,29 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNewOrder } from "../services/apiOrder";
 import toast from "react-hot-toast";
+import { useLocation } from "react-router-dom";
+import { discountPrice } from "../hooks/useDiscount";
+import { useCart } from "../context/CartContext";
 
 function CheckoutDetail() {
   const { register, handleSubmit, watch, reset } = useForm();
+  const { discount } = useCart();
+  const location = useLocation();
+  const products = location.state?.cartItems;
+
+  const subTotal = products.reduce(
+    (a, b) => a + discountPrice(b.price, b.discount) * b.quantity,
+    0
+  );
+  const shippingCost = subTotal >= 3_000_000 ? 0 : subTotal * 0.05;
+  const discountCost = subTotal * discount;
+  const tax = subTotal * 0.1;
+  const total = subTotal - discountCost + shippingCost + tax;
+  console.log(products);
 
   const queryClient = useQueryClient();
 
-  const { isPending, mutate } = useMutation({
+  const { mutate, isPending: isCreating } = useMutation({
     mutationFn: createNewOrder,
     onSuccess: () => {
       toast.success("Order successfully created");
@@ -25,7 +41,44 @@ function CheckoutDetail() {
     onError: toast.error("Something went wrong"),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const user = {
+      name: data.name,
+      email: data.email,
+      phone: { mainNumber: data.phone, otherNumber: data.otherPhoneNumber },
+      address: {
+        detailAddress: data.address,
+        province: data.province,
+        city: data.city,
+        subDistrict: data.subDistrict,
+        postCode: data.postCode,
+      },
+    };
+
+    const orderData = {
+      user, // Update data user kalau ada perubahan
+      orders: {
+        userId: user.id,
+        status: "pending",
+        subTotal,
+        shippingCost,
+        discountCost,
+        tax,
+        totalPrice: total,
+      },
+      orderItems: products.map((product) => ({
+        productId: product.id,
+        productName: product.name,
+        price: discountPrice(product.price, product.discount),
+        quantity: product.quantity,
+        totalItemPrice:
+          discountPrice(product.price, product.discount) * product.quantity,
+      })),
+    };
+
+    console.log(orderData);
+    mutate(orderData);
+  };
 
   return (
     <Wrapper>
@@ -35,7 +88,17 @@ function CheckoutDetail() {
           <BillingInformation register={register} />
           <PaymentMethod register={register} watch={watch} />
         </div>
-        <OrderSummary handleSubmit={handleSubmit} onSubmit={onSubmit} />
+        <OrderSummary
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+          isCreating={isCreating}
+          products={products}
+          subTotal={subTotal}
+          shippingCost={shippingCost}
+          tax={tax}
+          discount={discount}
+          total={total}
+        />
       </Main>
     </Wrapper>
   );

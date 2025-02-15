@@ -1,37 +1,47 @@
 import supabase from "./supabase";
 
-export async function createNewOrder(newOrder, user) {
-  try {
-    // update user
-    await supabase
-      .from("users")
-      .update({
-        name: newOrder.name,
-        address: newOrder.address,
-        province: newOrder.province,
-        city: newOrder.city,
-        postCode: newOrder.postCode,
-      })
-      .eq("id", newOrder.id)
-      .select();
+export async function createNewOrder(orderData) {
+  const { user, orders, orderItems } = orderData;
+  console.log(user, orders, orderItems);
 
-    // insert order
-    const { data: orderData, error: orderError } = await supabase
-      .from("orders")
-      .insert([
-        {
-          userId: user.id,
-          status: "pending",
-          totalPrice: newOrder.totalPrice,
-        },
-      ])
-      .select()
-      .single();
+  // const userData = { ...user };
+  // delete userData.id;
 
-    if (orderError) {
-      throw orderError;
-    }
-  } catch (error) {
-    console.log(error);
+  // // update user
+  // const { error: userError } = await supabase
+  //   .from("users")
+  //   .update(userData)
+  //   .eq("id", user.id)
+  //   .select();
+
+  // if (userError) {
+  //   throw userError;
+  // }
+
+  // insert order
+  const { data: newOrder, error: ordersError } = await supabase
+    .from("orders")
+    .insert([orders])
+    .select()
+    .single();
+
+  if (ordersError) {
+    throw ordersError;
   }
+
+  const orderId = newOrder.id;
+
+  const { error: orderItemsError } = await supabase
+    .from("orderItems")
+    .insert(orderItems.map((item) => ({ ...item, orderId })))
+    .select();
+
+  if (orderItemsError) {
+    throw orderItemsError;
+  }
+
+  return {
+    orderId,
+    ...newOrder,
+  };
 }
