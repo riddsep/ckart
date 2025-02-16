@@ -15,6 +15,7 @@ function OrderSummary({
   tax,
   total,
 }) {
+  console.log(products);
   return (
     <Wrapper>
       <h3>Order Summary</h3>

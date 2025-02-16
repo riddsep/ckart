@@ -16,10 +16,12 @@ function CheckoutDetail() {
   const { register, handleSubmit, watch, reset } = useForm();
   const { discount } = useCart();
   const location = useLocation();
-  const products = location.state?.cartItems || [];
+  const { cartItems = [], itemBuyNow } = location.state || {};
   const navigate = useNavigate();
 
-  const subTotal = products.reduce(
+  const itemsToCheckout = itemBuyNow ? [itemBuyNow] : cartItems;
+
+  const subTotal = itemsToCheckout.reduce(
     (a, b) => a + discountPrice(b.price, b.discount) * b.quantity,
     0
   );
@@ -67,7 +69,7 @@ function CheckoutDetail() {
         tax,
         totalPrice: total,
       },
-      orderItems: products.map((product) => ({
+      orderItems: itemsToCheckout.map((product) => ({
         productId: product.id,
         productName: product.name,
         price: discountPrice(product.price, product.discount),
@@ -92,7 +94,7 @@ function CheckoutDetail() {
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
           isCreating={isCreating}
-          products={products}
+          products={itemsToCheckout}
           subTotal={subTotal}
           shippingCost={shippingCost}
           tax={tax}

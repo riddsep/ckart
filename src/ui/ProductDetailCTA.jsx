@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
 import ProductDetailCount from "./ProductDetailCount";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useProduct } from "../context/ProductContext";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
@@ -11,6 +11,7 @@ function ProductDetailCTA() {
   const { product } = useProduct();
   const { addToCart, cartItems } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
   const increaseQuantity = () => {
     setQuantity((prev) => {
@@ -36,6 +37,14 @@ function ProductDetailCTA() {
     }
   };
 
+  const handleBuyNow = () => {
+    const itemBuyNow = {
+      ...product,
+      quantity,
+    };
+    navigate("/shop/checkout", { state: { itemBuyNow } });
+  };
+
   return (
     <Wrapper>
       <div>
@@ -48,7 +57,7 @@ function ProductDetailCTA() {
           <Button $variant="primary" onClick={handleAddToCart}>
             Add to Cart <img src="/icons/shopping-cart-light.svg" alt="" />
           </Button>
-          <Button $variant="outline" as={NavLink} to={"/shop/checkout"}>
+          <Button $variant="outline" onClick={handleBuyNow}>
             Buy Now <img src="/icons/arrow-right-dark.svg" alt="" />
           </Button>
         </div>

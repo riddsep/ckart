@@ -1,11 +1,7 @@
 import CheckoutDetail from "../ui/CheckoutDetail";
 
 function Checkout() {
-  return (
-    <>
-      <CheckoutDetail />
-    </>
-  );
+  return <CheckoutDetail />;
 }
 
 export default Checkout;

@@ -76,5 +76,11 @@ const Button = styled.button`
       width: ${props.$width};
       justify-content: center;
     `}
+    ${(props) =>
+    props.disabled &&
+    css`
+      filter: grayscale(1);
+      cursor: not-allowed;
+    `}
 `;
 export default Button;

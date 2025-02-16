@@ -58,7 +58,12 @@ function CartSummary() {
         <span>Total</span>
         <span>{rupiah(total())}</span>
       </Row>
-      <Button $variant="primary" $fullWidth onClick={handleClick}>
+      <Button
+        $variant="primary"
+        $fullWidth
+        onClick={handleClick}
+        disabled={cartItems.length === 0}
+      >
         Proceed To Checkout <img src="/icons/arrow-right.svg" alt="" />
       </Button>
     </Summary>
