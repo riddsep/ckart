@@ -13,7 +13,13 @@ import { discountPrice } from "../hooks/useDiscount";
 import { useCart } from "../context/CartContext";
 
 function CheckoutDetail() {
-  const { register, handleSubmit, watch, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
   const { discount } = useCart();
   const location = useLocation();
   const { cartItems = [], itemBuyNow } = location.state || {};
@@ -87,7 +93,7 @@ function CheckoutDetail() {
       <h1>Checkout</h1>
       <Main>
         <div>
-          <BillingInformation register={register} />
+          <BillingInformation register={register} errors={errors} />
           <PaymentMethod register={register} watch={watch} />
         </div>
         <OrderSummary

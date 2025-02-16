@@ -40,13 +40,13 @@ const GlobalStyles = createGlobalStyle`
     --clr-white-100:hsl(0, 0.00%, 100.00%);
 
     /* colors error */
-    --clr-error-5:hsla(4, 86.00%, 58.00%, 0.05)
-    --clr-error-15: hsla(4, 86.00%, 58.00%, 0.15)
-    --clr-error-25: hsla(4, 86.00%, 58.00%, 0.25)
-    --clr-error-50: hsla(4, 86.00%, 58.00%, 0.5)
-    --clr-error-75: hsla(4, 86.00%, 58.00%, 0.75)
-    --clr-error-90: hsla(4, 86.00%, 58.00%, 0.9)
-    --clr-error-100: hsl(4, 86.00%, 58.00%)
+    --clr-error-5:hsla(4, 86.00%, 58.00%, 0.05);
+    --clr-error-15: hsla(4, 86.00%, 58.00%, 0.15);
+    --clr-error-25: hsla(4, 86.00%, 58.00%, 0.25);
+    --clr-error-50: hsla(4, 86.00%, 58.00%, 0.5);
+    --clr-error-75: hsla(4, 86.00%, 58.00%, 0.75);
+    --clr-error-90: hsla(4, 86.00%, 58.00%, 0.9);
+    --clr-error-100: hsl(4, 86.00%, 58.00%);
 
     /* colors warning */
     --clr-warning-5:hsla(34, 93.70%, 50.20%,0.05);

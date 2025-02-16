@@ -62,7 +62,7 @@ function OrderSummary({
           as={NavLink}
           onClick={handleSubmit(onSubmit)}
         >
-          Place Order{" "}
+          {isCreating ? "Processing..." : "Place Order"}
           <img src="/icons/arrow-right.svg" alt="arrow right button icon" />
         </Button>
       </div>

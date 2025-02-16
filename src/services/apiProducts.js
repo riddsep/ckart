@@ -39,3 +39,12 @@ export async function getProductsByCategory(categoryId) {
 
   return data;
 }
+
+export async function updateProductStock(productId, newStock) {
+  const { error } = await supabase
+    .from("products")
+    .update({ stock: newStock })
+    .eq("id", productId);
+
+  if (error) throw new Error("Stock could not be updated");
+}

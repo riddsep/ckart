@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function BillingInformation({ register }) {
+function BillingInformation({ register, errors }) {
   return (
     <Wrapper>
       <h3>Billing Information</h3>
@@ -13,8 +13,9 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your Name"
               id="name"
-              {...register("name")}
+              {...register("name", { required: "Name is required" })}
             />
+            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
           </label>
           <label htmlFor="email">
             Email{" "}
@@ -22,8 +23,11 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your email"
               id="email"
-              {...register("email")}
+              {...register("email", { required: "Email is required" })}
             />
+            {errors.email && (
+              <ErrorMessage>{errors.email.message}</ErrorMessage>
+            )}
           </label>
         </div>
         <div>
@@ -33,8 +37,11 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your Phone Number"
               id="phone"
-              {...register("phone")}
+              {...register("phone", { required: "Phone Number is required" })}
             />
+            {errors.phone && (
+              <ErrorMessage>{errors.phone.message}</ErrorMessage>
+            )}
           </label>
           <label htmlFor="otherPhoneNumber">
             Other Phone Number{" "}
@@ -42,8 +49,13 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your Other Phone Number"
               id="otherPhoneNumber"
-              {...register("otherPhoneNumber")}
+              {...register("otherPhoneNumber", {
+                required: "Other Phone Number is required",
+              })}
             />
+            {errors.otherPhoneNumber && (
+              <ErrorMessage>{errors.otherPhoneNumber.message}</ErrorMessage>
+            )}
           </label>
         </div>
         <div>
@@ -53,8 +65,11 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your Adrress"
               id="address"
-              {...register("address")}
+              {...register("address", { required: "Adrress is required" })}
             />
+            {errors.address && (
+              <ErrorMessage>{errors.address.message}</ErrorMessage>
+            )}
           </label>
         </div>
         <div>
@@ -64,8 +79,11 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your Province"
               id="province"
-              {...register("province")}
+              {...register("province", { required: "Province is required" })}
             />
+            {errors.province && (
+              <ErrorMessage>{errors.province.message}</ErrorMessage>
+            )}
           </label>
           <label htmlFor="city">
             City{" "}
@@ -73,8 +91,9 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your City"
               id="city"
-              {...register("city")}
+              {...register("city", { required: "City is required" })}
             />
+            {errors.city && <ErrorMessage>{errors.city.message}</ErrorMessage>}
           </label>
         </div>
         <div>
@@ -84,8 +103,13 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your Subdistrict Code"
               id="subDistrict"
-              {...register("subDistrict")}
+              {...register("subDistrict", {
+                required: "Subdistrict is required",
+              })}
             />
+            {errors.subDistrict && (
+              <ErrorMessage>{errors.subDistrict.message}</ErrorMessage>
+            )}
           </label>
           <label htmlFor="postCode">
             Postcode{" "}
@@ -93,8 +117,11 @@ function BillingInformation({ register }) {
               type="text"
               placeholder="Enter Your Postcode"
               id="postCode"
-              {...register("postCode")}
+              {...register("postCode", { required: "Postcode is required" })}
             />
+            {errors.postCode && (
+              <ErrorMessage>{errors.postCode.message}</ErrorMessage>
+            )}
           </label>
         </div>
       </Form>
@@ -134,6 +161,10 @@ const Form = styled.form`
       }
     }
   }
+`;
+const ErrorMessage = styled.p`
+  font-size: 14px;
+  color: var(--clr-error-100);
 `;
 
 export default BillingInformation;
